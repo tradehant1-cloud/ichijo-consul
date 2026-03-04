@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDHjUqwrJ_T1ocDNnSVo3kP--vJT8fr3UAsTDREsxfkddIxROFTFy_nx9GJomp5Vxyew/exec";
+
 const INITIAL_CASES = [
   {
     id: 1,
@@ -52,9 +54,7 @@ export default function App() {
 
   const handleFormChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
- const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDHjUqwrJ_T1ocDNnSVo3kP--vJT8fr3UAsTDREsxfkddIxROFTFy_nx9GJomp5Vxyew/exec";
-
-const handleSubmit = async () => {
+  const handleSubmit = async () => {
     if (!form.name || !form.email || !form.topic || !form.message) return;
     const newCase = {
       id: Date.now(),
@@ -63,26 +63,19 @@ const handleSubmit = async () => {
       date: new Date().toISOString().split("T")[0],
       memo: "",
     };
-    setCases([newCase, ...cases]);
-    
-    await fetch(SCRIPT_URL, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...form, date: newCase.date }),
-    });
-    
-    setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", topic: "", budget: "", timeline: "", message: "" });
-  };
-    const newCase = {
-      id: Date.now(),
-      ...form,
-      status: "新規",
-      date: new Date().toISOString().split("T")[0],
-      memo: "",
-    };
-    setCases([newCase, ...cases]);
+    setCases((prev) => [newCase, ...prev]);
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, date: newCase.date }),
+      });
+    } catch (e) {
+      console.error("送信エラー:", e);
+    }
+
     setSubmitted(true);
     setForm({ name: "", email: "", phone: "", topic: "", budget: "", timeline: "", message: "" });
   };
@@ -111,7 +104,6 @@ const handleSubmit = async () => {
     <div style={{ fontFamily: "'Noto Serif JP', 'Georgia', serif", minHeight: "100vh", background: "#f7f3ee", color: "#2c2418" }}>
       <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet" />
 
-      {/* Header */}
       <header style={{ background: "#1a1208", color: "#f0e6d3", padding: "0 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", height: 60, boxShadow: "0 2px 12px rgba(0,0,0,0.25)" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <span style={{ fontSize: 22, letterSpacing: 2, fontWeight: 700 }}>🏠 一条コンサル</span>
@@ -129,14 +121,11 @@ const handleSubmit = async () => {
 
       <main style={{ maxWidth: 1100, margin: "0 auto", padding: "2rem 1rem" }}>
 
-        {/* DASHBOARD */}
         {view === "dashboard" && (
           <div>
             <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 24, color: "#1a1208" }}>📊 ダッシュボード</h2>
-
-            {/* Stats */}
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 16, marginBottom: 32 }}>
-              {[["総案件数", cases.length, "#1a1208", "📁"], ...STATUSES.map((s) => [s, counts[s], STATUS_COLORS[s].text, "●"])].map(([label, val, color, icon]) => (
+              {[["総案件数", cases.length, "#1a1208"], ...STATUSES.map((s) => [s, counts[s], STATUS_COLORS[s].text])].map(([label, val, color]) => (
                 <div key={label} style={{ background: "#fff", border: "1px solid #e8ddd0", borderRadius: 12, padding: "20px 16px", textAlign: "center", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}>
                   <div style={{ fontSize: 28, fontWeight: 700, color }}>{val}</div>
                   <div style={{ fontSize: 13, color: "#6b5a47", marginTop: 4 }}>{label}</div>
@@ -144,12 +133,11 @@ const handleSubmit = async () => {
               ))}
             </div>
 
-            {/* Recent */}
             <h3 style={{ fontSize: 16, fontWeight: 700, marginBottom: 12, color: "#1a1208" }}>🕐 最近の相談</h3>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {cases.slice(0, 5).map((c) => (
                 <div key={c.id} onClick={() => { setSelected(c); setView("cases"); }}
-                  style={{ background: "#fff", border: "1px solid #e8ddd0", borderRadius: 10, padding: "14px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", transition: "box-shadow 0.2s", boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }}>
+                  style={{ background: "#fff", border: "1px solid #e8ddd0", borderRadius: 10, padding: "14px 18px", display: "flex", alignItems: "center", justifyContent: "space-between", cursor: "pointer", boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }}>
                   <div>
                     <span style={{ fontWeight: 700, marginRight: 10 }}>{c.name}</span>
                     <span style={{ fontSize: 12, color: "#8c7a6b", background: "#f3ece3", padding: "2px 8px", borderRadius: 4 }}>{c.topic}</span>
@@ -162,7 +150,6 @@ const handleSubmit = async () => {
               ))}
             </div>
 
-            {/* Tips */}
             <div style={{ marginTop: 32, background: "linear-gradient(135deg, #1a1208, #3d2b14)", borderRadius: 14, padding: "20px 24px", color: "#f0e6d3" }}>
               <div style={{ fontWeight: 700, fontSize: 15, marginBottom: 12 }}>💡 一条コンサルのポイント</div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, fontSize: 13, lineHeight: 1.8 }}>
@@ -174,7 +161,6 @@ const handleSubmit = async () => {
           </div>
         )}
 
-        {/* CASES */}
         {view === "cases" && !selected && (
           <div>
             <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 20 }}>📋 案件一覧</h2>
@@ -193,7 +179,7 @@ const handleSubmit = async () => {
               {filtered.length === 0 && <div style={{ textAlign: "center", padding: 40, color: "#8c7a6b" }}>該当する案件がありません</div>}
               {filtered.map((c) => (
                 <div key={c.id} onClick={() => setSelected(c)}
-                  style={{ background: "#fff", border: "1px solid #e8ddd0", borderRadius: 12, padding: "16px 20px", cursor: "pointer", boxShadow: "0 1px 6px rgba(0,0,0,0.06)", transition: "box-shadow 0.2s" }}>
+                  style={{ background: "#fff", border: "1px solid #e8ddd0", borderRadius: 12, padding: "16px 20px", cursor: "pointer", boxShadow: "0 1px 6px rgba(0,0,0,0.06)" }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
                     <div>
                       <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 6 }}>
@@ -215,7 +201,6 @@ const handleSubmit = async () => {
           </div>
         )}
 
-        {/* CASE DETAIL */}
         {view === "cases" && selected && (
           <div>
             <button onClick={() => setSelected(null)} style={{ background: "none", border: "none", cursor: "pointer", color: "#c8a96e", fontSize: 14, fontFamily: "inherit", marginBottom: 16, padding: 0, fontWeight: 600 }}>← 一覧に戻る</button>
@@ -255,7 +240,6 @@ const handleSubmit = async () => {
           </div>
         )}
 
-        {/* FORM */}
         {view === "form" && (
           <div style={{ maxWidth: 680, margin: "0 auto" }}>
             <div style={{ background: "linear-gradient(135deg, #1a1208, #3d2b14)", borderRadius: 14, padding: "24px 32px", color: "#f0e6d3", marginBottom: 24, textAlign: "center" }}>
@@ -277,7 +261,7 @@ const handleSubmit = async () => {
               <div style={{ background: "#fff", borderRadius: 14, padding: "28px 32px", border: "1px solid #e8ddd0", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                   {[["name", "お名前 *", "text", "山田 太郎"], ["email", "メールアドレス *", "email", "example@mail.com"], ["phone", "電話番号（任意）", "tel", "090-0000-0000"]].map(([name, label, type, ph]) => (
-                    <div key={name} style={name === "email" ? {} : {}}>
+                    <div key={name}>
                       <label style={{ fontSize: 13, color: "#6b5a47", fontWeight: 600, display: "block", marginBottom: 6 }}>{label}</label>
                       <input name={name} value={form[name]} onChange={handleFormChange} type={type} placeholder={ph}
                         style={{ width: "100%", border: "1px solid #d5c8b8", borderRadius: 8, padding: "10px 12px", fontFamily: "inherit", fontSize: 14, boxSizing: "border-box", background: "#fffdf9" }} />
@@ -300,13 +284,13 @@ const handleSubmit = async () => {
 
                 <div style={{ marginTop: 16 }}>
                   <label style={{ fontSize: 13, color: "#6b5a47", fontWeight: 600, display: "block", marginBottom: 6 }}>相談内容 *</label>
-                  <textarea name="message" value={form.message} onChange={handleFormChange} placeholder="ご相談内容を自由にお書きください。検討中の間取り、気になるオプション、予算のことなど何でも歓迎です。"
+                  <textarea name="message" value={form.message} onChange={handleFormChange} placeholder="ご相談内容を自由にお書きください。"
                     style={{ width: "100%", minHeight: 120, border: "1px solid #d5c8b8", borderRadius: 8, padding: "12px 14px", fontFamily: "inherit", fontSize: 14, resize: "vertical", background: "#fffdf9", boxSizing: "border-box" }} />
                 </div>
 
                 <button onClick={handleSubmit}
                   disabled={!form.name || !form.email || !form.topic || !form.message}
-                  style={{ marginTop: 20, width: "100%", background: (!form.name || !form.email || !form.topic || !form.message) ? "#d5c8b8" : "#1a1208", color: "#f0e6d3", border: "none", borderRadius: 10, padding: "14px", fontFamily: "inherit", fontSize: 16, fontWeight: 700, cursor: (!form.name || !form.email || !form.topic || !form.message) ? "not-allowed" : "pointer", transition: "background 0.2s", letterSpacing: 1 }}>
+                  style={{ marginTop: 20, width: "100%", background: (!form.name || !form.email || !form.topic || !form.message) ? "#d5c8b8" : "#1a1208", color: "#f0e6d3", border: "none", borderRadius: 10, padding: "14px", fontFamily: "inherit", fontSize: 16, fontWeight: 700, cursor: (!form.name || !form.email || !form.topic || !form.message) ? "not-allowed" : "pointer", letterSpacing: 1 }}>
                   相談を送信する →
                 </button>
 
