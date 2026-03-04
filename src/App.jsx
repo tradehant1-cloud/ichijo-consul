@@ -72,7 +72,7 @@ export default function App() {
   const [view, setView] = useState("top");
   const [cases, setCases] = useState(INITIAL_CASES);
   const [selected, setSelected] = useState(null);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", serviceType: "", topic: "", budget: "", timeline: "", preferred1: "", preferred2: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [filterStatus, setFilterStatus] = useState("すべて");
   const [search, setSearch] = useState("");
@@ -499,6 +499,15 @@ export default function App() {
                   <input name="phone" value={form.phone} onChange={handleFormChange} type="tel" placeholder="090-0000-0000"
                     style={{ width: "100%", border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", fontWeight: 300 }} />
                 </div>
+<div className="form-row-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+  {[["preferred1", "ご希望日時（第1候補）", "例：3月10日（月）16:00〜"], ["preferred2", "ご希望日時（第2候補）", "例：3月11日（火）16:00〜"]].map(([name, label, ph]) => (
+    <div key={name}>
+      <label style={{ fontSize: 11, color: "#bbb", display: "block", marginBottom: 10, letterSpacing: 1 }}>{label}</label>
+      <input name={name} value={form[name]} onChange={handleFormChange} type="text" placeholder={ph}
+        style={{ width: "100%", border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", fontWeight: 300 }} />
+    </div>
+  ))}
+</div>
                 <div>
                   <label style={{ fontSize: 11, color: "#bbb", display: "block", marginBottom: 12, letterSpacing: 1 }}>相談サービス *</label>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
