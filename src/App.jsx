@@ -52,8 +52,29 @@ export default function App() {
 
   const handleFormChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = () => {
+ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDHjUqwrJ_T1ocDNnSVo3kP--vJT8fr3UAsTDREsxfkddIxROFTFy_nx9GJomp5Vxyew/exec";
+
+const handleSubmit = async () => {
     if (!form.name || !form.email || !form.topic || !form.message) return;
+    const newCase = {
+      id: Date.now(),
+      ...form,
+      status: "新規",
+      date: new Date().toISOString().split("T")[0],
+      memo: "",
+    };
+    setCases([newCase, ...cases]);
+    
+    await fetch(SCRIPT_URL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...form, date: newCase.date }),
+    });
+    
+    setSubmitted(true);
+    setForm({ name: "", email: "", phone: "", topic: "", budget: "", timeline: "", message: "" });
+  };
     const newCase = {
       id: Date.now(),
       ...form,
