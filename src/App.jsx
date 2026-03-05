@@ -13,6 +13,7 @@ const TOPICS_BY_SERVICE = {
   "家づくり相談": ["間取り", "オプション", "見積もり", "土地・外構", "契約・手続き", "住み心地", "その他"],
   "トラブル相談": ["施工不具合", "アフターサービス", "営業対応", "近隣トラブル", "その他"],
   "調停相談": ["調停の始め方", "申立書の書き方", "当日の進め方", "和解交渉", "その他"],
+  "外構相談": ["業者選び", "見積もり比較", "DIY相談", "トラブル対応", "その他"],
 };
 const STATUSES = ["新規", "対応中", "完了", "保留"];
 const STATUS_COLORS = {
@@ -219,7 +220,7 @@ export default function App() {
             {/* Stats */}
             <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid #ececec" }}>
               <div className="stats-row" style={{ maxWidth: 800, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 32, textAlign: "center" }}>
-                {[["2022年", "入居"], ["35坪", "延床面積"], ["I-CUBE", "モデル"], ["調停和解", "実績"]].map(([val, label]) => (
+                {[["2025年", "入居"], ["33坪", "延床面積"], ["I-CUBE", "モデル"], ["調停和解", "実績"]].map(([val, label]) => (
                   <div key={label}>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 300, letterSpacing: 1, marginBottom: 6 }}>{val}</div>
                     <div style={{ fontSize: 10, color: "#bbb", letterSpacing: 2 }}>{label}</div>
@@ -404,8 +405,9 @@ export default function App() {
             <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "#ececec" }}>
               {[
                 ["建築モデル", "I-CUBE（アイキューブ）"],
-                ["延床面積", "35坪（4LDK）"],
-                ["入居", "2022年"],
+                ["延床面積", "33坪（4LDK）"],
+                ["土地面積", "100坪（4LDK）"],
+                ["入居", "2025年"],
                 ["家づくり", "打ち合わせから引渡しまで一人で完遂"],
                 ["トラブル対応", "施工不具合を発見・記録・交渉"],
                 ["調停実績", "弁護士なしで調停申立 → 和解勝ち取り"],
