@@ -211,7 +211,7 @@ export default function App() {
                   在宅ワークのパパが一人で家づくりを完遂。<br />不具合トラブルでは調停を一人で行い和解を勝ち取った、<br />リアルな経験者があなたをサポートします。
                 </p>
                 <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginBottom: 40 }}>
-                  {["家づくり相談", "トラブル相談", "調停相談"].map((tag) => (
+                  {["家づくり相談", "トラブル相談", "調停相談", "外構相談"].map((tag) => (
                     <span key={tag} style={{ fontSize: 11, border: "1px solid #ddd", padding: "4px 14px", color: "#888", fontWeight: 300, letterSpacing: 1 }}>{tag}</span>
                   ))}
                 </div>
@@ -261,8 +261,8 @@ export default function App() {
             <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid #ececec" }}>
               <div style={{ maxWidth: 1000, margin: "0 auto" }}>
                 <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>SERVICES</p>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 44, letterSpacing: 1 }}>3つのサービス</h2>
-                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 1, background: "#ececec" }}>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 44, letterSpacing: 1 }}>4つのサービス</h2>
+                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "36px 28px" }}>
                       <div style={{ fontSize: 28, marginBottom: 16 }}>{s.icon}</div>
