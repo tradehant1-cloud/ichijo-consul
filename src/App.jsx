@@ -8,7 +8,7 @@ const INITIAL_CASES = [
   { id: 2, name: "鈴木 一郎", email: "suzuki@example.com", phone: "080-9876-5432", serviceType: "トラブル相談", topic: "不具合対応", budget: "", timeline: "", message: "引渡し後に床の不具合が発覚しました。対応方法を相談したいです。", status: "対応中", date: "2026-02-25", memo: "3/5にZoom予定" },
 ];
 
-const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談"];
+const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談", "外構相談"];
 const TOPICS_BY_SERVICE = {
   "家づくり相談": ["間取り", "オプション", "見積もり", "土地・外構", "契約・手続き", "住み心地", "その他"],
   "トラブル相談": ["施工不具合", "アフターサービス", "営業対応", "近隣トラブル", "その他"],
@@ -34,7 +34,7 @@ const SERVICES = [
     icon: "🏠",
     tagline: "後悔しない家づくりを、経験者と一緒に。",
     desc: "間取り・オプション・見積もり・契約など、一条工務店での家づくり全般を相談できます。ZoomではスマホのカメラでI-CUBEの実際の室内・設備をリアルタイムでご案内します。",
-    points: ["間取り・動線・収納のアドバイス", "本当に必要なオプションの仕分け", "見積もりの見方・交渉ポイント", "スマホカメラで実際の我が家をGoogle Meetでご案内"],
+    points: ["間取り・動線・収納のアドバイス", "本当に必要なオプションの仕分け", "見積もりの見方・交渉ポイント", "スマホカメラで実際の我が家をZoomご案内"],
     price: "3,000円 / 30分",
   },
   {
@@ -59,6 +59,17 @@ const SERVICES = [
     points: ["調停申立書の書き方", "必要書類・証拠の準備方法", "調停当日の立ち振る舞い", "和解交渉のポイント"],
     price: "3,000円 / 30分",
   },
+  {
+    id: "exterior",
+    num: "04",
+    title: "外構相談",
+    sub: "EXTERIOR DESIGN",
+    icon: "🌿",
+    tagline: "業者選びからDIYまで。100坪の外構を自分で作り上げた経験者が教える。",
+    desc: "外構業者の探し方・見積もり比較・DIYでできること・トラブル対応まで、100坪の土地の外構を自分で手がけた経験をもとにアドバイスします。今もDIYで外構を作り続けています。",
+    points: ["外構業者の選び方・比較ポイント", "DIYでコストを抑える方法", "一条工務店との外構工事の調整", "外構トラブルの対処法"],
+    price: "3,000円 / 30分",
+  },
 ];
 
 const FAQS = [
@@ -73,7 +84,7 @@ export default function App() {
   const [view, setView] = useState("top");
   const [cases, setCases] = useState(INITIAL_CASES);
   const [selected, setSelected] = useState(null);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", serviceType: "", topic: "", budget: "", timeline: "", preferred1: "", preferred2: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [filterStatus, setFilterStatus] = useState("すべて");
   const [search, setSearch] = useState("");
@@ -406,12 +417,13 @@ export default function App() {
               {[
                 ["建築モデル", "I-CUBE（アイキューブ）"],
                 ["延床面積", "33坪（4LDK）"],
-                ["土地面積", "100坪（4LDK）"],
+                ["土地面積", "100坪"],
                 ["入居", "2025年"],
                 ["家づくり", "打ち合わせから引渡しまで一人で完遂"],
                 ["トラブル対応", "施工不具合を発見・記録・交渉"],
                 ["調停実績", "弁護士なしで調停申立 → 和解勝ち取り"],
-                ["得意分野", "間取り・オプション・見積もり・トラブル対応・調停手続き"],
+                ["得意分野", "間取り・オプション・見積もり・トラブル対応・調停手続き・外構"],
+                ["外構", "100坪の土地をDIY中・業者選び・トラブル解決経験あり"],
               ].map(([label, val]) => (
                 <div key={label} style={{ background: "#fff", padding: "18px 28px", display: "flex", gap: 32, alignItems: "baseline", flexWrap: "wrap" }}>
                   <span style={{ fontSize: 11, color: "#bbb", minWidth: 90, fontWeight: 300, letterSpacing: 1, flexShrink: 0 }}>{label}</span>
@@ -501,15 +513,6 @@ export default function App() {
                   <input name="phone" value={form.phone} onChange={handleFormChange} type="tel" placeholder="090-0000-0000"
                     style={{ width: "100%", border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", fontWeight: 300 }} />
                 </div>
-<div className="form-row-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-  {[["preferred1", "ご希望日時（第1候補）", "例：3月10日（月）16:00〜"], ["preferred2", "ご希望日時（第2候補）", "例：3月11日（火）16:00〜"]].map(([name, label, ph]) => (
-    <div key={name}>
-      <label style={{ fontSize: 11, color: "#bbb", display: "block", marginBottom: 10, letterSpacing: 1 }}>{label}</label>
-      <input name={name} value={form[name]} onChange={handleFormChange} type="text" placeholder={ph}
-        style={{ width: "100%", border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", fontWeight: 300 }} />
-    </div>
-  ))}
-</div>
                 <div>
                   <label style={{ fontSize: 11, color: "#bbb", display: "block", marginBottom: 12, letterSpacing: 1 }}>相談サービス *</label>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
