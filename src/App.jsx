@@ -201,7 +201,7 @@ export default function App() {
         {/* ===== TOP ===== */}
         {view === "top" && (
           <div>
-            <section style={{ minHeight: "88vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#fafafa", padding: "5rem 1.5rem", textAlign: "center" }}>
+            <section style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "#fafafa", padding: "3rem 1.5rem 2rem", textAlign: "center", borderBottom: "1px solid #ececec" }}>
               <div className="fade-in">
                 <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 20, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
                 <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 38, fontWeight: 300, lineHeight: 1.5, marginBottom: 20, letterSpacing: 1 }}>
@@ -230,7 +230,7 @@ export default function App() {
             </section>
 
             {/* Services */}
-            <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid #ececec" }}>
+            <section style={{ padding: "3rem 1.5rem 4rem", borderBottom: "1px solid #ececec" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>SERVICES</p>
                 <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 44, letterSpacing: 1 }}>4つのサービス</h2>
