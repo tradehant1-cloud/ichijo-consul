@@ -236,9 +236,8 @@ export default function App() {
                 <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 300, marginBottom: 20, letterSpacing: 1 }}>4つのサービス</h2>
                 <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
-                    <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "36px 28px" }}>
-                      <div style={{ fontSize: 28, marginBottom: 16 }}>{s.icon}</div>
-                      <div className="svc-num" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 11, color: "#ccc", border: "1px solid #ececec", display: "inline-block", padding: "2px 8px", marginBottom: 16, letterSpacing: 2 }}>{s.num}</div>
+                    <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "28px 24px" }}>
+                      <div className="svc-num" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 11, color: "#ccc", border: "1px solid #ececec", display: "inline-block", padding: "2px 8px", marginBottom: 12, letterSpacing: 2 }}>{s.num}</div>
                       <h3 style={{ fontSize: 17, fontWeight: 500, marginBottom: 6 }}>{s.title}</h3>
                       <div className="svc-sub" style={{ fontSize: 10, color: "#bbb", letterSpacing: 2, marginBottom: 16 }}>{s.sub}</div>
                       <p style={{ fontSize: 13, color: "#666", lineHeight: 1.9, fontWeight: 300, marginBottom: 20 }}>{s.tagline}</p>
