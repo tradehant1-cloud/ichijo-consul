@@ -161,7 +161,7 @@ export default function App() {
   const navItems = [["service", "サービス"], ["profile", "プロフィール"], ["faq", "よくある質問"], ["contact", "相談する"]];
 
   return (
-    <div style={{ fontFamily: "'Noto Sans JP', sans-serif", background: "#fff", color: "#111", minHeight: "100vh" }}>
+   <div style={{ fontFamily: "'Noto Sans JP', sans-serif", background: "#fff", color: "#111", minHeight: "100vh", overflowX: "hidden", width: "100%" }}>
       <style>{css}</style>
 
       {/* HEADER */}
