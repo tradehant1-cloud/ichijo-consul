@@ -230,10 +230,10 @@ export default function App() {
             </section>
 
             {/* Services */}
-            <section style={{ padding: "3rem 1.5rem 4rem", borderBottom: "1px solid #ececec" }}>
+            <section style={{ padding: "2rem 1.5rem 0", borderBottom: "1px solid #ececec" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>SERVICES</p>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 44, letterSpacing: 1 }}>4つのサービス</h2>
+                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 8, fontWeight: 300 }}>SERVICES</p>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 300, marginBottom: 20, letterSpacing: 1 }}>4つのサービス</h2>
                 <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "36px 28px" }}>
