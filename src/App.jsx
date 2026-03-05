@@ -203,9 +203,9 @@ export default function App() {
           <div>
             <section style={{ minHeight: "88vh", display: "flex", alignItems: "center", justifyContent: "center", background: "#fafafa", padding: "5rem 1.5rem", textAlign: "center" }}>
               <div className="fade-in">
-                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 28, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
-                <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 52, fontWeight: 300, lineHeight: 1.45, marginBottom: 28, letterSpacing: 1 }}>
-                  一条工務店の<br />家づくり・トラブル・調停を<br />経験者と一緒に解決する
+                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 20, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
+                <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 38, fontWeight: 300, lineHeight: 1.5, marginBottom: 20, letterSpacing: 1 }}>
+                  一条工務店の経験者に<br />何でも相談できるサービス
                 </h1>
                 <p style={{ fontSize: 15, color: "#777", fontWeight: 300, lineHeight: 2, marginBottom: 20, maxWidth: 500, margin: "0 auto 20px" }}>
                   在宅ワークのパパが一人で家づくりを完遂。<br />不具合トラブルでは調停を一人で行い和解を勝ち取った、<br />リアルな経験者があなたをサポートします。
@@ -226,6 +226,26 @@ export default function App() {
                   </a>
                 </div>
                 <p style={{ marginTop: 20, fontSize: 12, color: "#ccc", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
+              </div>
+            </section>
+
+            {/* Services */}
+            <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid #ececec" }}>
+              <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>SERVICES</p>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 44, letterSpacing: 1 }}>4つのサービス</h2>
+                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#ececec" }}>
+                  {SERVICES.map((s) => (
+                    <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "36px 28px" }}>
+                      <div style={{ fontSize: 28, marginBottom: 16 }}>{s.icon}</div>
+                      <div className="svc-num" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 11, color: "#ccc", border: "1px solid #ececec", display: "inline-block", padding: "2px 8px", marginBottom: 16, letterSpacing: 2 }}>{s.num}</div>
+                      <h3 style={{ fontSize: 17, fontWeight: 500, marginBottom: 6 }}>{s.title}</h3>
+                      <div className="svc-sub" style={{ fontSize: 10, color: "#bbb", letterSpacing: 2, marginBottom: 16 }}>{s.sub}</div>
+                      <p style={{ fontSize: 13, color: "#666", lineHeight: 1.9, fontWeight: 300, marginBottom: 20 }}>{s.tagline}</p>
+                      <span className="svc-price-tag" style={{ fontSize: 12, background: "#f5f5f5", padding: "4px 12px" }}>{s.price}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
 
@@ -254,26 +274,6 @@ export default function App() {
                   style={{ background: "#fff", color: "#111", border: "none", padding: "14px 32px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0, display: "inline-block", transition: "background 0.2s" }}>
                   📅 空き日程を確認する →
                 </a>
-              </div>
-            </section>
-
-            {/* 3 Services */}
-            <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid #ececec" }}>
-              <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>SERVICES</p>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 44, letterSpacing: 1 }}>4つのサービス</h2>
-                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#ececec" }}>
-                  {SERVICES.map((s) => (
-                    <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "36px 28px" }}>
-                      <div style={{ fontSize: 28, marginBottom: 16 }}>{s.icon}</div>
-                      <div className="svc-num" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 11, color: "#ccc", border: "1px solid #ececec", display: "inline-block", padding: "2px 8px", marginBottom: 16, letterSpacing: 2 }}>{s.num}</div>
-                      <h3 style={{ fontSize: 17, fontWeight: 500, marginBottom: 6 }}>{s.title}</h3>
-                      <div className="svc-sub" style={{ fontSize: 10, color: "#bbb", letterSpacing: 2, marginBottom: 16 }}>{s.sub}</div>
-                      <p style={{ fontSize: 13, color: "#666", lineHeight: 1.9, fontWeight: 300, marginBottom: 20 }}>{s.tagline}</p>
-                      <span className="svc-price-tag" style={{ fontSize: 12, background: "#f5f5f5", padding: "4px 12px" }}>{s.price}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </section>
 
@@ -306,12 +306,12 @@ export default function App() {
               <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 16, letterSpacing: 1 }}>まずは気軽に相談から</h2>
               <p style={{ fontSize: 14, color: "#888", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、カレンダーで直接日程を予約してください。</p>
               <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                <button onClick={() => setView("contact")}
-                  style={{ background: "#fff", color: "#111", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400, transition: "background 0.2s" }}>
+                <button className="btn-main" onClick={() => setView("contact")}
+                  style={{ background: "#fff", color: "#111", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
                   相談フォームへ →
                 </button>
                 <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                  style={{ background: "transparent", color: "#fff", border: "1px solid #444", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "inline-block" }}>
+                  style={{ background: "transparent", color: "#fff", border: "1px solid #444", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "inline-block" }}>
                   📅 日程を予約する
                 </a>
               </div>
