@@ -201,31 +201,35 @@ export default function App() {
         {/* ===== TOP ===== */}
         {view === "top" && (
           <div>
-            <section style={{ display: "flex", alignItems: "center", justifyContent: "center", background: "#fafafa", padding: "2rem 1.5rem 1.5rem", textAlign: "center", borderBottom: "1px solid #ececec" }}>
-              <div className="fade-in">
-                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
-                <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 38, fontWeight: 300, lineHeight: 1.5, marginBottom: 12, letterSpacing: 1 }}>
-                  一条工務店の経験者に<br />何でも相談できるサービス
-                </h1>
-                <p style={{ fontSize: 14, color: "#777", fontWeight: 300, lineHeight: 1.8, marginBottom: 12, maxWidth: 500, margin: "0 auto 12px" }}>
-                  在宅ワークのパパが一人で家づくりを完遂。<br />不具合トラブルでは調停を一人で行い和解を勝ち取った、<br />リアルな経験者があなたをサポートします。
-                </p>
-                <div style={{ display: "flex", gap: 8, justifyContent: "center", flexWrap: "wrap", marginBottom: 16 }}>
-                  {["家づくり相談", "トラブル相談", "調停相談", "外構相談"].map((tag) => (
-                    <span key={tag} style={{ fontSize: 11, border: "1px solid #ddd", padding: "4px 14px", color: "#888", fontWeight: 300, letterSpacing: 1 }}>{tag}</span>
-                  ))}
+            <section style={{ background: "#fafafa", padding: "2.5rem 3rem", borderBottom: "1px solid #ececec" }}>
+              <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 48 }}>
+                {/* 左側 */}
+                <div className="fade-in" style={{ flex: 1 }}>
+                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
+                  <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 38, fontWeight: 300, lineHeight: 1.5, marginBottom: 16, letterSpacing: 1 }}>
+                    一条工務店の経験者に<br />何でも相談できるサービス
+                  </h1>
+                  <p style={{ fontSize: 14, color: "#777", fontWeight: 300, lineHeight: 1.9, marginBottom: 16 }}>
+                    在宅ワークのパパが一人で家づくりを完遂。<br />不具合トラブルでは調停を一人で行い和解を勝ち取った、<br />リアルな経験者があなたをサポートします。
+                  </p>
+                  <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                    {["家づくり相談", "トラブル相談", "調停相談", "外構相談"].map((tag) => (
+                      <span key={tag} style={{ fontSize: 11, border: "1px solid #ddd", padding: "4px 14px", color: "#888", fontWeight: 300, letterSpacing: 1 }}>{tag}</span>
+                    ))}
+                  </div>
                 </div>
-                <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+                {/* 右側 */}
+                <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch", minWidth: 220 }}>
                   <button className="btn-main" onClick={() => setView("contact")}
-                    style={{ background: "#111", color: "#fff", border: "none", padding: "15px 40px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400, letterSpacing: 1 }}>
+                    style={{ background: "#111", color: "#fff", border: "none", padding: "16px 32px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400, letterSpacing: 1 }}>
                     相談フォームへ
                   </button>
                   <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                    style={{ background: "#fff", color: "#111", border: "1px solid #ddd", padding: "15px 40px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 8 }}>
+                    style={{ background: "#fff", color: "#111", border: "1px solid #ddd", padding: "16px 32px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
                     📅 日程を予約する
                   </a>
+                  <p style={{ fontSize: 11, color: "#ccc", fontWeight: 300, textAlign: "center" }}>全サービス 30分 ¥3,000</p>
                 </div>
-                <p style={{ marginTop: 12, fontSize: 12, color: "#ccc", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
               </div>
             </section>
 
