@@ -262,7 +262,7 @@ export default function App() {
               <div style={{ maxWidth: 1000, margin: "0 auto" }}>
                 <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>SERVICES</p>
                 <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 44, letterSpacing: 1 }}>4つのサービス</h2>
-                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 1, background: "#ececec" }}>
+                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "36px 28px" }}>
                       <div style={{ fontSize: 28, marginBottom: 16 }}>{s.icon}</div>
