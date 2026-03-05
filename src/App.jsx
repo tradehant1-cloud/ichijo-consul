@@ -202,9 +202,9 @@ export default function App() {
         {view === "top" && (
           <div>
             <section style={{ background: "#fafafa", padding: "2.5rem 3rem", borderBottom: "1px solid #ececec" }}>
-              <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
+              <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 24 }}>
                 {/* 左側 */}
-                <div className="fade-in" style={{ flex: 1 }}>
+                <div className="fade-in" style={{ flex: 2 }}>
                   <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
                   <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 38, fontWeight: 300, lineHeight: 1.5, marginBottom: 16, letterSpacing: 1 }}>
                     一条工務店の経験者に<br />何でも相談できるサービス
@@ -219,7 +219,7 @@ export default function App() {
                   </div>
                 </div>
                 {/* 右側 */}
-                <div style={{ flexShrink: 0, display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch", width: 200 }}>
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch" }}>
                   <button className="btn-main" onClick={() => setView("contact")}
                     style={{ background: "#111", color: "#fff", border: "none", padding: "16px 24px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400, letterSpacing: 1 }}>
                     相談フォームへ
@@ -236,8 +236,6 @@ export default function App() {
             {/* Services */}
             <section style={{ padding: "2rem 1.5rem 0", borderBottom: "1px solid #ececec" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 8, fontWeight: 300 }}>SERVICES</p>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 300, marginBottom: 20, letterSpacing: 1 }}>4つのサービス</h2>
                 <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "20px 24px" }}>
