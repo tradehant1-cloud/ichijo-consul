@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDHjUqwrJ_T1ocDNnSVo3kP--vJT8fr3UAsTDREsxfkddIxROFTFy_nx9GJomp5Vxyew/exec";
-const CALENDAR_URL = "https://calendly.com/tradehant1/30min";
+const CALENDAR_URL = "https://calendar.app.google/o7mArhfZ9icHBu5b7";
 
 const INITIAL_CASES = [
   { id: 1, name: "田中 花子", email: "tanaka@example.com", phone: "090-1234-5678", serviceType: "家づくり相談", topic: "間取り", budget: "3500万円台", timeline: "2026年中", message: "アイキューブで30坪前後を検討中です。", status: "新規", date: "2026-03-01", memo: "" },
