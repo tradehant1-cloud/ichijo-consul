@@ -249,18 +249,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* Stats */}
-            <section style={{ padding: "4rem 1.5rem", borderBottom: "1px solid #ececec" }}>
-              <div className="stats-row" style={{ maxWidth: 800, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 32, textAlign: "center" }}>
-                {[["2025年", "入居"], ["33坪", "延床面積"], ["I-CUBE", "モデル"], ["調停和解", "実績"]].map(([val, label]) => (
-                  <div key={label}>
-                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 300, letterSpacing: 1, marginBottom: 6 }}>{val}</div>
-                    <div style={{ fontSize: 10, color: "#bbb", letterSpacing: 2 }}>{label}</div>
-                  </div>
-                ))}
-              </div>
-            </section>
-
             {/* Calendar Banner */}
             <section style={{ padding: "3rem 1.5rem", background: "#111", borderBottom: "1px solid #222" }}>
               <div className="cal-banner" style={{ maxWidth: 800, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
