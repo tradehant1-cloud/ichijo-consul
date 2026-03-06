@@ -273,8 +273,7 @@ export default function App() {
                 <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "20px 24px", borderTop: "3px solid #c9a84c" }}>
-                      <h3 style={{ fontSize: 16, fontWeight: 500, marginBottom: 4 }}>{s.title}</h3>
-                      <div className="svc-sub" style={{ fontSize: 10, color: "#bbb", letterSpacing: 2, marginBottom: 8 }}>{s.sub}</div>
+                      <h3 style={{ fontSize: 16, fontWeight: 500, marginBottom: 8 }}>{s.title}</h3>
                       <p style={{ fontSize: 13, color: "#666", lineHeight: 1.7, fontWeight: 300, marginBottom: 12 }}>{s.tagline}</p>
                       <span className="svc-price-tag" style={{ fontSize: 12, background: "#f5f5f5", padding: "3px 10px" }}>{s.price}</span>
                     </div>
