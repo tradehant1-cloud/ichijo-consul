@@ -33,7 +33,7 @@ const SERVICES = [
     title: "家づくり相談",
     sub: "HOME BUILDING",
     icon: "🏠",
-    tagline: "一条の家を実際にビデオ通話で確認、相談",
+    tagline: "後悔しない家づくりを、経験者と一緒に。",
     desc: "間取り・オプション・見積もり・契約など、一条工務店での家づくり全般を相談できます。ZoomではスマホのカメラでI-CUBEの実際の室内・設備をリアルタイムでご案内します。",
     points: ["間取り・動線・収納のアドバイス", "本当に必要なオプションの仕分け", "見積もりの見方・交渉ポイント", "スマホカメラで実際の我が家をZoomご案内"],
     price: "3,000円 / 30分",
@@ -44,7 +44,7 @@ const SERVICES = [
     title: "トラブル相談",
     sub: "TROUBLE SUPPORT",
     icon: "⚖️",
-    tagline: "家づくり中、お住まい中のトラブル、一緒に解決策を考えましょう。",
+    tagline: "不具合・対応不備。一人で抱え込まないで。",
     desc: "施工不具合や一条工務店との対応トラブルに悩む方へ。実際に不具合を発見し、一条工務店との調停で和解を勝ち取った経験をもとに、具体的な対処法をアドバイスします。",
     points: ["不具合の記録・証拠の残し方", "一条工務店への効果的な交渉術", "調停・法的手段の検討", "実体験をもとにした具体的アドバイス"],
     price: "3,000円 / 30分",
@@ -66,7 +66,7 @@ const SERVICES = [
     title: "外構相談",
     sub: "EXTERIOR DESIGN",
     icon: "🌿",
-    tagline: "業者選びからDIYまで。100坪の庭を現在も作ってます。",
+    tagline: "業者選びからDIYまで。100坪の外構を自分で作り上げた経験者が教える。",
     desc: "外構業者の探し方・見積もり比較・DIYでできること・トラブル対応まで、100坪の土地の外構を自分で手がけた経験をもとにアドバイスします。今もDIYで外構を作り続けています。",
     points: ["外構業者の選び方・比較ポイント", "DIYでコストを抑える方法", "一条工務店との外構工事の調整", "外構トラブルの対処法"],
     price: "3,000円 / 30分",
@@ -96,7 +96,7 @@ export default function App() {
   const [view, setView] = useState("top");
   const [cases, setCases] = useState(INITIAL_CASES);
   const [selected, setSelected] = useState(null);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [filterStatus, setFilterStatus] = useState("すべて");
   const [search, setSearch] = useState("");
@@ -122,7 +122,7 @@ export default function App() {
     } catch (e) { console.error(e); }
     setSending(false);
     setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
+    setForm({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
   };
 
   const updateCase = (id, field, value) => {
@@ -236,18 +236,29 @@ export default function App() {
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                   </div>
                 </div>
-                {/* 中央：プロフィールカード */}
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "20px", border: "1px solid #3a4f7a", background: "#243358" }}>
-                  <img src="https://placehold.co/80x80/3a4f7a/c9a84c?text=Photo" alt="プロフィール"
-                    style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover" }} />
-                  <div style={{ textAlign: "center" }}>
-                    <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 2, color: "#fff" }}>五十嵐</div>
-                    <div style={{ fontSize: 11, color: "#c9a84c", fontWeight: 300, marginBottom: 8 }}>栃木県 那須塩原市</div>
-                    <div style={{ fontSize: 11, color: "#aab8d4", fontWeight: 300, lineHeight: 1.7 }}>
-                      在宅ワーク / パパ<br />FP資格 / 個人投資家<br />I-CUBE 33坪 2025年入居<br />調停和解実績あり
+                {/* 中央：プロフィールカード2人 */}
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+                  {/* 五十嵐 */}
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "16px", border: "1px solid #3a4f7a", background: "#243358" }}>
+                    <img src="https://placehold.co/60x60/3a4f7a/c9a84c?text=Photo" alt="五十嵐"
+                      style={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover" }} />
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 14, fontWeight: 500, marginBottom: 2, color: "#fff" }}>五十嵐</div>
+                      <div style={{ fontSize: 10, color: "#c9a84c", fontWeight: 300, marginBottom: 4 }}>パパ / FP資格 / 投資家</div>
+                      <div style={{ fontSize: 10, color: "#aab8d4", fontWeight: 300, lineHeight: 1.6 }}>家づくり・トラブル・調停・外構・株</div>
                     </div>
                   </div>
-                  <span onClick={() => setView("profile")} style={{ fontSize: 11, color: "#c9a84c", borderBottom: "1px solid #c9a84c", cursor: "pointer", fontWeight: 300 }}>プロフィール詳細 →</span>
+                  {/* ママ */}
+                  <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, padding: "16px", border: "1px solid #3a4f7a", background: "#243358" }}>
+                    <img src="https://placehold.co/60x60/3a4f7a/e8c96d?text=Photo" alt="ママ"
+                      style={{ width: 60, height: 60, borderRadius: "50%", objectFit: "cover" }} />
+                    <div style={{ textAlign: "center" }}>
+                      <div style={{ fontSize: 14, fontWeight: 500, marginBottom: 2, color: "#fff" }}>ママ</div>
+                      <div style={{ fontSize: 10, color: "#c9a84c", fontWeight: 300, marginBottom: 4 }}>主婦 / 4歳・6歳子育て中</div>
+                      <div style={{ fontSize: 10, color: "#aab8d4", fontWeight: 300, lineHeight: 1.6 }}>キッチン・家事動線・子育て目線</div>
+                    </div>
+                  </div>
+                  <span onClick={() => setView("profile")} style={{ fontSize: 11, color: "#c9a84c", borderBottom: "1px solid #c9a84c", cursor: "pointer", fontWeight: 300, textAlign: "center" }}>プロフィール詳細 →</span>
                 </div>
                 {/* 右側 */}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch" }}>
@@ -304,9 +315,9 @@ export default function App() {
                   <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 300, marginBottom: 28, letterSpacing: 1 }}>なぜこのサービスを始めたか</h2>
                   <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                     {[
-                      ["在宅ワークのパパが、ほぼ１人で家づくりを完遂", "子育て中の家づくり、大変でした・・。難しくてわからないことだらけで楽しいはずの家づくりが苦痛でした。家づくりこんな辛くて良い訳ない！だから少しでも家づくりが楽になるように、楽しめるように自分の経験から少しでも相談して良かったと思ってもらえたら嬉しいです。"],
-                      ["引渡し後に不具合が発覚。一条工務店と対峙した", "入居後、施工不具合が発覚。一条工務店との交渉が難航し、最終的に弁護士なしで調停を申し立てました。明らかにおかしい対応に納得いかなかったので弁護士に相談、費用の面で１人で調停をおすすめされやりきりました。"],
-                      ["一人で調停を戦い、和解を勝ち取った", "慣れない法的手続きも、AIに相談しながらAIで書類作成、準備と記録を徹底することで乗り越えました。同じ境遇の方に、その経験を活かしたいと思っています。"],
+                      ["在宅ワークのパパが、一人で家づくりを完遂", "共働きで忙しい中、家づくりの打ち合わせから引渡しまで、ほぼ一人でこなしました。I-CUBEの特性を活かした間取りや、オプション選びのノウハウを、これから建てる方に伝えたいと思っています。"],
+                      ["引渡し後に不具合が発覚。一条工務店と対峙した", "入居後、施工不具合が発覚。一条工務店との交渉が難航し、最終的に弁護士なしで調停を申し立てました。"],
+                      ["一人で調停を戦い、和解を勝ち取った", "慣れない法的手続きも、準備と記録を徹底することで乗り越えました。同じ境遇の方に、その経験を活かしたいと思っています。"],
                     ].map(([title, text], i) => (
                       <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                         <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, color: "#e0e0e0", fontWeight: 300, lineHeight: 1, minWidth: 28 }}>0{i + 1}</span>
@@ -418,12 +429,12 @@ export default function App() {
               <div style={{ textAlign: "center" }}>
                 <div style={{ width: 110, height: 110, background: "#f0f0f0", borderRadius: "50%", margin: "0 auto 16px", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 44 }}>🏠</div>
                 <div style={{ fontSize: 17, fontWeight: 500, marginBottom: 4 }}>五十嵐</div>
-                <div style={{ fontSize: 12, color: "#bbb", fontWeight: 300, marginBottom: 8 }}>栃木県 </div>
+                <div style={{ fontSize: 12, color: "#bbb", fontWeight: 300, marginBottom: 8 }}>栃木県 那須塩原市</div>
                 <div style={{ fontSize: 11, color: "#999", fontWeight: 300, background: "#f5f5f5", padding: "4px 10px", display: "inline-block", letterSpacing: 1 }}>在宅ワーク / パパ</div>
               </div>
               <div>
                 <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444", marginBottom: 20 }}>
-                  在宅ワークをしながら、家づくりの打ち合わせから引渡しまでをほぼ一人でこなしました。2025年に一条工務店（I-CUBE）で33坪の注文住宅を建てました。
+                  在宅ワークをしながら、家づくりの打ち合わせから引渡しまでをほぼ一人でこなしました。2022年に一条工務店（I-CUBE）で35坪の注文住宅を建て、現在も実際に住んでいます。
                 </p>
                 <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444", marginBottom: 20 }}>
                   引渡し後に施工不具合が発覚し、一条工務店との交渉が難航。弁護士を使わず自力で調停を申し立て、和解を勝ち取りました。
@@ -533,6 +544,18 @@ export default function App() {
                   <label style={{ fontSize: 11, color: "#bbb", display: "block", marginBottom: 10, letterSpacing: 1 }}>電話番号（任意）</label>
                   <input name="phone" value={form.phone} onChange={handleFormChange} type="tel" placeholder="090-0000-0000"
                     style={{ width: "100%", border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", fontWeight: 300 }} />
+                </div>
+                <div>
+                  <label style={{ fontSize: 11, color: "#bbb", display: "block", marginBottom: 12, letterSpacing: 1 }}>相談相手を選ぶ *</label>
+                  <div style={{ display: "flex", gap: 8 }}>
+                    {[["五十嵐", "家づくり・トラブル・調停・外構・株"], ["ママ", "キッチン・家事動線・子育て目線"]].map(([name, desc]) => (
+                      <button key={name} onClick={() => handleFormChange({ target: { name: "consultant", value: name } })}
+                        style={{ flex: 1, border: `1px solid ${form.consultant === name ? "#1a2744" : "#ddd"}`, background: form.consultant === name ? "#1a2744" : "#fff", color: form.consultant === name ? "#fff" : "#888", padding: "12px 16px", cursor: "pointer", fontFamily: "inherit", fontSize: 13, transition: "all 0.15s", textAlign: "left" }}>
+                        <div style={{ fontWeight: 500, marginBottom: 4 }}>{name}</div>
+                        <div style={{ fontSize: 11, opacity: 0.7 }}>{desc}</div>
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <div>
                   <label style={{ fontSize: 11, color: "#bbb", display: "block", marginBottom: 12, letterSpacing: 1 }}>相談サービス *</label>
