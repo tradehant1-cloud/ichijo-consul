@@ -270,7 +270,7 @@ export default function App() {
             {/* Services */}
             <section style={{ padding: "2rem 1.5rem 0", borderBottom: "1px solid #e8e4da", background: "#f8f6f1" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 1, background: "#ececec" }}>
+                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 0, background: "#e8e4da", border: "1px solid #e8e4da" }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "20px 24px", borderTop: "3px solid #c9a84c" }}>
                       <h3 style={{ fontSize: 16, fontWeight: 500, marginBottom: 8 }}>{s.title}</h3>
