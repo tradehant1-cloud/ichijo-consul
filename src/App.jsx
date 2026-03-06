@@ -225,10 +225,8 @@ export default function App() {
                 <div className="fade-in" style={{ flex: 2 }}>
                   <p style={{ fontSize: 10, letterSpacing: 5, color: "#c9a84c", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
                   <h1 className="hero-title" style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: 36, fontWeight: 300, lineHeight: 1.6, marginBottom: 16, letterSpacing: 0, color: "#fff" }}>
-                    <span style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: 1, color: "#e8c96d", fontSize: 36 }}>一条工務店 × 投資家</span><br />
-                    <span style={{ fontSize: 18, color: "#aab8d4", fontWeight: 300, fontFamily: "'Noto Sans JP', sans-serif" }}>調停で一条と和解した経験あり</span><br />
-                    <span style={{ fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 300 }}>家づくり相談</span><br />
-                    <span style={{ fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 300 }}>トラブル対応</span>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: 2, color: "#e8c96d", fontSize: 32 }}>一条工務店 施主</span><br />
+                    <span style={{ fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 400, fontSize: 34, color: "#fff" }}>投資家パパ × 子育てママ</span>
                   </h1>
                   <p style={{ fontSize: 14, color: "#aab8d4", fontWeight: 300, lineHeight: 1.9, marginBottom: 16 }}>
                     調停で和解を勝ち取り、FP資格を持つ投資家。<br />投資で貯めたお金でI-CUBEを建てた経験者が、<br />家づくり・トラブル・お金のことをサポートします。
