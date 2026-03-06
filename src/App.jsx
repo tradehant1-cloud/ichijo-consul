@@ -218,8 +218,10 @@ export default function App() {
                 {/* 左側 */}
                 <div className="fade-in" style={{ flex: 2 }}>
                   <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
-                  <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 38, fontWeight: 300, lineHeight: 1.5, marginBottom: 16, letterSpacing: 1 }}>
-                    一条工務店 × 投資家の<br />経験者に相談できる
+                  <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 300, lineHeight: 1.6, marginBottom: 16, letterSpacing: 1 }}>
+                    一条工務店 × 投資家<br />
+                    <span style={{ fontSize: 22, color: "#555" }}>調停で一条と和解した経験あり</span><br />
+                    家づくりからトラブル対応までお任せ
                   </h1>
                   <p style={{ fontSize: 14, color: "#777", fontWeight: 300, lineHeight: 1.9, marginBottom: 16 }}>
                     調停で和解を勝ち取り、FP資格を持つ投資家。<br />投資で貯めたお金でI-CUBEを建てた経験者が、<br />家づくり・トラブル・お金のことをサポートします。
@@ -290,45 +292,47 @@ export default function App() {
               </div>
             </section>
 
-            {/* Story */}
-            <section style={{ padding: "5rem 1.5rem", borderBottom: "1px solid #ececec", background: "#fafafa" }}>
-              <div style={{ maxWidth: 720, margin: "0 auto" }}>
-                <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>STORY</p>
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 36, letterSpacing: 1 }}>なぜこのサービスを始めたか</h2>
-                <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-                  {[
-                    ["在宅ワークのパパが、一人で家づくりを完遂", "共働きで忙しい中、家づくりの打ち合わせから引渡しまで、ほぼ一人でこなしました。I-CUBEの特性を活かした間取りや、オプション選びのノウハウを、これから建てる方に伝えたいと思っています。"],
-                    ["引渡し後に不具合が発覚。一条工務店と対峙した", "入居後、施工不具合が発覚。一条工務店との交渉が難航し、最終的に弁護士なしで調停を申し立てました。"],
-                    ["一人で調停を戦い、和解を勝ち取った", "慣れない法的手続きも、準備と記録を徹底することで乗り越えました。同じ境遇の方に、その経験を活かしたいと思っています。"],
-                  ].map(([title, text], i) => (
-                    <div key={i} style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
-                      <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, color: "#e0e0e0", fontWeight: 300, lineHeight: 1, minWidth: 32 }}>0{i + 1}</span>
-                      <div>
-                        <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 8 }}>{title}</div>
-                        <div style={{ fontSize: 14, color: "#666", lineHeight: 1.9, fontWeight: 300 }}>{text}</div>
+            {/* Story + CTA 左右レイアウト */}
+            <section style={{ borderBottom: "1px solid #ececec", background: "#111" }}>
+              <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", minHeight: 400 }}>
+                {/* 左：ストーリー */}
+                <div style={{ flex: 1, padding: "4rem 3rem", background: "#fafafa", borderRight: "1px solid #ececec" }}>
+                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>STORY</p>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 300, marginBottom: 28, letterSpacing: 1 }}>なぜこのサービスを始めたか</h2>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                    {[
+                      ["在宅ワークのパパが、一人で家づくりを完遂", "共働きで忙しい中、家づくりの打ち合わせから引渡しまで、ほぼ一人でこなしました。I-CUBEの特性を活かした間取りや、オプション選びのノウハウを、これから建てる方に伝えたいと思っています。"],
+                      ["引渡し後に不具合が発覚。一条工務店と対峙した", "入居後、施工不具合が発覚。一条工務店との交渉が難航し、最終的に弁護士なしで調停を申し立てました。"],
+                      ["一人で調停を戦い、和解を勝ち取った", "慣れない法的手続きも、準備と記録を徹底することで乗り越えました。同じ境遇の方に、その経験を活かしたいと思っています。"],
+                    ].map(([title, text], i) => (
+                      <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                        <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, color: "#e0e0e0", fontWeight: 300, lineHeight: 1, minWidth: 28 }}>0{i + 1}</span>
+                        <div>
+                          <div style={{ fontSize: 14, fontWeight: 500, marginBottom: 6 }}>{title}</div>
+                          <div style={{ fontSize: 13, color: "#666", lineHeight: 1.8, fontWeight: 300 }}>{text}</div>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                </div>
+                {/* 右：CTA */}
+                <div style={{ flex: 1, padding: "4rem 3rem", background: "#111", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start" }}>
+                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#555", marginBottom: 16 }}>FIRST STEP</p>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 16, letterSpacing: 1, color: "#fff" }}>まずは気軽に<br />相談から</h2>
+                  <p style={{ fontSize: 14, color: "#888", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、<br />カレンダーで直接日程を予約してください。</p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 260 }}>
+                    <button className="btn-main" onClick={() => setView("contact")}
+                      style={{ background: "#fff", color: "#111", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
+                      相談フォームへ →
+                    </button>
+                    <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
+                      style={{ background: "transparent", color: "#fff", border: "1px solid #444", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
+                      📅 日程を予約する
+                    </a>
+                  </div>
+                  <p style={{ marginTop: 16, fontSize: 12, color: "#555", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
                 </div>
               </div>
-            </section>
-
-            {/* CTA */}
-            <section style={{ padding: "6rem 1.5rem", background: "#111", color: "#fff", textAlign: "center" }}>
-              <p style={{ fontSize: 10, letterSpacing: 5, color: "#555", marginBottom: 20 }}>FIRST STEP</p>
-              <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 16, letterSpacing: 1 }}>まずは気軽に相談から</h2>
-              <p style={{ fontSize: 14, color: "#888", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、カレンダーで直接日程を予約してください。</p>
-              <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                <button className="btn-main" onClick={() => setView("contact")}
-                  style={{ background: "#fff", color: "#111", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
-                  相談フォームへ →
-                </button>
-                <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                  style={{ background: "transparent", color: "#fff", border: "1px solid #444", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "inline-block" }}>
-                  📅 日程を予約する
-                </a>
-              </div>
-              <p style={{ marginTop: 20, fontSize: 12, color: "#555", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
             </section>
           </div>
         )}
