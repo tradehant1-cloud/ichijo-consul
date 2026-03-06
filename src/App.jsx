@@ -141,7 +141,7 @@ export default function App() {
   const css = `
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { overflow-x: hidden; max-width: 100%; }
+    html, body { overflow-x: hidden; max-width: 100%; font-variant: normal; text-transform: none; }
     :root {
       --navy: #1a2744;
       --navy-light: #243358;
@@ -225,9 +225,9 @@ export default function App() {
                 <div className="fade-in" style={{ flex: 2 }}>
                   <p style={{ fontSize: 10, letterSpacing: 5, color: "#c9a84c", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
                   <h1 className="hero-title" style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: 36, fontWeight: 300, lineHeight: 1.6, marginBottom: 16, letterSpacing: 0, color: "#fff" }}>
-                    <span style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: 1, color: "#e8c96d" }}>一条工務店 × 投資家</span><br />
-                    <span style={{ fontSize: 18, color: "#aab8d4", fontWeight: 300 }}>調停で一条と和解した経験あり</span><br />
-                    家づくりからトラブル対応までお任せ
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: 1, color: "#e8c96d", fontSize: 36 }}>一条工務店 × 投資家</span><br />
+                    <span style={{ fontSize: 18, color: "#aab8d4", fontWeight: 300, fontFamily: "'Noto Sans JP', sans-serif" }}>調停で一条と和解した経験あり</span><br />
+                    <span style={{ fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 300 }}>家づくりからトラブル対応までお任せ</span>
                   </h1>
                   <p style={{ fontSize: 14, color: "#aab8d4", fontWeight: 300, lineHeight: 1.9, marginBottom: 16 }}>
                     調停で和解を勝ち取り、FP資格を持つ投資家。<br />投資で貯めたお金でI-CUBEを建てた経験者が、<br />家づくり・トラブル・お金のことをサポートします。
