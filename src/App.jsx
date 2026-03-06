@@ -8,12 +8,13 @@ const INITIAL_CASES = [
   { id: 2, name: "鈴木 一郎", email: "suzuki@example.com", phone: "080-9876-5432", serviceType: "トラブル相談", topic: "不具合対応", budget: "", timeline: "", message: "引渡し後に床の不具合が発覚しました。対応方法を相談したいです。", status: "対応中", date: "2026-02-25", memo: "3/5にZoom予定" },
 ];
 
-const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談", "外構相談"];
+const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株のお話"];
 const TOPICS_BY_SERVICE = {
   "家づくり相談": ["間取り", "オプション", "見積もり", "土地・外構", "契約・手続き", "住み心地", "その他"],
   "トラブル相談": ["施工不具合", "アフターサービス", "営業対応", "近隣トラブル", "その他"],
   "調停相談": ["調停の始め方", "申立書の書き方", "当日の進め方", "和解交渉", "その他"],
   "外構相談": ["業者選び", "見積もり比較", "DIY相談", "トラブル対応", "その他"],
+  "株のお話": ["投資の始め方", "NISAの仕組み", "株・投資信託の基礎", "口座開設の手順", "資産形成の考え方", "投資家との雑談", "その他"],
 };
 const STATUSES = ["新規", "対応中", "完了", "保留"];
 const STATUS_COLORS = {
@@ -68,6 +69,17 @@ const SERVICES = [
     tagline: "業者選びからDIYまで。100坪の外構を自分で作り上げた経験者が教える。",
     desc: "外構業者の探し方・見積もり比較・DIYでできること・トラブル対応まで、100坪の土地の外構を自分で手がけた経験をもとにアドバイスします。今もDIYで外構を作り続けています。",
     points: ["外構業者の選び方・比較ポイント", "DIYでコストを抑える方法", "一条工務店との外構工事の調整", "外構トラブルの対処法"],
+    price: "3,000円 / 30分",
+  },
+  {
+    id: "stock",
+    num: "05",
+    title: "株のお話",
+    sub: "INVESTMENT TALK",
+    icon: "📈",
+    tagline: "FP資格保有の投資家と、投資の基礎や資産形成について気軽に話しませんか。",
+    desc: "FP資格を持つ個人投資家として、投資の始め方・NISAの仕組み・株や投資信託の基礎知識などをわかりやすくお伝えします。投資で得た資金でマイホームを購入した経験も交えながら、資産形成の考え方を一緒に整理しましょう。※投資助言・銘柄推奨は行いません。",
+    points: ["投資の始め方・口座開設の手順", "NISA・株・投資信託の基礎知識", "資産形成の考え方", "投資家との気軽な雑談"],
     price: "3,000円 / 30分",
   },
 ];
@@ -207,16 +219,29 @@ export default function App() {
                 <div className="fade-in" style={{ flex: 2 }}>
                   <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
                   <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 38, fontWeight: 300, lineHeight: 1.5, marginBottom: 16, letterSpacing: 1 }}>
-                    一条工務店の経験者に<br />何でも相談できるサービス
+                    一条工務店 × 投資家の<br />経験者に相談できる
                   </h1>
                   <p style={{ fontSize: 14, color: "#777", fontWeight: 300, lineHeight: 1.9, marginBottom: 16 }}>
-                    在宅ワークのパパが一人で家づくりを完遂。<br />不具合トラブルでは調停を一人で行い和解を勝ち取った、<br />リアルな経験者があなたをサポートします。
+                    調停で和解を勝ち取り、FP資格を持つ投資家。<br />投資で貯めたお金でI-CUBEを建てた経験者が、<br />家づくり・トラブル・お金のことをサポートします。
                   </p>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    {["家づくり相談", "トラブル相談", "調停相談", "外構相談"].map((tag) => (
+                    {["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株のお話"].map((tag) => (
                       <span key={tag} style={{ fontSize: 11, border: "1px solid #ddd", padding: "4px 14px", color: "#888", fontWeight: 300, letterSpacing: 1 }}>{tag}</span>
                     ))}
                   </div>
+                </div>
+                {/* 中央：プロフィールカード */}
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "20px", border: "1px solid #ececec", background: "#fff" }}>
+                  <img src="https://placehold.co/80x80/ececec/999?text=Photo" alt="プロフィール"
+                    style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover" }} />
+                  <div style={{ textAlign: "center" }}>
+                    <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 2 }}>五十嵐</div>
+                    <div style={{ fontSize: 11, color: "#bbb", fontWeight: 300, marginBottom: 8 }}>栃木県 那須塩原市</div>
+                    <div style={{ fontSize: 11, color: "#888", fontWeight: 300, lineHeight: 1.7 }}>
+                      在宅ワーク / パパ<br />FP資格 / 個人投資家<br />I-CUBE 33坪 2025年入居<br />調停和解実績あり
+                    </div>
+                  </div>
+                  <span onClick={() => setView("profile")} style={{ fontSize: 11, color: "#999", borderBottom: "1px solid #ddd", cursor: "pointer", fontWeight: 300 }}>プロフィール詳細 →</span>
                 </div>
                 {/* 右側 */}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch" }}>
@@ -236,7 +261,7 @@ export default function App() {
             {/* Services */}
             <section style={{ padding: "2rem 1.5rem 0", borderBottom: "1px solid #ececec" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 1, background: "#ececec" }}>
+                <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "20px 24px" }}>
                       <h3 style={{ fontSize: 16, fontWeight: 500, marginBottom: 4 }}>{s.title}</h3>
