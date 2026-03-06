@@ -296,7 +296,7 @@ export default function App() {
             </section>
 
             {/* Story + CTA 左右レイアウト */}
-            <section style={{ borderBottom: "1px solid #243358", background: "#1a2744" }}>
+            <section style={{ borderBottom: "1px solid #e8e4da", background: "#f8f6f1" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", minHeight: 400 }}>
                 {/* 左：ストーリー */}
                 <div style={{ flex: 1, padding: "4rem 3rem", background: "#f8f6f1", borderRight: "1px solid #e8e4da" }}>
@@ -319,21 +319,21 @@ export default function App() {
                   </div>
                 </div>
                 {/* 右：CTA */}
-                <div style={{ flex: 1, padding: "4rem 3rem", background: "#1a2744", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start" }}>
+                <div style={{ flex: 1, padding: "4rem 3rem", background: "#f0ede6", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start" }}>
                   <p style={{ fontSize: 10, letterSpacing: 5, color: "#c9a84c", marginBottom: 16 }}>FIRST STEP</p>
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 16, letterSpacing: 1, color: "#fff" }}>まずは気軽に<br />相談から</h2>
-                  <p style={{ fontSize: 14, color: "#aab8d4", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、<br />カレンダーで直接日程を予約してください。</p>
+                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 16, letterSpacing: 1, color: "#1a2744" }}>まずはお気軽に<br />相談から</h2>
+                  <p style={{ fontSize: 14, color: "#666", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、<br />カレンダーで直接日程を予約してください。</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 260 }}>
                     <button className="btn-main" onClick={() => setView("contact")}
                       style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                       相談フォームへ →
                     </button>
                     <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                      style={{ background: "transparent", color: "#fff", border: "1px solid #3a4f7a", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
+                      style={{ background: "transparent", color: "#1a2744", border: "1px solid #1a2744", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
                       📅 日程を予約する
                     </a>
                   </div>
-                  <p style={{ marginTop: 16, fontSize: 12, color: "#5a7aaa", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
+                  <p style={{ marginTop: 16, fontSize: 12, color: "#aaa", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
                 </div>
               </div>
             </section>
