@@ -142,22 +142,28 @@ export default function App() {
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { overflow-x: hidden; max-width: 100%; }
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243358;
+      --gold: #c9a84c;
+      --gold-light: #e8c96d;
+      --off-white: #f8f6f1;
+    }
     .fade-in { animation: fadeIn 0.7s ease both; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
     .svc-card { transition: all 0.3s ease; cursor: pointer; }
-    .svc-card:hover { background: #111 !important; color: #fff !important; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-    .svc-card:hover p, .svc-card:hover .svc-sub, .svc-card:hover .svc-point { color: #aaa !important; }
-    .svc-card:hover .svc-price-tag { background: #222 !important; color: #ccc !important; }
-    .svc-card:hover .svc-num { color: #444 !important; border-color: #333 !important; }
+    .svc-card:hover { background: var(--navy) !important; color: #fff !important; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(26,39,68,0.15); }
+    .svc-card:hover p, .svc-card:hover .svc-sub { color: #aaa !important; }
+    .svc-card:hover .svc-price-tag { background: var(--navy-light) !important; color: var(--gold-light) !important; }
     .nav-link { transition: opacity 0.2s; cursor: pointer; }
     .nav-link:hover { opacity: 0.4; }
     .btn-main { transition: background 0.2s; }
-    .btn-main:hover { background: #333 !important; }
-    .btn-cal:hover { background: #f5f5f5 !important; }
-    .faq-item { border-bottom: 1px solid #ececec; }
-    .case-row:hover { background: #fafafa !important; }
+    .btn-main:hover { background: var(--navy-light) !important; }
+    .btn-cal:hover { background: #f0ede6 !important; }
+    .faq-item { border-bottom: 1px solid #e8e4da; }
+    .case-row:hover { background: var(--off-white) !important; }
     @media (max-width: 768px) {
-      .hero-title { font-size: 30px !important; line-height: 1.5 !important; }
+      .hero-title { font-size: 26px !important; line-height: 1.5 !important; }
       .services-grid { grid-template-columns: 1fr !important; }
       .profile-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
       .form-row-2 { grid-template-columns: 1fr !important; }
@@ -178,20 +184,20 @@ export default function App() {
       <style>{css}</style>
 
       {/* HEADER */}
-      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(255,255,255,0.96)", borderBottom: "1px solid #ececec", backdropFilter: "blur(12px)" }}>
+      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(26,39,68,0.97)", borderBottom: "1px solid #243358", backdropFilter: "blur(12px)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 1.5rem", height: 58, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div onClick={() => { setView("top"); setMenuOpen(false); }} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, letterSpacing: 3 }}>ICHIJO</span>
-            <span style={{ fontSize: 9, color: "#bbb", letterSpacing: 2, fontWeight: 300 }}>CONSULTING</span>
+            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 20, fontWeight: 600, letterSpacing: 3, color: "#fff" }}>ICHIJO</span>
+            <span style={{ fontSize: 9, color: "#c9a84c", letterSpacing: 2, fontWeight: 300 }}>CONSULTING</span>
           </div>
           <nav className="nav-desktop" style={{ display: "flex", gap: 36, alignItems: "center" }}>
             {navItems.map(([id, label]) => (
               <span key={id} className="nav-link" onClick={() => { setView(id); setMenuOpen(false); }}
-                style={{ fontSize: 13, fontWeight: view === id ? 500 : 300, borderBottom: view === id ? "1px solid #111" : "1px solid transparent", paddingBottom: 2 }}>
+                style={{ fontSize: 13, fontWeight: view === id ? 500 : 300, color: view === id ? "#c9a84c" : "#ccc", borderBottom: view === id ? "1px solid #c9a84c" : "1px solid transparent", paddingBottom: 2 }}>
                 {label}
               </span>
             ))}
-            <span className="nav-link" onClick={() => { setView("admin"); setMenuOpen(false); }} style={{ fontSize: 11, color: "#ccc", letterSpacing: 1 }}>管理</span>
+            <span className="nav-link" onClick={() => { setView("admin"); setMenuOpen(false); }} style={{ fontSize: 11, color: "#555", letterSpacing: 1 }}>管理</span>
           </nav>
           <button className="mobile-btn" onClick={() => setMenuOpen(!menuOpen)}
             style={{ display: "none", background: "none", border: "none", fontSize: 20, cursor: "pointer", alignItems: "center", justifyContent: "center", width: 36, height: 36 }}>
@@ -213,59 +219,59 @@ export default function App() {
         {/* ===== TOP ===== */}
         {view === "top" && (
           <div>
-            <section style={{ background: "#fafafa", padding: "2.5rem 3rem", borderBottom: "1px solid #ececec" }}>
+            <section style={{ background: "#1a2744", padding: "2.5rem 3rem", borderBottom: "1px solid #243358" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", gap: 24 }}>
                 {/* 左側 */}
                 <div className="fade-in" style={{ flex: 2 }}>
-                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
-                  <h1 className="hero-title" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 36, fontWeight: 300, lineHeight: 1.6, marginBottom: 16, letterSpacing: 1 }}>
-                    一条工務店 × 投資家<br />
-                    <span style={{ fontSize: 22, color: "#555" }}>調停で一条と和解した経験あり</span><br />
+                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#c9a84c", marginBottom: 12, fontWeight: 300 }}>ONE-ON-ONE CONSULTING</p>
+                  <h1 className="hero-title" style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: 36, fontWeight: 300, lineHeight: 1.6, marginBottom: 16, letterSpacing: 0, color: "#fff" }}>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", letterSpacing: 1, color: "#e8c96d" }}>一条工務店 × 投資家</span><br />
+                    <span style={{ fontSize: 18, color: "#aab8d4", fontWeight: 300 }}>調停で一条と和解した経験あり</span><br />
                     家づくりからトラブル対応までお任せ
                   </h1>
-                  <p style={{ fontSize: 14, color: "#777", fontWeight: 300, lineHeight: 1.9, marginBottom: 16 }}>
+                  <p style={{ fontSize: 14, color: "#aab8d4", fontWeight: 300, lineHeight: 1.9, marginBottom: 16 }}>
                     調停で和解を勝ち取り、FP資格を持つ投資家。<br />投資で貯めたお金でI-CUBEを建てた経験者が、<br />家づくり・トラブル・お金のことをサポートします。
                   </p>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                     {["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株のお話"].map((tag) => (
-                      <span key={tag} style={{ fontSize: 11, border: "1px solid #ddd", padding: "4px 14px", color: "#888", fontWeight: 300, letterSpacing: 1 }}>{tag}</span>
+                      <span key={tag} style={{ fontSize: 11, border: "1px solid #3a4f7a", padding: "4px 14px", color: "#aab8d4", fontWeight: 300, letterSpacing: 1 }}>{tag}</span>
                     ))}
                   </div>
                 </div>
                 {/* 中央：プロフィールカード */}
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "20px", border: "1px solid #ececec", background: "#fff" }}>
-                  <img src="https://placehold.co/80x80/ececec/999?text=Photo" alt="プロフィール"
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: 10, padding: "20px", border: "1px solid #3a4f7a", background: "#243358" }}>
+                  <img src="https://placehold.co/80x80/3a4f7a/c9a84c?text=Photo" alt="プロフィール"
                     style={{ width: 80, height: 80, borderRadius: "50%", objectFit: "cover" }} />
                   <div style={{ textAlign: "center" }}>
-                    <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 2 }}>五十嵐</div>
-                    <div style={{ fontSize: 11, color: "#bbb", fontWeight: 300, marginBottom: 8 }}>栃木県 那須塩原市</div>
-                    <div style={{ fontSize: 11, color: "#888", fontWeight: 300, lineHeight: 1.7 }}>
+                    <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 2, color: "#fff" }}>五十嵐</div>
+                    <div style={{ fontSize: 11, color: "#c9a84c", fontWeight: 300, marginBottom: 8 }}>栃木県 那須塩原市</div>
+                    <div style={{ fontSize: 11, color: "#aab8d4", fontWeight: 300, lineHeight: 1.7 }}>
                       在宅ワーク / パパ<br />FP資格 / 個人投資家<br />I-CUBE 33坪 2025年入居<br />調停和解実績あり
                     </div>
                   </div>
-                  <span onClick={() => setView("profile")} style={{ fontSize: 11, color: "#999", borderBottom: "1px solid #ddd", cursor: "pointer", fontWeight: 300 }}>プロフィール詳細 →</span>
+                  <span onClick={() => setView("profile")} style={{ fontSize: 11, color: "#c9a84c", borderBottom: "1px solid #c9a84c", cursor: "pointer", fontWeight: 300 }}>プロフィール詳細 →</span>
                 </div>
                 {/* 右側 */}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch" }}>
                   <button className="btn-main" onClick={() => setView("contact")}
-                    style={{ background: "#111", color: "#fff", border: "none", padding: "16px 24px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400, letterSpacing: 1 }}>
+                    style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "16px 24px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500, letterSpacing: 1 }}>
                     相談フォームへ
                   </button>
                   <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                    style={{ background: "#fff", color: "#111", border: "1px solid #ddd", padding: "16px 24px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
+                    style={{ background: "transparent", color: "#fff", border: "1px solid #3a4f7a", padding: "16px 24px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
                     📅 日程を予約する
                   </a>
-                  <p style={{ fontSize: 11, color: "#ccc", fontWeight: 300, textAlign: "center" }}>全サービス 30分 ¥3,000</p>
+                  <p style={{ fontSize: 11, color: "#5a7aaa", fontWeight: 300, textAlign: "center" }}>全サービス 30分 ¥3,000</p>
                 </div>
               </div>
             </section>
 
             {/* Services */}
-            <section style={{ padding: "2rem 1.5rem 0", borderBottom: "1px solid #ececec" }}>
+            <section style={{ padding: "2rem 1.5rem 0", borderBottom: "1px solid #e8e4da", background: "#f8f6f1" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto" }}>
                 <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 1, background: "#ececec" }}>
                   {SERVICES.map((s) => (
-                    <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "20px 24px" }}>
+                    <div key={s.id} className="svc-card" onClick={() => setView("service")} style={{ background: "#fff", padding: "20px 24px", borderTop: "3px solid #c9a84c" }}>
                       <h3 style={{ fontSize: 16, fontWeight: 500, marginBottom: 4 }}>{s.title}</h3>
                       <div className="svc-sub" style={{ fontSize: 10, color: "#bbb", letterSpacing: 2, marginBottom: 8 }}>{s.sub}</div>
                       <p style={{ fontSize: 13, color: "#666", lineHeight: 1.7, fontWeight: 300, marginBottom: 12 }}>{s.tagline}</p>
@@ -277,27 +283,27 @@ export default function App() {
             </section>
 
             {/* Calendar Banner */}
-            <section style={{ padding: "3rem 1.5rem", background: "#111", borderBottom: "1px solid #222" }}>
+            <section style={{ padding: "3rem 1.5rem", background: "#1a2744", borderBottom: "1px solid #243358" }}>
               <div className="cal-banner" style={{ maxWidth: 800, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24 }}>
                 <div>
-                  <p style={{ fontSize: 10, letterSpacing: 4, color: "#555", marginBottom: 8 }}>BOOKING</p>
+                  <p style={{ fontSize: 10, letterSpacing: 4, color: "#c9a84c", marginBottom: 8 }}>BOOKING</p>
                   <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 24, fontWeight: 300, color: "#fff", marginBottom: 6 }}>Googleカレンダーで日程予約</h3>
-                  <p style={{ fontSize: 13, color: "#888", fontWeight: 300 }}>空き状況をリアルタイムで確認して、好きな時間を予約できます。</p>
+                  <p style={{ fontSize: 13, color: "#aab8d4", fontWeight: 300 }}>空き状況をリアルタイムで確認して、好きな時間を予約できます。</p>
                 </div>
                 <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
                   className="btn-cal"
-                  style={{ background: "#fff", color: "#111", border: "none", padding: "14px 32px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0, display: "inline-block", transition: "background 0.2s" }}>
+                  style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "14px 32px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500, textDecoration: "none", whiteSpace: "nowrap", flexShrink: 0, display: "inline-block", transition: "background 0.2s" }}>
                   📅 空き日程を確認する →
                 </a>
               </div>
             </section>
 
             {/* Story + CTA 左右レイアウト */}
-            <section style={{ borderBottom: "1px solid #ececec", background: "#111" }}>
+            <section style={{ borderBottom: "1px solid #243358", background: "#1a2744" }}>
               <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", minHeight: 400 }}>
                 {/* 左：ストーリー */}
-                <div style={{ flex: 1, padding: "4rem 3rem", background: "#fafafa", borderRight: "1px solid #ececec" }}>
-                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14, fontWeight: 300 }}>STORY</p>
+                <div style={{ flex: 1, padding: "4rem 3rem", background: "#f8f6f1", borderRight: "1px solid #e8e4da" }}>
+                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#c9a84c", marginBottom: 14, fontWeight: 300 }}>STORY</p>
                   <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 300, marginBottom: 28, letterSpacing: 1 }}>なぜこのサービスを始めたか</h2>
                   <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                     {[
@@ -316,21 +322,21 @@ export default function App() {
                   </div>
                 </div>
                 {/* 右：CTA */}
-                <div style={{ flex: 1, padding: "4rem 3rem", background: "#111", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start" }}>
-                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#555", marginBottom: 16 }}>FIRST STEP</p>
+                <div style={{ flex: 1, padding: "4rem 3rem", background: "#1a2744", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start" }}>
+                  <p style={{ fontSize: 10, letterSpacing: 5, color: "#c9a84c", marginBottom: 16 }}>FIRST STEP</p>
                   <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 16, letterSpacing: 1, color: "#fff" }}>まずは気軽に<br />相談から</h2>
-                  <p style={{ fontSize: 14, color: "#888", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、<br />カレンダーで直接日程を予約してください。</p>
+                  <p style={{ fontSize: 14, color: "#aab8d4", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、<br />カレンダーで直接日程を予約してください。</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 260 }}>
                     <button className="btn-main" onClick={() => setView("contact")}
-                      style={{ background: "#fff", color: "#111", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
+                      style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                       相談フォームへ →
                     </button>
                     <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                      style={{ background: "transparent", color: "#fff", border: "1px solid #444", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
+                      style={{ background: "transparent", color: "#fff", border: "1px solid #3a4f7a", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
                       📅 日程を予約する
                     </a>
                   </div>
-                  <p style={{ marginTop: 16, fontSize: 12, color: "#555", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
+                  <p style={{ marginTop: 16, fontSize: 12, color: "#5a7aaa", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
                 </div>
               </div>
             </section>
