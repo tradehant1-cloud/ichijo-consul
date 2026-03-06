@@ -234,9 +234,6 @@ export default function App() {
                     調停で和解を勝ち取り、FP資格を持つ投資家。<br />投資で貯めたお金でI-CUBEを建てた経験者が、<br />家づくり・トラブル・お金のことをサポートします。
                   </p>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-                    {["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株のお話"].map((tag) => (
-                      <span key={tag} style={{ fontSize: 11, border: "1px solid #3a4f7a", padding: "4px 14px", color: "#aab8d4", fontWeight: 300, letterSpacing: 1 }}>{tag}</span>
-                    ))}
                   </div>
                 </div>
                 {/* 中央：プロフィールカード */}
