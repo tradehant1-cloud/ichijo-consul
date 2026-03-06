@@ -423,80 +423,43 @@ export default function App() {
           <div style={{ maxWidth: 900, margin: "0 auto", padding: "4rem 1.5rem" }}>
             <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 14 }}>PROFILE</p>
             <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 40, fontWeight: 300, marginBottom: 48, letterSpacing: 1 }}>プロフィール</h1>
-
-            {/* 五十嵐 */}
-            <div className="profile-grid" style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: 52, marginBottom: 52, alignItems: "start" }}>
-              <div style={{ textAlign: "center" }}>
-                <img src="https://placehold.co/110x110/3a4f7a/c9a84c?text=Photo" alt="五十嵐"
-                  style={{ width: 110, height: 110, borderRadius: "50%", margin: "0 auto 16px", display: "block", objectFit: "cover" }} />
-                <div style={{ fontSize: 17, fontWeight: 500, marginBottom: 4 }}>五十嵐</div>
-                <div style={{ fontSize: 11, color: "#999", fontWeight: 300, background: "#f5f5f5", padding: "4px 10px", display: "inline-block", letterSpacing: 1 }}>在宅ワーク / パパ</div>
-              </div>
-              <div>
-                <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444", marginBottom: 20 }}>
-                  在宅ワークをしながら、家づくりの打ち合わせから引渡しまでをほぼ一人でこなしました。2025年に一条工務店（I-CUBE）で33坪の注文住宅を建て、現在も実際に住んでいます。
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+              {/* 五十嵐 */}
+              <div style={{ border: "1px solid #ececec", padding: "36px 32px" }}>
+                <img src="https://placehold.co/80x80/3a4f7a/c9a84c?text=Photo" alt="五十嵐"
+                  style={{ width: 80, height: 80, borderRadius: "50%", marginBottom: 16, display: "block" }} />
+                <div style={{ fontSize: 18, fontWeight: 500, marginBottom: 4 }}>五十嵐（パパ）</div>
+                <div style={{ fontSize: 12, color: "#c9a84c", fontWeight: 300, marginBottom: 20 }}>在宅ワーク / FP資格 / 個人投資家</div>
+                <p style={{ fontSize: 14, lineHeight: 2, fontWeight: 300, color: "#555", marginBottom: 20 }}>
+                  家づくりの打ち合わせから引渡しまで一人で完遂。引渡し後に施工不具合が発覚し、弁護士なしで調停を申し立て和解を勝ち取りました。FP資格保有の投資家で、投資で貯めた資金でI-CUBEを建てました。
                 </p>
-                <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444", marginBottom: 20 }}>
-                  引渡し後に施工不具合が発覚し、一条工務店との交渉が難航。弁護士を使わず自力で調停を申し立て、和解を勝ち取りました。
-                </p>
-                <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444" }}>
-                  FP資格を持つ個人投資家としても活動しており、投資で貯めた資金でマイホームを購入しました。
-                </p>
-              </div>
-            </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 300, marginBottom: 20, letterSpacing: 1 }}>実績・経験</h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "#ececec", marginBottom: 64 }}>
-              {[
-                ["建築モデル", "I-CUBE（アイキューブ）"],
-                ["延床面積", "33坪（4LDK）"],
-                ["土地面積", "100坪"],
-                ["入居", "2025年"],
-                ["家づくり", "打ち合わせから引渡しまで一人で完遂"],
-                ["トラブル対応", "施工不具合を発見・記録・交渉"],
-                ["調停実績", "弁護士なしで調停申立 → 和解勝ち取り"],
-                ["資格", "FP資格保有 / 個人投資家"],
-                ["外構", "100坪の土地をDIY中・業者選び・トラブル解決経験あり"],
-              ].map(([label, val]) => (
-                <div key={label} style={{ background: "#fff", padding: "18px 28px", display: "flex", gap: 32, alignItems: "baseline", flexWrap: "wrap" }}>
-                  <span style={{ fontSize: 11, color: "#bbb", minWidth: 90, fontWeight: 300, letterSpacing: 1, flexShrink: 0 }}>{label}</span>
-                  <span style={{ fontSize: 14, fontWeight: 300 }}>{val}</span>
+                <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "#ececec" }}>
+                  {[["モデル", "I-CUBE 33坪 2025年入居"], ["調停", "弁護士なし → 和解勝ち取り"], ["外構", "100坪DIY中"], ["資格", "FP資格 / 個人投資家"]].map(([l, v]) => (
+                    <div key={l} style={{ background: "#fff", padding: "10px 16px", display: "flex", gap: 16 }}>
+                      <span style={{ fontSize: 11, color: "#bbb", minWidth: 48, flexShrink: 0 }}>{l}</span>
+                      <span style={{ fontSize: 13, fontWeight: 300 }}>{v}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-
-            {/* ママ */}
-            <div className="profile-grid" style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: 52, marginBottom: 52, alignItems: "start" }}>
-              <div style={{ textAlign: "center" }}>
-                <img src="https://placehold.co/110x110/3a4f7a/e8c96d?text=Photo" alt="ママ"
-                  style={{ width: 110, height: 110, borderRadius: "50%", margin: "0 auto 16px", display: "block", objectFit: "cover" }} />
-                <div style={{ fontSize: 17, fontWeight: 500, marginBottom: 4 }}>ママ</div>
-                <div style={{ fontSize: 11, color: "#999", fontWeight: 300, background: "#f5f5f5", padding: "4px 10px", display: "inline-block", letterSpacing: 1 }}>主婦 / 子育て中</div>
               </div>
-              <div>
-                <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444", marginBottom: 20 }}>
-                  4歳と6歳の子どもを育てながら、パートをしている普通のママです。
+              {/* ママ */}
+              <div style={{ border: "1px solid #ececec", padding: "36px 32px" }}>
+                <img src="https://placehold.co/80x80/3a4f7a/e8c96d?text=Photo" alt="ママ"
+                  style={{ width: 80, height: 80, borderRadius: "50%", marginBottom: 16, display: "block" }} />
+                <div style={{ fontSize: 18, fontWeight: 500, marginBottom: 4 }}>ママ</div>
+                <div style={{ fontSize: 12, color: "#c9a84c", fontWeight: 300, marginBottom: 20 }}>主婦 / 4歳・6歳子育て中</div>
+                <p style={{ fontSize: 14, lineHeight: 2, fontWeight: 300, color: "#555", marginBottom: 20 }}>
+                  パートをしながら2人の子どもを育てる普通のママ。キッチンや家事動線、子育てしやすい間取りにこだわりました。プロではないからこそ、同じ目線でリアルな感想をお伝えします。
                 </p>
-                <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444", marginBottom: 20 }}>
-                  家づくりでは主にキッチンや家事動線、子育てしやすい間取りにこだわりました。プロではないからこそ、同じ目線でリアルな感想をお伝えできます。
-                </p>
-                <p style={{ fontSize: 15, lineHeight: 2.1, fontWeight: 300, color: "#444" }}>
-                  「こんなこと聞いていいのかな」と思うような些細なことでも、気軽に相談してください😊
-                </p>
-              </div>
-            </div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 26, fontWeight: 300, marginBottom: 20, letterSpacing: 1 }}>得意な相談</h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "#ececec", marginBottom: 52 }}>
-              {[
-                ["キッチン", "I-CUBEのキッチンの使い勝手・収納・動線"],
-                ["家事動線", "洗濯・掃除・料理がラクになる間取りのポイント"],
-                ["子育て目線", "子どもがいる家庭ならではの間取りや設備選び"],
-                ["主婦目線", "毎日使う場所のリアルな感想"],
-              ].map(([label, val]) => (
-                <div key={label} style={{ background: "#fff", padding: "18px 28px", display: "flex", gap: 32, alignItems: "baseline", flexWrap: "wrap" }}>
-                  <span style={{ fontSize: 11, color: "#bbb", minWidth: 90, fontWeight: 300, letterSpacing: 1, flexShrink: 0 }}>{label}</span>
-                  <span style={{ fontSize: 14, fontWeight: 300 }}>{val}</span>
+                <div style={{ display: "flex", flexDirection: "column", gap: 1, background: "#ececec" }}>
+                  {[["キッチン", "使い勝手・収納・動線"], ["家事動線", "洗濯・掃除がラクな間取り"], ["子育て", "子どもがいる家ならではの視点"], ["相談", "気軽に何でも聞いてOK"]].map(([l, v]) => (
+                    <div key={l} style={{ background: "#fff", padding: "10px 16px", display: "flex", gap: 16 }}>
+                      <span style={{ fontSize: 11, color: "#bbb", minWidth: 48, flexShrink: 0 }}>{l}</span>
+                      <span style={{ fontSize: 13, fontWeight: 300 }}>{v}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         )}
