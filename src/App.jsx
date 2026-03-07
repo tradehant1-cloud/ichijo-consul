@@ -4,11 +4,6 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1cWkXiCtMbzt9LG9CF
 const CALENDAR_URL = "https://calendar.app.google/o7mArhfZ9icHBu5b7";
 const MEET_URL = "https://meet.google.com/mfn-xjkn-eqm";
 
-const INITIAL_CASES = [
-  { id: 1, name: "田中 花子", email: "tanaka@example.com", phone: "090-1234-5678", serviceType: "家づくり相談", topic: "間取り", budget: "3500万円台", timeline: "2026年中", message: "アイキューブで30坪前後を検討中です。", status: "新規", date: "2026-03-01", memo: "" },
-  { id: 2, name: "鈴木 一郎", email: "suzuki@example.com", phone: "080-9876-5432", serviceType: "トラブル相談", topic: "不具合対応", budget: "", timeline: "", message: "引渡し後に床の不具合が発覚しました。対応方法を相談したいです。", status: "対応中", date: "2026-02-25", memo: "3/5にZoom予定" },
-];
-
 const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株のお話"];
 const TOPICS_BY_SERVICE = {
   "家づくり相談": ["間取り", "オプション", "見積もり", "土地・外構", "契約・手続き", "住み心地", "その他"],
@@ -16,14 +11,6 @@ const TOPICS_BY_SERVICE = {
   "調停相談": ["調停の始め方", "申立書の書き方", "当日の進め方", "和解交渉", "その他"],
   "外構相談": ["業者選び", "見積もり比較", "DIY相談", "トラブル対応", "その他"],
   "株のお話": ["投資の始め方", "NISAの仕組み", "株・投資信託の基礎", "口座開設の手順", "資産形成の考え方", "投資家との雑談", "その他"],
-};
-const STATUSES = ["新規", "対応中", "支払済", "完了", "保留"];
-const STATUS_COLORS = {
-  新規: { bg: "#f0f0f0", text: "#111", border: "#ccc" },
-  対応中: { bg: "#1a2744", text: "#fff", border: "#1a2744" },
-  支払済: { bg: "#c9a84c", text: "#1a2744", border: "#c9a84c" },
-  完了: { bg: "#e8e8e8", text: "#444", border: "#bbb" },
-  保留: { bg: "#fff", text: "#999", border: "#ddd" },
 };
 const BUDGETS = ["2000万円台", "3000万円台", "3500万円台", "4000万円台", "4500万円以上", "未定", "該当なし"];
 const TIMELINES = ["3ヶ月以内", "半年以内", "1年以内", "2026年中", "2027年以降", "未定", "該当なし"];
@@ -96,12 +83,8 @@ const FAQS = [
 
 export default function App() {
   const [view, setView] = useState("top");
-  const [cases, setCases] = useState(INITIAL_CASES);
-  const [selected, setSelected] = useState(null);
   const [form, setForm] = useState({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
-  const [filterStatus, setFilterStatus] = useState("すべて");
-  const [search, setSearch] = useState("");
   const [openFaq, setOpenFaq] = useState(null);
   const [sending, setSending] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -117,51 +100,13 @@ export default function App() {
   const handleSubmit = async () => {
     if (!form.name || !form.email || !form.serviceType || !form.message) return;
     setSending(true);
-    const newCase = { id: Date.now(), ...form, status: "新規", date: new Date().toISOString().split("T")[0], memo: "" };
-    setCases((prev) => [newCase, ...prev]);
     try {
-      await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, date: newCase.date }) });
+      await fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, date: new Date().toISOString().split("T")[0] }) });
     } catch (e) { console.error(e); }
     setSending(false);
     setSubmitted(true);
     setForm({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
   };
-
-  const sendMeetUrl = async (c) => {
-    const body = `${c.name} 様
-
-お支払いの確認が取れました。ありがとうございます！
-以下のGoogle Meet URLよりご参加ください。
-
-━━━━━━━━━━━━━━━━━━━━
-▼ Google Meet URL
-${MEET_URL}
-━━━━━━━━━━━━━━━━━━━━
-
-当日お会いできるのを楽しみにしています😊
-
-─────────────────
-一条コンサル｜投資家パパ × 子育てママ
-https://ichijo-consul-git-main-tradehant1-clouds-projects.vercel.app/
-─────────────────`;
-
-    const mailtoUrl = `mailto:${c.email}?subject=${encodeURIComponent("【一条コンサル】Google Meet URLのご案内")}&body=${encodeURIComponent(body)}`;
-    window.open(mailtoUrl);
-    updateCase(c.id, "status", "支払済");
-  };
-
-  const updateCase = (id, field, value) => {
-    setCases(cases.map((c) => (c.id === id ? { ...c, [field]: value } : c)));
-    if (selected?.id === id) setSelected({ ...selected, [field]: value });
-  };
-
-  const filtered = cases.filter((c) => {
-    const matchStatus = filterStatus === "すべて" || c.status === filterStatus;
-    const matchSearch = search === "" || c.name.includes(search) || (c.topic || "").includes(search) || c.email.includes(search) || (c.serviceType || "").includes(search);
-    return matchStatus && matchSearch;
-  });
-
-  const counts = STATUSES.reduce((acc, s) => { acc[s] = cases.filter((c) => c.status === s).length; return acc; }, {});
 
   const css = `
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap');
@@ -222,7 +167,6 @@ https://ichijo-consul-git-main-tradehant1-clouds-projects.vercel.app/
                 {label}
               </span>
             ))}
-            <span className="nav-link" onClick={() => { setView("admin"); setMenuOpen(false); }} style={{ fontSize: 11, color: "#555", letterSpacing: 1 }}>管理</span>
           </nav>
           <button className="mobile-btn" onClick={() => setMenuOpen(!menuOpen)}
             style={{ display: "none", background: "none", border: "none", fontSize: 20, cursor: "pointer", alignItems: "center", justifyContent: "center", width: 36, height: 36 }}>
@@ -231,7 +175,7 @@ https://ichijo-consul-git-main-tradehant1-clouds-projects.vercel.app/
         </div>
         {menuOpen && (
           <div style={{ background: "#fff", borderTop: "1px solid #ececec", padding: "1.5rem", display: "flex", flexDirection: "column", gap: 20 }}>
-            {[...navItems, ["admin", "管理"]].map(([id, label]) => (
+            {navItems.map(([id, label]) => (
               <span key={id} onClick={() => { setView(id); setMenuOpen(false); }}
                 style={{ fontSize: 15, cursor: "pointer", fontWeight: 300, color: id === "admin" ? "#ccc" : "#111" }}>{label}</span>
             ))}
@@ -625,101 +569,10 @@ https://ichijo-consul-git-main-tradehant1-clouds-projects.vercel.app/
           </div>
         )}
 
-        {/* ===== ADMIN ===== */}
-        {view === "admin" && !selected && (
-          <div style={{ maxWidth: 1000, margin: "0 auto", padding: "3rem 1.5rem" }}>
-            <p style={{ fontSize: 10, letterSpacing: 5, color: "#bbb", marginBottom: 10 }}>ADMIN</p>
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 32, fontWeight: 300, marginBottom: 32 }}>案件管理</h1>
-            <div className="admin-stats" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, marginBottom: 28 }}>
-              {[["総数", cases.length], ...STATUSES.map((s) => [s, counts[s]])].map(([label, val]) => (
-                <div key={label} style={{ border: "1px solid #ececec", padding: "16px", textAlign: "center" }}>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 30, fontWeight: 300 }}>{val}</div>
-                  <div style={{ fontSize: 10, color: "#bbb", letterSpacing: 1, marginTop: 4 }}>{label}</div>
-                </div>
-              ))}
-            </div>
-            <div style={{ display: "flex", gap: 10, marginBottom: 18, flexWrap: "wrap", alignItems: "center" }}>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="検索..."
-                style={{ border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", flex: 1, minWidth: 180, background: "none" }} />
-              {["すべて", ...STATUSES].map((s) => (
-                <button key={s} onClick={() => setFilterStatus(s)}
-                  style={{ border: `1px solid ${filterStatus === s ? "#111" : "#ddd"}`, background: filterStatus === s ? "#111" : "#fff", color: filterStatus === s ? "#fff" : "#888", padding: "5px 14px", cursor: "pointer", fontFamily: "inherit", fontSize: 12 }}>
-                  {s}
-                </button>
-              ))}
-            </div>
-            <div style={{ border: "1px solid #ececec" }}>
-              {filtered.length === 0 && <div style={{ padding: 40, textAlign: "center", color: "#ccc", fontSize: 14 }}>該当なし</div>}
-              {filtered.map((c, i) => (
-                <div key={c.id} className="case-row" onClick={() => setSelected(c)}
-                  style={{ padding: "16px 20px", borderBottom: i < filtered.length - 1 ? "1px solid #ececec" : "none", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", background: "#fff", gap: 16 }}>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 4, flexWrap: "wrap" }}>
-                      <span style={{ fontWeight: 500 }}>{c.name}</span>
-                      {c.serviceType && <span style={{ fontSize: 11, border: "1px solid #ececec", padding: "2px 8px", color: "#888" }}>{c.serviceType}</span>}
-                      {c.topic && <span style={{ fontSize: 12, color: "#bbb" }}>{c.topic}</span>}
-                    </div>
-                    <div style={{ fontSize: 12, color: "#ccc", fontWeight: 300 }}>{c.email}</div>
-                  </div>
-                  <div style={{ display: "flex", gap: 10, alignItems: "center", flexShrink: 0 }}>
-                    <span style={{ fontSize: 11, color: "#ccc" }}>{c.date}</span>
-                    <span style={{ fontSize: 11, padding: "4px 12px", background: STATUS_COLORS[c.status].bg, color: STATUS_COLORS[c.status].text, border: `1px solid ${STATUS_COLORS[c.status].border}` }}>{c.status}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {view === "admin" && selected && (
-          <div style={{ maxWidth: 700, margin: "0 auto", padding: "3rem 1.5rem" }}>
-            <button onClick={() => setSelected(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 13, color: "#bbb", fontFamily: "inherit", marginBottom: 24, padding: 0 }}>← 一覧に戻る</button>
-            <div style={{ border: "1px solid #ececec", padding: "36px" }}>
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 32, gap: 16, flexWrap: "wrap" }}>
-                <div>
-                  <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 28, fontWeight: 300 }}>{selected.name}</h2>
-                  <div style={{ fontSize: 11, color: "#ccc", marginTop: 4, fontWeight: 300 }}>{selected.date}{selected.serviceType && ` — ${selected.serviceType}`}</div>
-                </div>
-                <select value={selected.status} onChange={(e) => updateCase(selected.id, "status", e.target.value)}
-                  style={{ border: `1px solid ${STATUS_COLORS[selected.status].border}`, background: STATUS_COLORS[selected.status].bg, color: STATUS_COLORS[selected.status].text, padding: "6px 14px", fontFamily: "inherit", fontSize: 12, cursor: "pointer" }}>
-                  {STATUSES.map((s) => <option key={s}>{s}</option>)}
-                </select>
-              </div>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 28 }}>
-                {[["メール", selected.email], ["電話", selected.phone || "—"], ["サービス", selected.serviceType || "—"], ["カテゴリ", selected.topic || "—"], ["予算", selected.budget || "—"], ["時期", selected.timeline || "—"]].map(([label, val]) => (
-                  <div key={label}>
-                    <div style={{ fontSize: 10, color: "#ccc", marginBottom: 5, letterSpacing: 1 }}>{label}</div>
-                    <div style={{ fontSize: 14, fontWeight: 300 }}>{val}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ marginBottom: 24 }}>
-                <div style={{ fontSize: 10, color: "#ccc", marginBottom: 8, letterSpacing: 1 }}>相談内容</div>
-                <div style={{ fontSize: 14, lineHeight: 1.9, color: "#444", fontWeight: 300, background: "#fafafa", padding: "16px 20px" }}>{selected.message}</div>
-              </div>
-              <div>
-                <div style={{ fontSize: 10, color: "#ccc", marginBottom: 8, letterSpacing: 1 }}>メモ</div>
-                <textarea value={selected.memo} onChange={(e) => updateCase(selected.id, "memo", e.target.value)} placeholder="対応メモ..."
-                  style={{ width: "100%", border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", resize: "none", minHeight: 80, fontWeight: 300 }} />
-              </div>
-              <div style={{ marginTop: 28, paddingTop: 28, borderTop: "1px solid #ececec" }}>
-                <div style={{ fontSize: 10, color: "#ccc", marginBottom: 12, letterSpacing: 1 }}>アクション</div>
-                <button onClick={() => sendMeetUrl(selected)}
-                  style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "12px 24px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
-                  💳 支払い確認済 → Meet URL送信
-                </button>
-                <p style={{ fontSize: 11, color: "#bbb", marginTop: 8, fontWeight: 300 }}>クリックするとメーラーが開きます。送信後ステータスが「支払済」に変わります。</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {view !== "admin" && (
-          <footer style={{ borderTop: "1px solid #ececec", padding: "3rem 1.5rem", textAlign: "center" }}>
+        <footer style={{ borderTop: "1px solid #ececec", padding: "3rem 1.5rem", textAlign: "center" }}>
             <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 16, letterSpacing: 3, marginBottom: 10 }}>ICHIJO CONSULTING</div>
             <p style={{ fontSize: 11, color: "#ccc", fontWeight: 300 }}>© 2026 五十嵐 / 一条コンサル. All rights reserved.</p>
           </footer>
-        )}
       </div>
     </div>
   );
