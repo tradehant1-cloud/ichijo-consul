@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxDHjUqwrJ_T1ocDNnSVo3kP--vJT8fr3UAsTDREsxfkddIxROFTFy_nx9GJomp5Vxyew/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1cWkXiCtMbzt9LG9CFgs2WxZ1JbL5ll7a1iS9bRpWpc3WNFBGGnIUxAb4c_jYrXroMw/exec";
 const CALENDAR_URL = "https://calendar.app.google/o7mArhfZ9icHBu5b7";
 
 const INITIAL_CASES = [
