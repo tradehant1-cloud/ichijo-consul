@@ -88,7 +88,7 @@ const FAQS = [
   { q: "どんな人に向けたサービスですか？", a: "一条工務店での家づくりを検討している方、現在打ち合わせ中の方、引渡し後にトラブルが発生した方などが主な対象です。" },
   { q: "相談はどんな形式ですか？", a: "ZoomまたはGoogle Meetでのオンライン相談です。家づくり相談ではスマホカメラで実際のI-CUBEの室内をリアルタイムでご案内することもできます。" },
   { q: "調停相談は弁護士の代わりになりますか？", a: "法律の専門家ではありませんが、実際に一人で調停を行い和解した経験をもとにアドバイスします。法的判断が必要な場合は弁護士への相談をお勧めします。" },
-  { q: "相談料金はいつ支払いますか？", a: "相談確定後にお振込み先をご案内します。事前払いとなります。" },
+  { q: "相談料金はいつ支払いますか？", a: "日程確定後にPayPayにてお支払いをお願いします。PayPay IDは日程確定のメールにてご案内します。" },
   { q: "一条工務店以外の相談はできますか？", a: "現在は一条工務店専門のサービスとなっております。" },
 ];
 
@@ -397,7 +397,7 @@ export default function App() {
             <div style={{ background: "#fafafa", border: "1px solid #ececec", padding: "28px 32px", marginBottom: 40 }}>
               <h3 style={{ fontSize: 14, fontWeight: 500, marginBottom: 20, letterSpacing: 1 }}>相談の流れ</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                {["フォームからサービスを選んで内容を送信 または カレンダーで日程を直接予約", "2〜3営業日以内にメールでご返信・日程確認", "料金お振込み（¥3,000）", "ZoomまたはGoogle Meetで相談（30分）"].map((step, i) => (
+                {["フォームからサービスを選んで内容を送信 または カレンダーで日程を直接予約", "2〜3営業日以内にメールでご返信・日程確認", "PayPayにてお支払い（¥3,000）※日程確定後にIDをご案内", "ZoomまたはGoogle Meetで相談（30分）"].map((step, i) => (
                   <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                     <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 18, color: "#ccc", minWidth: 24 }}>0{i + 1}</span>
                     <span style={{ fontSize: 14, fontWeight: 300, paddingTop: 2, lineHeight: 1.6 }}>{step}</span>
@@ -521,7 +521,10 @@ export default function App() {
               <div style={{ textAlign: "center", padding: "60px 0" }}>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 56, marginBottom: 24, fontWeight: 300 }}>✓</div>
                 <h3 style={{ fontSize: 20, fontWeight: 400, marginBottom: 12 }}>送信が完了しました</h3>
-                <p style={{ fontSize: 14, color: "#888", lineHeight: 1.9, fontWeight: 300, marginBottom: 32 }}>2〜3営業日以内にメールにてご連絡いたします。</p>
+                <p style={{ fontSize: 14, color: "#888", lineHeight: 1.9, fontWeight: 300, marginBottom: 16 }}>2〜3営業日以内にメールにてご連絡いたします。</p>
+                <p style={{ fontSize: 13, color: "#aaa", lineHeight: 1.9, fontWeight: 300, marginBottom: 32 }}>
+                  日程確定後、PayPay IDをメールにてご案内します。<br />相談前日までにお支払いをお願いします（¥3,000）。
+                </p>
                 <button onClick={() => setSubmitted(false)}
                   style={{ background: "none", border: "1px solid #ddd", padding: "10px 24px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", color: "#888" }}>
                   別の相談を送る
