@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1cWkXiCtMbzt9LG9CFgs2WxZ1JbL5ll7a1iS9bRpWpc3WNFBGGnIUxAb4c_jYrXroMw/exec";
 const CALENDAR_URL = "https://calendar.app.google/o7mArhfZ9icHBu5b7";
+const MEET_URL = "https://meet.google.com/mfn-xjkn-eqm";
 
 const INITIAL_CASES = [
   { id: 1, name: "田中 花子", email: "tanaka@example.com", phone: "090-1234-5678", serviceType: "家づくり相談", topic: "間取り", budget: "3500万円台", timeline: "2026年中", message: "アイキューブで30坪前後を検討中です。", status: "新規", date: "2026-03-01", memo: "" },
@@ -16,10 +17,11 @@ const TOPICS_BY_SERVICE = {
   "外構相談": ["業者選び", "見積もり比較", "DIY相談", "トラブル対応", "その他"],
   "株のお話": ["投資の始め方", "NISAの仕組み", "株・投資信託の基礎", "口座開設の手順", "資産形成の考え方", "投資家との雑談", "その他"],
 };
-const STATUSES = ["新規", "対応中", "完了", "保留"];
+const STATUSES = ["新規", "対応中", "支払済", "完了", "保留"];
 const STATUS_COLORS = {
   新規: { bg: "#f0f0f0", text: "#111", border: "#ccc" },
-  対応中: { bg: "#111", text: "#fff", border: "#111" },
+  対応中: { bg: "#1a2744", text: "#fff", border: "#1a2744" },
+  支払済: { bg: "#c9a84c", text: "#1a2744", border: "#c9a84c" },
   完了: { bg: "#e8e8e8", text: "#444", border: "#bbb" },
   保留: { bg: "#fff", text: "#999", border: "#ddd" },
 };
@@ -123,6 +125,29 @@ export default function App() {
     setSending(false);
     setSubmitted(true);
     setForm({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
+  };
+
+  const sendMeetUrl = async (c) => {
+    const body = `${c.name} 様
+
+お支払いの確認が取れました。ありがとうございます！
+以下のGoogle Meet URLよりご参加ください。
+
+━━━━━━━━━━━━━━━━━━━━
+▼ Google Meet URL
+${MEET_URL}
+━━━━━━━━━━━━━━━━━━━━
+
+当日お会いできるのを楽しみにしています😊
+
+─────────────────
+一条コンサル｜投資家パパ × 子育てママ
+https://ichijo-consul-git-main-tradehant1-clouds-projects.vercel.app/
+─────────────────`;
+
+    const mailtoUrl = `mailto:${c.email}?subject=${encodeURIComponent("【一条コンサル】Google Meet URLのご案内")}&body=${encodeURIComponent(body)}`;
+    window.open(mailtoUrl);
+    updateCase(c.id, "status", "支払済");
   };
 
   const updateCase = (id, field, value) => {
@@ -676,6 +701,14 @@ export default function App() {
                 <div style={{ fontSize: 10, color: "#ccc", marginBottom: 8, letterSpacing: 1 }}>メモ</div>
                 <textarea value={selected.memo} onChange={(e) => updateCase(selected.id, "memo", e.target.value)} placeholder="対応メモ..."
                   style={{ width: "100%", border: "none", borderBottom: "1px solid #ddd", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", resize: "none", minHeight: 80, fontWeight: 300 }} />
+              </div>
+              <div style={{ marginTop: 28, paddingTop: 28, borderTop: "1px solid #ececec" }}>
+                <div style={{ fontSize: 10, color: "#ccc", marginBottom: 12, letterSpacing: 1 }}>アクション</div>
+                <button onClick={() => sendMeetUrl(selected)}
+                  style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "12px 24px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                  💳 支払い確認済 → Meet URL送信
+                </button>
+                <p style={{ fontSize: 11, color: "#bbb", marginTop: 8, fontWeight: 300 }}>クリックするとメーラーが開きます。送信後ステータスが「支払済」に変わります。</p>
               </div>
             </div>
           </div>
