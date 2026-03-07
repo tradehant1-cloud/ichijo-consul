@@ -177,7 +177,7 @@ export default function App() {
     }
   `;
 
-  const navItems = [["service", "サービス"], ["profile", "プロフィール"], ["faq", "よくある質問"], ["contact", "相談する"]];
+  const navItems = [["service", "サービス"], ["profile", "プロフィール"], ["faq", "よくある質問"]];
 
   return (
     <div style={{ fontFamily: "'Noto Sans JP', sans-serif", background: "#fff", color: "#111", minHeight: "100vh", overflowX: "hidden", maxWidth: "100vw" }}>
@@ -260,15 +260,11 @@ export default function App() {
                 </div>
                 {/* 右側 */}
                 <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12, alignItems: "stretch" }}>
-                  <button className="btn-main" onClick={() => setView("contact")}
-                    style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "16px 24px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500, letterSpacing: 1 }}>
-                    相談フォームへ
-                  </button>
                   <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                    style={{ background: "transparent", color: "#fff", border: "1px solid #3a4f7a", padding: "16px 24px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
+                    style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "16px 24px", fontSize: 14, fontFamily: "inherit", fontWeight: 500, letterSpacing: 1, textDecoration: "none", display: "block", textAlign: "center" }}>
                     📅 日程を予約する
                   </a>
-                  <p style={{ fontSize: 11, color: "#5a7aaa", fontWeight: 300, textAlign: "center" }}>全サービス 30分 ¥3,000</p>
+                  <p style={{ fontSize: 11, color: "#5a7aaa", fontWeight: 300, textAlign: "center" }}>全サービス 30分 ¥3,000 / PayPay払い</p>
                 </div>
               </div>
             </section>
@@ -333,16 +329,12 @@ export default function App() {
                   <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 34, fontWeight: 300, marginBottom: 16, letterSpacing: 1, color: "#1a2744" }}>まずはお気軽に<br />相談から</h2>
                   <p style={{ fontSize: 14, color: "#666", fontWeight: 300, marginBottom: 36, lineHeight: 1.9 }}>フォームから内容を送るか、<br />カレンダーで直接日程を予約してください。</p>
                   <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%", maxWidth: 260 }}>
-                    <button className="btn-main" onClick={() => setView("contact")}
-                      style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "15px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
-                      相談フォームへ →
-                    </button>
                     <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                      style={{ background: "transparent", color: "#1a2744", border: "1px solid #1a2744", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 300, textDecoration: "none", display: "block", textAlign: "center" }}>
+                      style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "15px 36px", fontSize: 14, fontFamily: "inherit", fontWeight: 500, textDecoration: "none", display: "block", textAlign: "center" }}>
                       📅 日程を予約する
                     </a>
                   </div>
-                  <p style={{ marginTop: 16, fontSize: 12, color: "#aaa", fontWeight: 300 }}>全サービス 30分 ¥3,000</p>
+                  <p style={{ marginTop: 16, fontSize: 12, color: "#aaa", fontWeight: 300 }}>全サービス 30分 ¥3,000 / PayPay払い</p>
                 </div>
               </div>
             </section>
@@ -406,12 +398,8 @@ export default function App() {
               </div>
             </div>
             <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-              <button className="btn-main" onClick={() => setView("contact")}
-                style={{ background: "#111", color: "#fff", border: "none", padding: "14px 36px", fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
-                相談フォームへ →
-              </button>
               <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                style={{ background: "#fff", color: "#111", border: "1px solid #ddd", padding: "14px 36px", fontSize: 14, textDecoration: "none", fontFamily: "inherit", display: "inline-block" }}>
+                style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "14px 36px", fontSize: 14, textDecoration: "none", fontFamily: "inherit", display: "inline-block", fontWeight: 500 }}>
                 📅 日程を予約する
               </a>
             </div>
@@ -474,27 +462,21 @@ export default function App() {
                 <div key={i} className="faq-item">
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     style={{ width: "100%", background: "none", border: "none", padding: "24px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: "inherit", textAlign: "left", gap: 16 }}>
-                    <span style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.5 }}>{faq.q}</span>
-                    <span style={{ fontSize: 20, color: "#ccc", flexShrink: 0, transition: "transform 0.2s", transform: openFaq === i ? "rotate(45deg)" : "none", display: "block" }}>+</span>
+                    <span style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.5, color: "#333" }}>{faq.q}</span>
+                    <span style={{ fontSize: 20, color: "#c9a84c", flexShrink: 0, transition: "transform 0.2s", transform: openFaq === i ? "rotate(45deg)" : "none", display: "block" }}>+</span>
                   </button>
                   {openFaq === i && (
-                    <div style={{ paddingBottom: 24, fontSize: 14, color: "#666", lineHeight: 1.9, fontWeight: 300 }}>{faq.a}</div>
+                    <div style={{ paddingBottom: 24, fontSize: 14, color: "#555", lineHeight: 1.9, fontWeight: 300 }}>{faq.a}</div>
                   )}
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 52, padding: "32px", background: "#fafafa", border: "1px solid #ececec", textAlign: "center" }}>
+            <div style={{ marginTop: 52, padding: "32px", background: "#f8f6f1", border: "1px solid #e8e4da", textAlign: "center" }}>
               <p style={{ fontSize: 14, color: "#888", marginBottom: 20, fontWeight: 300 }}>他にご質問があればお気軽にどうぞ</p>
-              <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
-                <button className="btn-main" onClick={() => setView("contact")}
-                  style={{ background: "#111", color: "#fff", border: "none", padding: "13px 28px", fontSize: 14, cursor: "pointer", fontFamily: "inherit" }}>
-                  相談フォームへ →
-                </button>
-                <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                  style={{ background: "#fff", color: "#111", border: "1px solid #ddd", padding: "13px 28px", fontSize: 14, textDecoration: "none", fontFamily: "inherit", display: "inline-block" }}>
-                  📅 日程を予約する
-                </a>
-              </div>
+              <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
+                style={{ background: "#c9a84c", color: "#1a2744", border: "none", padding: "14px 32px", fontSize: 14, textDecoration: "none", fontFamily: "inherit", display: "inline-block", fontWeight: 500 }}>
+                📅 日程を予約する
+              </a>
             </div>
           </div>
         )}
