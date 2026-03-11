@@ -84,6 +84,22 @@ export default function App() {
     setForm({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
   };
 
+  const handleConsultClick = async (consultant) => {
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST", mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "consult_click",
+          consultant,
+          date: new Date().toISOString().split("T")[0],
+          time: new Date().toLocaleTimeString("ja-JP"),
+        })
+      });
+    } catch (e) { console.error(e); }
+    window.open(CALENDAR_URL, "_blank");
+  };
+
   const handleReferralSubmit = async () => {
     if (!referralForm.name || !referralForm.phone) return;
     setReferralSending(true);
@@ -417,10 +433,16 @@ export default function App() {
                           </div>
                         ))}
                       </div>
-                      <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                        style={{ display: "inline-block", background: "#2a7d5f", color: "#fff", padding: "10px 28px", fontSize: 13, textDecoration: "none", fontWeight: 500 }}>
-                        📅 このサービスを相談する
-                      </a>
+                      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                        <button onClick={() => handleConsultClick("パパ")}
+                          style={{ background: "#2a7d5f", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                          📅 パパに相談する
+                        </button>
+                        <button onClick={() => handleConsultClick("ママ")}
+                          style={{ background: "#3a9e7a", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                          📅 ママに相談する
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>
