@@ -57,11 +57,8 @@ const FAQS = [
 ];
 
 export default function App() {
-  const [view, setView] = useState("top");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [view, setView] = useState("service");
   const [openFaq, setOpenFaq] = useState(null);
-  const [sending, setSending] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [referralForm, setReferralForm] = useState({ name: "", address: "", phone: "", email: "" });
   const [referralSubmitted, setReferralSubmitted] = useState(false);
@@ -148,7 +145,7 @@ export default function App() {
 
   const navItems = [["service", "サービス"], ["profile", "プロフィール"], ["faq", "よくある質問"]];
 
-  const go = (v) => { setView(v); setMenuOpen(false); };
+  const go = (v) => { setView(v === "top" ? "service" : v); setMenuOpen(false); };
 
   return (
     <div style={{ fontFamily: "'Noto Sans JP', sans-serif", background: "#faf8f5", color: "#1a1a2e", minHeight: "100vh" }}>
@@ -387,13 +384,17 @@ export default function App() {
                     </div>
                   </div>
                   <p style={{ fontSize: 14, color: "#5a6478", lineHeight: 1.9, fontWeight: 300, marginBottom: 20 }}>{s.desc}</p>
-                  <div className="svc-detail-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+                  <div className="svc-detail-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 24 }}>
                     {s.points.map((pt, i) => (
                       <div key={i} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8, alignItems: "flex-start" }}>
                         <span style={{ color: "#2a7d5f", marginTop: 2 }}>✓</span>{pt}
                       </div>
                     ))}
                   </div>
+                  <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
+                    style={{ display: "inline-block", background: "#2a7d5f", color: "#fff", padding: "10px 28px", fontSize: 13, textDecoration: "none", fontWeight: 500 }}>
+                    📅 このサービスを相談する
+                  </a>
                 </div>
               ))}
             </div>
@@ -545,6 +546,32 @@ export default function App() {
           </div>
         )}
 
+        {/* ===== PRIVACY ===== */}
+        {view === "privacy" && (
+          <div className="fade-in" style={{ maxWidth: 700, margin: "0 auto", padding: "5rem 1.5rem" }}>
+            <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>PRIVACY POLICY</p>
+            <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 40, fontWeight: 500, marginBottom: 48, color: "#1a1a2e" }}>プライバシーポリシー</h1>
+            <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
+              {[
+                ["個人情報の取得について", "当サービスでは、相談予約および一条工務店紹介制度のご利用にあたり、お名前・メールアドレス・電話番号・住所等の個人情報をご入力いただく場合があります。"],
+                ["個人情報の利用目的", "取得した個人情報は以下の目的のみに使用します。\n・相談予約の確認・日程調整のご連絡\n・一条工務店の紹介制度に関する手続き\n・サービスに関するご案内"],
+                ["第三者への提供", "取得した個人情報は、一条工務店の紹介制度の手続きに必要な範囲において、一条工務店へ提供する場合があります。それ以外の第三者への提供は行いません。"],
+                ["個人情報の管理", "取得した個人情報はGoogleが提供するサービス（Google スプレッドシート）上で管理し、適切なアクセス制限を設けて保護します。"],
+                ["個人情報の開示・訂正・削除", "ご本人からの個人情報の開示・訂正・削除のご要望については、合理的な範囲で対応いたします。お問い合わせはGoogleカレンダーの予約フォームよりご連絡ください。"],
+                ["Cookieの使用について", "当サービスでは現在Cookieによる個人情報の取得は行っておりません。"],
+                ["プライバシーポリシーの変更", "本ポリシーは予告なく変更する場合があります。変更後はこのページに掲載します。"],
+                ["お問い合わせ", "個人情報の取り扱いに関するお問い合わせは、Googleカレンダーの予約フォームよりご連絡ください。"],
+              ].map(([title, text]) => (
+                <div key={title} style={{ borderBottom: "1px solid #e2e8f0", paddingBottom: 28 }}>
+                  <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 12, color: "#1a1a2e" }}>{title}</h3>
+                  <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2, whiteSpace: "pre-line" }}>{text}</p>
+                </div>
+              ))}
+              <p style={{ fontSize: 12, color: "#94a3b8", fontWeight: 300 }}>制定日：2026年3月</p>
+            </div>
+          </div>
+        )}
+
         {/* FOOTER */}
         <footer style={{ background: "#1a1a2e", padding: "3rem 1.5rem", marginTop: 0 }}>
           <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 16 }}>
@@ -552,7 +579,7 @@ export default function App() {
               <div style={{ fontSize: 14, fontWeight: 500, color: "#fff", marginBottom: 4 }}>一条コンサル</div>
               <div style={{ fontSize: 11, color: "#5a6478", fontWeight: 300 }}>ICHIJO CONSULTING</div>
             </div>
-            <p style={{ fontSize: 11, color: "#5a6478", fontWeight: 300 }}>© 2026 五十嵐 / 一条コンサル. All rights reserved.</p>
+            <p style={{ fontSize: 11, color: "#5a6478", fontWeight: 300 }}><span onClick={() => go('privacy')} style={{ color: "#94a3b8", cursor: "pointer", borderBottom: "1px solid #5a6478", paddingBottom: 1, marginRight: 16 }}>プライバシーポリシー</span>© 2026 五十嵐 / 一条コンサル. All rights reserved.</p>
           </div>
         </footer>
       </div>
