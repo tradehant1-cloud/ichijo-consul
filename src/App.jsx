@@ -169,7 +169,7 @@ export default function App() {
       <style>{css}</style>
 
       {/* ===== HEADER ===== */}
-      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(250,248,245,0.97)", borderBottom: "1px solid #e2e8f0", backdropFilter: "blur(12px)" }}>
+      <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(240,236,230,0.97)", borderBottom: "1px solid #e2e8f0", backdropFilter: "blur(12px)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 1.5rem", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div onClick={() => go("top")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 32, height: 32, background: "#4a6274", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -249,7 +249,7 @@ export default function App() {
 
                 {/* 右：紹介制度ミニフォーム */}
                 <div className="hero-cards-wrap" style={{ flexShrink: 0, width: 280 }}>
-                  <div style={{ background: "#fff", border: "1px solid #e2e8f0", padding: "24px 20px", borderTop: "3px solid #2a7d5f" }}>
+                  <div style={{ background: "#f5f2ee", border: "1px solid #e2e8f0", padding: "24px 20px", borderTop: "3px solid #2a7d5f" }}>
                     <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 2, fontWeight: 500, marginBottom: 8 }}>REFERRAL</p>
                     <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 8, color: "#1a1a2e" }}>一条工務店の紹介制度</h3>
                     <p style={{ fontSize: 12, color: "#5a6478", fontWeight: 300, lineHeight: 1.8, marginBottom: 8 }}>一条が恐れる施主からの紹介だから安心。</p>
@@ -284,7 +284,7 @@ export default function App() {
                         <button
                           onClick={handleReferralSubmit}
                           disabled={!referralForm.name || !referralForm.phone || referralSending}
-                          style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#4a6274", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                          style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#4a6274", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#f5f2ee", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                           {referralSending ? "送信中..." : "送信する →"}
                         </button>
                         <p style={{ fontSize: 10, color: "#ccc", textAlign: "center" }}>※ 紹介制度の手続き目的のみに使用します</p>
@@ -553,7 +553,7 @@ export default function App() {
             </div>
 
             {/* 紹介制度 */}
-            <div style={{ marginTop: 48, background: "#fff", border: "1px solid #e2e8f0", padding: "36px 32px", borderTop: "3px solid #2a7d5f" }}>
+            <div style={{ marginTop: 48, background: "#f5f2ee", border: "1px solid #e2e8f0", padding: "36px 32px", borderTop: "3px solid #2a7d5f" }}>
               <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>REFERRAL</p>
               <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 24, fontWeight: 500, marginBottom: 12, color: "#1a1a2e" }}>一条工務店の紹介制度</h2>
               <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2, marginBottom: 28 }}>
@@ -596,7 +596,7 @@ export default function App() {
                       onClick={handleReferralSubmit}
                       disabled={!referralForm.name || !referralForm.phone || referralSending}
                       className="btn-primary"
-                      style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#4a6274", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "14px 40px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                      style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#4a6274", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#f5f2ee", border: "none", padding: "14px 40px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                       {referralSending ? "送信中..." : "送信する →"}
                     </button>
                     <p style={{ fontSize: 11, color: "#ccc", marginTop: 8, fontWeight: 300 }}>※ いただいた情報は紹介制度の手続き目的のみに使用します</p>
