@@ -120,15 +120,15 @@ export default function App() {
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { overflow-x: hidden; max-width: 100%; }
     :root {
-      --blue: #2a7d5f;
-      --blue-dark: #1d6049;
-      --blue-light: #e6f4ee;
+      --blue: #4a6274;
+      --blue-dark: #3a5060;
+      --blue-light: #f2ece8;
       --accent: #2a7d5f;
       --text: #1a1a2e;
       --text-sub: #5a6478;
       --border: #e5dfd8;
-      --bg: #faf8f5;
-      --bg-soft: #f2ede8;
+      --bg: #f5f2ee;
+      --bg-soft: #ede8e2;
       --bg-card: #fafbfc;
     }
     .fade-in { animation: fadeIn 0.6s ease both; }
@@ -165,14 +165,14 @@ export default function App() {
   const go = (v) => { setView(v === "top" ? "service" : v); setMenuOpen(false); };
 
   return (
-    <div style={{ fontFamily: "'Noto Sans JP', sans-serif", background: "#faf8f5", color: "#1a1a2e", minHeight: "100vh" }}>
+    <div style={{ fontFamily: "'Noto Sans JP', sans-serif", background: "#f5f2ee", color: "#1a1a2e", minHeight: "100vh" }}>
       <style>{css}</style>
 
       {/* ===== HEADER ===== */}
       <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(250,248,245,0.97)", borderBottom: "1px solid #e2e8f0", backdropFilter: "blur(12px)" }}>
         <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 1.5rem", height: 60, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div onClick={() => go("top")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
-            <div style={{ width: 32, height: 32, background: "#2a7d5f", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <div style={{ width: 32, height: 32, background: "#4a6274", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <span style={{ color: "#fff", fontSize: 14, fontWeight: 600 }}>一</span>
             </div>
             <div>
@@ -183,12 +183,12 @@ export default function App() {
           <nav className="nav-desktop" style={{ display: "flex", gap: 32, alignItems: "center" }}>
             {navItems.map(([id, label]) => (
               <span key={id} className="nav-link" onClick={() => go(id)}
-                style={{ fontSize: 13, fontWeight: 400, color: view === id ? "#2a7d5f" : "#5a6478", borderBottom: view === id ? "2px solid #2a7d5f" : "2px solid transparent", paddingBottom: 2, transition: "all 0.2s" }}>
+                style={{ fontSize: 13, fontWeight: 400, color: view === id ? "#4a6274" : "#5a6478", borderBottom: view === id ? "2px solid #2a7d5f" : "2px solid transparent", paddingBottom: 2, transition: "all 0.2s" }}>
                 {label}
               </span>
             ))}
             <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="btn-primary"
-              style={{ background: "#2a7d5f", color: "#fff", padding: "8px 20px", fontSize: 13, textDecoration: "none", fontWeight: 500, borderRadius: 2 }}>
+              style={{ background: "#4a6274", color: "#fff", padding: "8px 20px", fontSize: 13, textDecoration: "none", fontWeight: 500, borderRadius: 2 }}>
               予約する
             </a>
           </nav>
@@ -198,12 +198,12 @@ export default function App() {
           </button>
         </div>
         {menuOpen && (
-          <div style={{ background: "#faf8f5", borderTop: "1px solid #e2e8f0", padding: "1.5rem", display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ background: "#f5f2ee", borderTop: "1px solid #e2e8f0", padding: "1.5rem", display: "flex", flexDirection: "column", gap: 20 }}>
             {navItems.map(([id, label]) => (
               <span key={id} onClick={() => go(id)} style={{ fontSize: 15, cursor: "pointer", color: "#1a1a2e", fontWeight: 300 }}>{label}</span>
             ))}
             <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-              style={{ background: "#2a7d5f", color: "#fff", padding: "12px 20px", fontSize: 14, textDecoration: "none", fontWeight: 500, textAlign: "center" }}>
+              style={{ background: "#4a6274", color: "#fff", padding: "12px 20px", fontSize: 14, textDecoration: "none", fontWeight: 500, textAlign: "center" }}>
               📅 予約する
             </a>
           </div>
@@ -217,18 +217,18 @@ export default function App() {
           <div className="fade-in">
 
             {/* Hero */}
-            <section style={{ background: "#f2ede8", borderBottom: "1px solid #e2e8f0", padding: "4rem 1.5rem" }}>
+            <section style={{ background: "#ede8e2", borderBottom: "1px solid #e2e8f0", padding: "4rem 1.5rem" }}>
               <div className="hero-inner" style={{ maxWidth: 1100, margin: "0 auto", display: "flex", alignItems: "center", gap: 48 }}>
                 {/* 左：テキスト */}
                 <div className="hero-text" style={{ flex: "1 1 auto", minWidth: 0, width: "100%" }}>
-                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#e6f4ee", padding: "5px 14px", marginBottom: 24, borderRadius: 2 }}>
-                    <div style={{ width: 6, height: 6, background: "#2a7d5f", borderRadius: "50%" }}></div>
-                    <span style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 2, fontWeight: 500 }}>一条工務店 施主による相談サービス</span>
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#f2ece8", padding: "5px 14px", marginBottom: 24, borderRadius: 2 }}>
+                    <div style={{ width: 6, height: 6, background: "#4a6274", borderRadius: "50%" }}></div>
+                    <span style={{ fontSize: 11, color: "#4a6274", letterSpacing: 2, fontWeight: 500 }}>一条工務店 施主による相談サービス</span>
                   </div>
                   <h1 className="hero-title" style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 42, fontWeight: 500, lineHeight: 1.5, marginBottom: 16, color: "#1a1a2e" }}>
                     投資家パパ<br />× 子育てママ
                   </h1>
-                  <p style={{ fontSize: 16, color: "#2a7d5f", fontWeight: 500, marginBottom: 12 }}>忖度なし、リアルをお届け。</p>
+                  <p style={{ fontSize: 16, color: "#4a6274", fontWeight: 500, marginBottom: 12 }}>忖度なし、リアルをお届け。</p>
                   <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2, marginBottom: 32 }}>
                     良いことも悪いことも、経験者だから言える本音をお伝えします。<br />
                     調停で和解を勝ち取ったパパと、2人の子どもを育てるママが、<br />
@@ -236,11 +236,11 @@ export default function App() {
                   </p>
                   <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                     <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="btn-primary"
-                      style={{ background: "#2a7d5f", color: "#fff", padding: "14px 32px", fontSize: 14, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
+                      style={{ background: "#4a6274", color: "#fff", padding: "14px 32px", fontSize: 14, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
                       📅 日程を予約する
                     </a>
                     <button onClick={() => go("service")} className="btn-outline"
-                      style={{ background: "#faf8f5", color: "#2a7d5f", border: "1px solid #2a7d5f", padding: "14px 32px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
+                      style={{ background: "#f5f2ee", color: "#4a6274", border: "1px solid #2a7d5f", padding: "14px 32px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
                       サービスを見る →
                     </button>
                   </div>
@@ -250,13 +250,13 @@ export default function App() {
                 {/* 右：紹介制度ミニフォーム */}
                 <div className="hero-cards-wrap" style={{ flexShrink: 0, width: 280 }}>
                   <div style={{ background: "#fff", border: "1px solid #e2e8f0", padding: "24px 20px", borderTop: "3px solid #2a7d5f" }}>
-                    <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 2, fontWeight: 500, marginBottom: 8 }}>REFERRAL</p>
+                    <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 2, fontWeight: 500, marginBottom: 8 }}>REFERRAL</p>
                     <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 8, color: "#1a1a2e" }}>一条工務店の紹介制度</h3>
                     <p style={{ fontSize: 12, color: "#5a6478", fontWeight: 300, lineHeight: 1.8, marginBottom: 8 }}>一条が恐れる施主からの紹介だから安心。</p>
                     <p style={{ fontSize: 12, fontWeight: 500, marginBottom: 16, display: "inline-block", borderBottom: "2px solid #e63946", color: "#1a1a2e" }}>紹介制度を使うと豪華オプション設備が貰えます！</p>
                     {referralSubmitted ? (
                       <div style={{ textAlign: "center", padding: "16px 0" }}>
-                        <div style={{ fontSize: 32, color: "#2a7d5f", marginBottom: 8 }}>✓</div>
+                        <div style={{ fontSize: 32, color: "#4a6274", marginBottom: 8 }}>✓</div>
                         <p style={{ fontSize: 13, color: "#5a6478", fontWeight: 300 }}>送信完了しました！</p>
                         <button onClick={() => setReferralSubmitted(false)}
                           style={{ marginTop: 12, background: "none", border: "1px solid #e2e8f0", padding: "6px 16px", fontSize: 12, cursor: "pointer", fontFamily: "inherit", color: "#5a6478" }}>
@@ -284,14 +284,14 @@ export default function App() {
                         <button
                           onClick={handleReferralSubmit}
                           disabled={!referralForm.name || !referralForm.phone || referralSending}
-                          style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#2a7d5f", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                          style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#4a6274", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                           {referralSending ? "送信中..." : "送信する →"}
                         </button>
                         <p style={{ fontSize: 10, color: "#ccc", textAlign: "center" }}>※ 紹介制度の手続き目的のみに使用します</p>
                       </div>
                     )}
                   </div>
-                  <span onClick={() => go("profile")} style={{ fontSize: 11, color: "#2a7d5f", borderBottom: "1px solid #2a7d5f", cursor: "pointer", fontWeight: 300, display: "block", textAlign: "center", marginTop: 12 }}>
+                  <span onClick={() => go("profile")} style={{ fontSize: 11, color: "#4a6274", borderBottom: "1px solid #2a7d5f", cursor: "pointer", fontWeight: 300, display: "block", textAlign: "center", marginTop: 12 }}>
                     プロフィール詳細を見る →
                   </span>
                 </div>
@@ -299,7 +299,7 @@ export default function App() {
             </section>
 
             {/* 実績バー */}
-            <section style={{ background: "#2a7d5f", padding: "1.5rem" }}>
+            <section style={{ background: "#4a6274", padding: "1.5rem" }}>
               <div className="stats-bar" style={{ maxWidth: 1100, margin: "0 auto", display: "flex", justifyContent: "center", gap: 48, flexWrap: "wrap" }}>
                 {[["I-CUBE", "33坪 2025年入居"], ["調停和解", "弁護士なしで実現"], ["FP資格", "個人投資家"], ["外構", "100坪DIY中"]].map(([label, val]) => (
                   <div key={label} style={{ textAlign: "center" }}>
@@ -311,27 +311,27 @@ export default function App() {
             </section>
 
             {/* サービス一覧 */}
-            <section style={{ padding: "5rem 1.5rem", background: "#faf8f5" }}>
+            <section style={{ padding: "5rem 1.5rem", background: "#f5f2ee" }}>
               <div style={{ maxWidth: 1100, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 48 }}>
-                  <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>SERVICES</p>
+                  <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>SERVICES</p>
                   <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 32, fontWeight: 500, color: "#1a1a2e" }}>相談サービス</h2>
                 </div>
                 <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 16 }}>
                   {SERVICES.map((s) => (
                     <div key={s.id} className="svc-card" onClick={() => go("service")}
-                      style={{ background: "#faf8f5", padding: "24px 20px", borderTop: "none" }}>
+                      style={{ background: "#f5f2ee", padding: "24px 20px", borderTop: "none" }}>
                       <div style={{ fontSize: 28, marginBottom: 12 }}>{s.icon}</div>
                       <div style={{ fontSize: 10, color: "#94a3b8", letterSpacing: 2, marginBottom: 6 }}>{s.sub}</div>
                       <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 10, color: "#1a1a2e" }}>{s.title}</h3>
                       <p style={{ fontSize: 12, color: "#5a6478", lineHeight: 1.7, fontWeight: 300, marginBottom: 16 }}>{s.tagline}</p>
-                      <div style={{ fontSize: 13, color: "#2a7d5f", fontWeight: 500 }}>¥3,000 / 30分</div>
+                      <div style={{ fontSize: 13, color: "#4a6274", fontWeight: 500 }}>¥3,000 / 30分</div>
                     </div>
                   ))}
                 </div>
                 <div style={{ textAlign: "center", marginTop: 36 }}>
                   <button onClick={() => go("service")} className="btn-outline"
-                    style={{ background: "#faf8f5", color: "#2a7d5f", border: "1px solid #2a7d5f", padding: "12px 32px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
+                    style={{ background: "#f5f2ee", color: "#4a6274", border: "1px solid #2a7d5f", padding: "12px 32px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 400 }}>
                     サービス詳細を見る →
                   </button>
                 </div>
@@ -339,10 +339,10 @@ export default function App() {
             </section>
 
             {/* ストーリー */}
-            <section style={{ padding: "5rem 1.5rem", background: "#f2ede8", borderTop: "1px solid #e2e8f0" }}>
+            <section style={{ padding: "5rem 1.5rem", background: "#ede8e2", borderTop: "1px solid #e2e8f0" }}>
               <div style={{ maxWidth: 1100, margin: "0 auto" }}>
                 <div style={{ textAlign: "center", marginBottom: 48 }}>
-                  <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>STORY</p>
+                  <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>STORY</p>
                   <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 32, fontWeight: 500, color: "#1a1a2e" }}>なぜこのサービスを始めたか</h2>
                 </div>
                 <div className="story-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
@@ -351,7 +351,7 @@ export default function App() {
                     ["引渡し後に不具合が発覚。一条工務店と対峙した", "入居後、施工不具合が発覚。一条工務店との交渉が難航し、最終的に弁護士なしで調停を申し立てました。"],
                     ["一人で調停を戦い、和解を勝ち取った", "慣れない法的手続きも、準備と記録を徹底することで乗り越えました。同じ境遇の方に、その経験を活かしたいと思っています。"],
                   ].map(([title, text], i) => (
-                    <div key={i} style={{ background: "#faf8f5", border: "1px solid #e2e8f0", padding: "32px 28px" }}>
+                    <div key={i} style={{ background: "#f5f2ee", border: "1px solid #e2e8f0", padding: "32px 28px" }}>
                       <div style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 36, color: "#e2e8f0", fontWeight: 500, marginBottom: 16 }}>0{i + 1}</div>
                       <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 12, color: "#1a1a2e", lineHeight: 1.6 }}>{title}</h3>
                       <p style={{ fontSize: 13, color: "#5a6478", lineHeight: 1.9, fontWeight: 300 }}>{text}</p>
@@ -363,7 +363,7 @@ export default function App() {
 
             {/* 紹介制度セクション */}
             {/* CTA バナー */}
-            <section style={{ padding: "5rem 1.5rem", background: "#2a7d5f" }}>
+            <section style={{ padding: "5rem 1.5rem", background: "#4a6274" }}>
               <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
                 <p style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 3, marginBottom: 16 }}>FIRST STEP</p>
                 <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 32, fontWeight: 500, color: "#fff", marginBottom: 16 }}>まずはお気軽に相談から</h2>
@@ -371,7 +371,7 @@ export default function App() {
                   カレンダーから直接日程を予約できます。<br />全サービス 30分 ¥3,000 / PayPay払い
                 </p>
                 <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                  style={{ background: "#faf8f5", color: "#2a7d5f", padding: "16px 48px", fontSize: 15, textDecoration: "none", fontWeight: 600, display: "inline-block" }}>
+                  style={{ background: "#f5f2ee", color: "#4a6274", padding: "16px 48px", fontSize: 15, textDecoration: "none", fontWeight: 600, display: "inline-block" }}>
                   📅 日程を予約する
                 </a>
               </div>
@@ -386,52 +386,52 @@ export default function App() {
             {/* ヒーロー説明 */}
             <div style={{ marginBottom: 40 }}>
               <div style={{ textAlign: "center", marginBottom: 24 }}>
-                <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 8 }}>ICHIJO CONSULTING</p>
+                <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 8 }}>ICHIJO CONSULTING</p>
                 <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 26, fontWeight: 500, color: "#1a1a2e" }}>投資家パパ × 子育てママによる一条工務店 施主コンサル</h1>
                 <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 10, fontWeight: 300 }}>全サービス 30分 ¥3,000 ／ PayPay払い ／ Zoom・Google Meet</p>
               </div>
 
               <div className="profile-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                 {/* パパ */}
-                <div style={{ background: "#f2ede8", border: "1px solid #e2e8f0", padding: "28px 24px", borderTop: "3px solid #2a7d5f" }}>
+                <div style={{ background: "#ede8e2", border: "1px solid #e2e8f0", padding: "28px 24px", borderTop: "3px solid #2a7d5f" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                    <div style={{ width: 44, height: 44, background: "#e6f4ee", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>👤</div>
+                    <div style={{ width: 44, height: 44, background: "#f2ece8", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>👤</div>
                     <div>
                       <div style={{ fontSize: 15, fontWeight: 500, color: "#1a1a2e" }}>パパ（五十嵐）</div>
-                      <div style={{ fontSize: 11, color: "#2a7d5f", fontWeight: 400 }}>FP資格 / 個人投資家</div>
+                      <div style={{ fontSize: 11, color: "#4a6274", fontWeight: 400 }}>FP資格 / 個人投資家</div>
                     </div>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                     {["打ち合わせの進め方", "コスパ・おすすめ設備", "不安なことの相談", "トラブル・調停対応", "住み心地・実体験", "株・資産形成"].map(t => (
                       <div key={t} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8 }}>
-                        <span style={{ color: "#2a7d5f" }}>✓</span>{t}
+                        <span style={{ color: "#4a6274" }}>✓</span>{t}
                       </div>
                     ))}
                   </div>
                   <button onClick={() => handleConsultClick("パパ")}
-                    style={{ marginTop: 20, width: "100%", background: "#2a7d5f", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                    style={{ marginTop: 20, width: "100%", background: "#4a6274", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                     📅 パパに相談する
                   </button>
                 </div>
 
                 {/* ママ */}
-                <div style={{ background: "#f2ede8", border: "1px solid #e2e8f0", padding: "28px 24px", borderTop: "3px solid #3a9e7a" }}>
+                <div style={{ background: "#ede8e2", border: "1px solid #e2e8f0", padding: "28px 24px", borderTop: "3px solid #3a9e7a" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                    <div style={{ width: 44, height: 44, background: "#e6f4ee", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>👤</div>
+                    <div style={{ width: 44, height: 44, background: "#f2ece8", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>👤</div>
                     <div>
                       <div style={{ fontSize: 15, fontWeight: 500, color: "#1a1a2e" }}>ママ</div>
-                      <div style={{ fontSize: 11, color: "#3a9e7a", fontWeight: 400 }}>主婦 / 4歳・6歳子育て中</div>
+                      <div style={{ fontSize: 11, color: "#b5694a", fontWeight: 400 }}>主婦 / 4歳・6歳子育て中</div>
                     </div>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                     {["キッチンの使い勝手", "子育て中の家づくり", "子育てしながらの家事", "家事動線・収納", "おすすめ設備・オプション", "ママ目線のリアル"].map(t => (
                       <div key={t} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8 }}>
-                        <span style={{ color: "#3a9e7a" }}>✓</span>{t}
+                        <span style={{ color: "#b5694a" }}>✓</span>{t}
                       </div>
                     ))}
                   </div>
                   <button onClick={() => handleConsultClick("ママ")}
-                    style={{ marginTop: 20, width: "100%", background: "#3a9e7a", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                    style={{ marginTop: 20, width: "100%", background: "#b5694a", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                     📅 ママに相談する
                   </button>
                 </div>
@@ -440,7 +440,7 @@ export default function App() {
 
             <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 48 }}>
               {SERVICES.map((s) => (
-                <div key={s.id} style={{ background: "#faf8f5", border: "1px solid #e2e8f0" }}>
+                <div key={s.id} style={{ background: "#f5f2ee", border: "1px solid #e2e8f0" }}>
                   {/* 常時表示：タイトル行 */}
                   <div
                     onClick={() => setOpenService(openService === s.id ? null : s.id)}
@@ -454,10 +454,10 @@ export default function App() {
                     </div>
                     <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
                       <div style={{ textAlign: "right" }}>
-                        <div style={{ fontSize: 18, fontWeight: 500, color: "#2a7d5f" }}>¥3,000</div>
+                        <div style={{ fontSize: 18, fontWeight: 500, color: "#4a6274" }}>¥3,000</div>
                         <div style={{ fontSize: 10, color: "#94a3b8" }}>30分</div>
                       </div>
-                      <span style={{ fontSize: 18, color: "#2a7d5f", transition: "transform 0.2s", transform: openService === s.id ? "rotate(45deg)" : "none", display: "block" }}>+</span>
+                      <span style={{ fontSize: 18, color: "#4a6274", transition: "transform 0.2s", transform: openService === s.id ? "rotate(45deg)" : "none", display: "block" }}>+</span>
                     </div>
                   </div>
 
@@ -468,17 +468,17 @@ export default function App() {
                       <div className="svc-detail-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 20 }}>
                         {s.points.map((pt, i) => (
                           <div key={i} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8, alignItems: "flex-start" }}>
-                            <span style={{ color: "#2a7d5f", marginTop: 2 }}>✓</span>{pt}
+                            <span style={{ color: "#4a6274", marginTop: 2 }}>✓</span>{pt}
                           </div>
                         ))}
                       </div>
                       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                         <button onClick={() => handleConsultClick("パパ")}
-                          style={{ background: "#2a7d5f", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                          style={{ background: "#4a6274", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                           📅 パパに相談する
                         </button>
                         <button onClick={() => handleConsultClick("ママ")}
-                          style={{ background: "#3a9e7a", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                          style={{ background: "#b5694a", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                           📅 ママに相談する
                         </button>
                       </div>
@@ -489,12 +489,12 @@ export default function App() {
             </div>
 
             {/* 相談の流れ */}
-            <div style={{ background: "#f2ede8", border: "1px solid #e2e8f0", padding: "32px", marginBottom: 32 }}>
+            <div style={{ background: "#ede8e2", border: "1px solid #e2e8f0", padding: "32px", marginBottom: 32 }}>
               <h3 style={{ fontSize: 16, fontWeight: 500, marginBottom: 24, color: "#1a1a2e" }}>相談の流れ</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                 {["Googleカレンダーで日程を直接予約", "予約確認メールが届きます", "日程確定後、PayPay ID（tradehant1）にお支払い（¥3,000）", "ZoomまたはGoogle Meetで相談（30分）"].map((step, i) => (
                   <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-                    <div style={{ width: 28, height: 28, background: "#2a7d5f", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 500, flexShrink: 0 }}>
+                    <div style={{ width: 28, height: 28, background: "#4a6274", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 500, flexShrink: 0 }}>
                       {i + 1}
                     </div>
                     <span style={{ fontSize: 14, fontWeight: 300, paddingTop: 4, color: "#5a6478", lineHeight: 1.6 }}>{step}</span>
@@ -504,7 +504,7 @@ export default function App() {
             </div>
 
             <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="btn-primary"
-              style={{ background: "#2a7d5f", color: "#fff", padding: "14px 40px", fontSize: 14, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
+              style={{ background: "#4a6274", color: "#fff", padding: "14px 40px", fontSize: 14, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
               📅 日程を予約する
             </a>
           </div>
@@ -513,20 +513,20 @@ export default function App() {
         {/* ===== PROFILE ===== */}
         {view === "profile" && (
           <div className="fade-in" style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 1.5rem" }}>
-            <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>PROFILE</p>
+            <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>PROFILE</p>
             <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 40, fontWeight: 500, marginBottom: 48, color: "#1a1a2e" }}>プロフィール</h1>
             <div className="profile-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
               {/* 五十嵐 */}
               <div className="profile-card" style={{ border: "1px solid #e2e8f0", padding: "36px 32px", borderTop: "3px solid #2a7d5f" }}>
-                <div style={{ width: 80, height: 80, background: "#e6f4ee", borderRadius: "50%", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32 }}>👤</div>
+                <div style={{ width: 80, height: 80, background: "#f2ece8", borderRadius: "50%", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32 }}>👤</div>
                 <div style={{ fontSize: 20, fontWeight: 500, marginBottom: 4, color: "#1a1a2e" }}>五十嵐（パパ）</div>
-                <div style={{ fontSize: 12, color: "#2a7d5f", fontWeight: 400, marginBottom: 20 }}>在宅ワーク / FP資格 / 個人投資家</div>
+                <div style={{ fontSize: 12, color: "#4a6274", fontWeight: 400, marginBottom: 20 }}>在宅ワーク / FP資格 / 個人投資家</div>
                 <p style={{ fontSize: 14, lineHeight: 2, fontWeight: 300, color: "#5a6478", marginBottom: 24 }}>
                   家づくりの打ち合わせから引渡しまで一人で完遂。引渡し後に施工不具合が発覚し、弁護士なしで調停を申し立て和解を勝ち取りました。FP資格保有の投資家で、投資で貯めた資金でI-CUBEを建てました。
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
                   {[["モデル", "I-CUBE 33坪 2025年入居"], ["調停", "弁護士なし → 和解勝ち取り"], ["外構", "100坪DIY中"], ["資格", "FP資格 / 個人投資家"]].map(([l, v]) => (
-                    <div key={l} style={{ background: "#f2ede8", padding: "10px 16px", display: "flex", gap: 16, borderBottom: "1px solid #e2e8f0" }}>
+                    <div key={l} style={{ background: "#ede8e2", padding: "10px 16px", display: "flex", gap: 16, borderBottom: "1px solid #e2e8f0" }}>
                       <span style={{ fontSize: 11, color: "#94a3b8", minWidth: 48, flexShrink: 0 }}>{l}</span>
                       <span style={{ fontSize: 13, fontWeight: 400, color: "#1a1a2e" }}>{v}</span>
                     </div>
@@ -535,15 +535,15 @@ export default function App() {
               </div>
               {/* ママ */}
               <div className="profile-card" style={{ border: "1px solid #e2e8f0", padding: "36px 32px", borderTop: "3px solid #3a9e7a" }}>
-                <div style={{ width: 80, height: 80, background: "#e6f4ee", borderRadius: "50%", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32 }}>👤</div>
+                <div style={{ width: 80, height: 80, background: "#f2ece8", borderRadius: "50%", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32 }}>👤</div>
                 <div style={{ fontSize: 20, fontWeight: 500, marginBottom: 4, color: "#1a1a2e" }}>ママ</div>
-                <div style={{ fontSize: 12, color: "#3a9e7a", fontWeight: 400, marginBottom: 20 }}>主婦 / 4歳・6歳子育て中</div>
+                <div style={{ fontSize: 12, color: "#b5694a", fontWeight: 400, marginBottom: 20 }}>主婦 / 4歳・6歳子育て中</div>
                 <p style={{ fontSize: 14, lineHeight: 2, fontWeight: 300, color: "#5a6478", marginBottom: 24 }}>
                   パートをしながら2人の子どもを育てる普通のママ。キッチンや家事動線、子育てしやすい間取りにこだわりました。プロではないからこそ、同じ目線でリアルな感想をお伝えします。
                 </p>
                 <div style={{ display: "flex", flexDirection: "column", gap: 1 }}>
                   {[["キッチン", "使い勝手・収納・動線"], ["家事動線", "洗濯・掃除がラクな間取り"], ["子育て", "子どもがいる家ならではの視点"], ["相談", "気軽に何でも聞いてOK"]].map(([l, v]) => (
-                    <div key={l} style={{ background: "#f2ede8", padding: "10px 16px", display: "flex", gap: 16, borderBottom: "1px solid #e2e8f0" }}>
+                    <div key={l} style={{ background: "#ede8e2", padding: "10px 16px", display: "flex", gap: 16, borderBottom: "1px solid #e2e8f0" }}>
                       <span style={{ fontSize: 11, color: "#94a3b8", minWidth: 48, flexShrink: 0 }}>{l}</span>
                       <span style={{ fontSize: 13, fontWeight: 400, color: "#1a1a2e" }}>{v}</span>
                     </div>
@@ -554,7 +554,7 @@ export default function App() {
 
             {/* 紹介制度 */}
             <div style={{ marginTop: 48, background: "#fff", border: "1px solid #e2e8f0", padding: "36px 32px", borderTop: "3px solid #2a7d5f" }}>
-              <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>REFERRAL</p>
+              <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>REFERRAL</p>
               <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 24, fontWeight: 500, marginBottom: 12, color: "#1a1a2e" }}>一条工務店の紹介制度</h2>
               <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2, marginBottom: 28 }}>
                 一条工務店と調停で和解を勝ち取った施主からの紹介。<br />
@@ -565,7 +565,7 @@ export default function App() {
               <p style={{ fontSize: 15, fontWeight: 600, color: "#1a1a2e", marginBottom: 28, display: "inline-block", borderBottom: "2px solid #e63946", paddingBottom: 2 }}>紹介制度を使うと豪華オプション設備が貰えます！</p>
               {referralSubmitted ? (
                 <div style={{ textAlign: "center", padding: "32px 0" }}>
-                  <div style={{ fontSize: 48, color: "#2a7d5f", marginBottom: 12 }}>✓</div>
+                  <div style={{ fontSize: 48, color: "#4a6274", marginBottom: 12 }}>✓</div>
                   <h3 style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>送信完了しました</h3>
                   <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300 }}>情報をお受け取りしました。ありがとうございます！</p>
                   <button onClick={() => setReferralSubmitted(false)}
@@ -596,7 +596,7 @@ export default function App() {
                       onClick={handleReferralSubmit}
                       disabled={!referralForm.name || !referralForm.phone || referralSending}
                       className="btn-primary"
-                      style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#2a7d5f", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "14px 40px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                      style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#4a6274", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "14px 40px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                       {referralSending ? "送信中..." : "送信する →"}
                     </button>
                     <p style={{ fontSize: 11, color: "#ccc", marginTop: 8, fontWeight: 300 }}>※ いただいた情報は紹介制度の手続き目的のみに使用します</p>
@@ -610,7 +610,7 @@ export default function App() {
         {/* ===== FAQ ===== */}
         {view === "faq" && (
           <div className="fade-in" style={{ maxWidth: 700, margin: "0 auto", padding: "5rem 1.5rem" }}>
-            <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>FAQ</p>
+            <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>FAQ</p>
             <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 40, fontWeight: 500, marginBottom: 48, color: "#1a1a2e" }}>よくある質問</h1>
             <div>
               {FAQS.map((faq, i) => (
@@ -618,7 +618,7 @@ export default function App() {
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     style={{ width: "100%", background: "none", border: "none", padding: "24px 0", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", fontFamily: "inherit", textAlign: "left", gap: 16 }}>
                     <span style={{ fontSize: 15, fontWeight: 400, lineHeight: 1.5, color: "#1a1a2e" }}>{faq.q}</span>
-                    <span style={{ fontSize: 20, color: "#2a7d5f", flexShrink: 0, transition: "transform 0.2s", transform: openFaq === i ? "rotate(45deg)" : "none", display: "block" }}>+</span>
+                    <span style={{ fontSize: 20, color: "#4a6274", flexShrink: 0, transition: "transform 0.2s", transform: openFaq === i ? "rotate(45deg)" : "none", display: "block" }}>+</span>
                   </button>
                   {openFaq === i && (
                     <div style={{ paddingBottom: 24, fontSize: 14, color: "#5a6478", lineHeight: 1.9, fontWeight: 300 }}>{faq.a}</div>
@@ -626,10 +626,10 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 52, padding: "36px", background: "#f2ede8", border: "1px solid #e2e8f0", textAlign: "center" }}>
+            <div style={{ marginTop: 52, padding: "36px", background: "#ede8e2", border: "1px solid #e2e8f0", textAlign: "center" }}>
               <p style={{ fontSize: 14, color: "#5a6478", marginBottom: 20, fontWeight: 300 }}>他にご質問があればお気軽にどうぞ</p>
               <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="btn-primary"
-                style={{ background: "#2a7d5f", color: "#fff", padding: "14px 36px", fontSize: 14, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
+                style={{ background: "#4a6274", color: "#fff", padding: "14px 36px", fontSize: 14, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
                 📅 日程を予約する
               </a>
             </div>
@@ -639,7 +639,7 @@ export default function App() {
         {/* ===== PRIVACY ===== */}
         {view === "privacy" && (
           <div className="fade-in" style={{ maxWidth: 700, margin: "0 auto", padding: "5rem 1.5rem" }}>
-            <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>PRIVACY POLICY</p>
+            <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>PRIVACY POLICY</p>
             <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 40, fontWeight: 500, marginBottom: 48, color: "#1a1a2e" }}>プライバシーポリシー</h1>
             <div style={{ display: "flex", flexDirection: "column", gap: 36 }}>
               {[
