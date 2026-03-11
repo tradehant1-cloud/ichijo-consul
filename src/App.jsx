@@ -60,6 +60,7 @@ export default function App() {
   const [view, setView] = useState("service");
   const [openFaq, setOpenFaq] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openService, setOpenService] = useState(null);
   const [referralForm, setReferralForm] = useState({ name: "", address: "", phone: "", email: "" });
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [referralSending, setReferralSending] = useState(false);
@@ -365,36 +366,63 @@ export default function App() {
         {/* ===== SERVICE ===== */}
         {view === "service" && (
           <div className="fade-in" style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 1.5rem" }}>
-            <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>SERVICES</p>
-            <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 40, fontWeight: 500, marginBottom: 52, color: "#1a1a2e" }}>サービス内容・料金</h1>
+
+            {/* ヒーロー説明 */}
+            <div style={{ background: "#f2ede8", border: "1px solid #e2e8f0", padding: "36px 32px", marginBottom: 40, borderLeft: "4px solid #2a7d5f" }}>
+              <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>ICHIJO CONSULTING</p>
+              <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 28, fontWeight: 500, marginBottom: 16, color: "#1a1a2e", lineHeight: 1.6 }}>
+                投資家パパ × 子育てママによる<br />一条工務店 施主コンサル
+              </h1>
+              <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2, marginBottom: 20 }}>
+                良いことも悪いことも、経験者だから言える本音をお伝えします。調停で和解を勝ち取ったパパと、2人の子どもを育てるママが、家づくり・トラブル・お金のことをサポートします。
+              </p>
+              <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+                <span style={{ fontSize: 13, color: "#2a7d5f", fontWeight: 400 }}>✓ 全サービス 30分 ¥3,000</span>
+                <span style={{ fontSize: 13, color: "#2a7d5f", fontWeight: 400 }}>✓ PayPay払い</span>
+                <span style={{ fontSize: 13, color: "#2a7d5f", fontWeight: 400 }}>✓ Zoom / Google Meet</span>
+              </div>
+            </div>
+
             <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 48 }}>
               {SERVICES.map((s) => (
-                <div key={s.id} style={{ background: "#faf8f5", border: "1px solid #e2e8f0", padding: "36px 32px" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16, marginBottom: 20 }}>
-                    <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-                      <span style={{ fontSize: 32 }}>{s.icon}</span>
+                <div key={s.id} style={{ background: "#faf8f5", border: "1px solid #e2e8f0" }}>
+                  {/* 常時表示：タイトル行 */}
+                  <div
+                    onClick={() => setOpenService(openService === s.id ? null : s.id)}
+                    style={{ padding: "24px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", gap: 16 }}>
+                    <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+                      <span style={{ fontSize: 26 }}>{s.icon}</span>
                       <div>
-                        <div style={{ fontSize: 10, color: "#94a3b8", letterSpacing: 2, marginBottom: 4 }}>{s.num} — {s.sub}</div>
-                        <h3 style={{ fontSize: 20, fontWeight: 500, color: "#1a1a2e" }}>{s.title}</h3>
+                        <h3 style={{ fontSize: 16, fontWeight: 500, color: "#1a1a2e", marginBottom: 2 }}>{s.title}</h3>
+                        <p style={{ fontSize: 12, color: "#5a6478", fontWeight: 300 }}>{s.tagline}</p>
                       </div>
                     </div>
-                    <div style={{ textAlign: "right" }}>
-                      <div style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 28, fontWeight: 500, color: "#2a7d5f" }}>¥3,000</div>
-                      <div style={{ fontSize: 11, color: "#94a3b8" }}>30分 / 回</div>
+                    <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
+                      <div style={{ textAlign: "right" }}>
+                        <div style={{ fontSize: 18, fontWeight: 500, color: "#2a7d5f" }}>¥3,000</div>
+                        <div style={{ fontSize: 10, color: "#94a3b8" }}>30分</div>
+                      </div>
+                      <span style={{ fontSize: 18, color: "#2a7d5f", transition: "transform 0.2s", transform: openService === s.id ? "rotate(45deg)" : "none", display: "block" }}>+</span>
                     </div>
                   </div>
-                  <p style={{ fontSize: 14, color: "#5a6478", lineHeight: 1.9, fontWeight: 300, marginBottom: 20 }}>{s.desc}</p>
-                  <div className="svc-detail-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 24 }}>
-                    {s.points.map((pt, i) => (
-                      <div key={i} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8, alignItems: "flex-start" }}>
-                        <span style={{ color: "#2a7d5f", marginTop: 2 }}>✓</span>{pt}
+
+                  {/* 展開：詳細 */}
+                  {openService === s.id && (
+                    <div style={{ padding: "0 28px 28px", borderTop: "1px solid #e2e8f0" }}>
+                      <p style={{ fontSize: 14, color: "#5a6478", lineHeight: 1.9, fontWeight: 300, margin: "20px 0 16px" }}>{s.desc}</p>
+                      <div className="svc-detail-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 20 }}>
+                        {s.points.map((pt, i) => (
+                          <div key={i} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8, alignItems: "flex-start" }}>
+                            <span style={{ color: "#2a7d5f", marginTop: 2 }}>✓</span>{pt}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                  <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
-                    style={{ display: "inline-block", background: "#2a7d5f", color: "#fff", padding: "10px 28px", fontSize: 13, textDecoration: "none", fontWeight: 500 }}>
-                    📅 このサービスを相談する
-                  </a>
+                      <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
+                        style={{ display: "inline-block", background: "#2a7d5f", color: "#fff", padding: "10px 28px", fontSize: 13, textDecoration: "none", fontWeight: 500 }}>
+                        📅 このサービスを相談する
+                      </a>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -471,8 +499,9 @@ export default function App() {
                 一条工務店と調停で和解を勝ち取った施主からの紹介。<br />
                 忖度なしでリアルを話す私たちからの紹介だから、安心して一条の家づくりを始められます。<br />
                 <br />
-                興味がある知人・友人がいれば、お名前・連絡先を教えてください。<br /><span style="display:inline-block; borderBottom:2px solid #e63946; fontWeight:500; marginTop:8px">紹介制度を使うと豪華オプション設備が貰えます！</span>
+                興味がある知人・友人がいれば、お名前・連絡先を教えてください。
               </p>
+              <p style={{ fontSize: 15, fontWeight: 600, color: "#1a1a2e", marginBottom: 28, display: "inline-block", borderBottom: "2px solid #e63946", paddingBottom: 2 }}>紹介制度を使うと豪華オプション設備が貰えます！</p>
               {referralSubmitted ? (
                 <div style={{ textAlign: "center", padding: "32px 0" }}>
                   <div style={{ fontSize: 48, color: "#2a7d5f", marginBottom: 12 }}>✓</div>
