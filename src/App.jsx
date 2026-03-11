@@ -160,7 +160,7 @@ export default function App() {
     }
   `;
 
-  const navItems = [["service", "サービス"], ["profile", "プロフィール"], ["faq", "よくある質問"]];
+  const navItems = [["service", "サービス"], ["referral_page", "紹介制度"], ["profile", "プロフィール"], ["faq", "よくある質問"]];
 
   const go = (v) => { setView(v === "top" ? "service" : v); setMenuOpen(false); };
 
