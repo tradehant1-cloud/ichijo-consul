@@ -233,23 +233,53 @@ export default function App() {
                   <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 12, fontWeight: 300 }}>全サービス 30分 ¥3,000 / PayPay払い</p>
                 </div>
 
-                {/* 右：プロフィールカード */}
-                <div className="hero-cards-wrap" style={{ display: "flex", gap: 12, flexShrink: 0 }}>
-                  {[
-                    { name: "五十嵐（パパ）", role: "FP資格 / 個人投資家", tags: ["家づくり", "トラブル", "調停", "外構", "株"], color: "#2a7d5f" },
-                    { name: "ママ", role: "主婦 / 4歳・6歳子育て中", tags: ["キッチン", "家事動線", "子育て目線"], color: "#3a9e7a" },
-                  ].map((p) => (
-                    <div key={p.name} className="profile-card" style={{ flex: 1, background: "#faf8f5", border: "1px solid #e2e8f0", padding: "20px 16px", borderTop: `3px solid ${p.color}` }}>
-                      <div style={{ width: 48, height: 48, background: "#e6f4ee", borderRadius: "50%", marginBottom: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>👤</div>
-                      <div style={{ fontSize: 14, fontWeight: 500, marginBottom: 4, color: "#1a1a2e" }}>{p.name}</div>
-                      <div style={{ fontSize: 11, color: p.color, fontWeight: 400, marginBottom: 12, lineHeight: 1.5 }}>{p.role}</div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
-                        {p.tags.map(t => (
-                          <span key={t} style={{ fontSize: 10, background: "#f2ede8", border: "1px solid #e2e8f0", color: "#5a6478", padding: "2px 8px" }}>{t}</span>
-                        ))}
+                {/* 右：紹介制度ミニフォーム */}
+                <div className="hero-cards-wrap" style={{ flexShrink: 0, width: 280 }}>
+                  <div style={{ background: "#fff", border: "1px solid #e2e8f0", padding: "24px 20px", borderTop: "3px solid #2a7d5f" }}>
+                    <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 2, fontWeight: 500, marginBottom: 8 }}>REFERRAL</p>
+                    <h3 style={{ fontSize: 15, fontWeight: 500, marginBottom: 8, color: "#1a1a2e" }}>一条工務店の紹介制度</h3>
+                    <p style={{ fontSize: 12, color: "#5a6478", fontWeight: 300, lineHeight: 1.8, marginBottom: 8 }}>一条が恐れる施主からの紹介だから安心。</p>
+                    <p style={{ fontSize: 12, fontWeight: 500, marginBottom: 16, display: "inline-block", borderBottom: "2px solid #e63946", color: "#1a1a2e" }}>紹介制度を使うと豪華オプション設備が貰えます！</p>
+                    {referralSubmitted ? (
+                      <div style={{ textAlign: "center", padding: "16px 0" }}>
+                        <div style={{ fontSize: 32, color: "#2a7d5f", marginBottom: 8 }}>✓</div>
+                        <p style={{ fontSize: 13, color: "#5a6478", fontWeight: 300 }}>送信完了しました！</p>
+                        <button onClick={() => setReferralSubmitted(false)}
+                          style={{ marginTop: 12, background: "none", border: "1px solid #e2e8f0", padding: "6px 16px", fontSize: 12, cursor: "pointer", fontFamily: "inherit", color: "#5a6478" }}>
+                          別の方を紹介する
+                        </button>
                       </div>
-                    </div>
-                  ))}
+                    ) : (
+                      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                        {[
+                          ["name", "お名前 *", "text", "山田 太郎"],
+                          ["address", "住所", "text", "栃木県..."],
+                          ["phone", "電話番号 *", "tel", "090-0000-0000"],
+                          ["email", "メールアドレス", "email", "example@gmail.com"],
+                        ].map(([key, label, type, ph]) => (
+                          <div key={key}>
+                            <label style={{ fontSize: 10, color: "#94a3b8", display: "block", marginBottom: 4 }}>{label}</label>
+                            <input
+                              value={referralForm[key]}
+                              onChange={e => setReferralForm({ ...referralForm, [key]: e.target.value })}
+                              type={type} placeholder={ph}
+                              style={{ width: "100%", border: "none", borderBottom: "1px solid #ccc", padding: "6px 0", fontFamily: "inherit", fontSize: 13, outline: "none", background: "transparent", color: "#1a1a2e", fontWeight: 300 }}
+                            />
+                          </div>
+                        ))}
+                        <button
+                          onClick={handleReferralSubmit}
+                          disabled={!referralForm.name || !referralForm.phone || referralSending}
+                          style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#2a7d5f", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                          {referralSending ? "送信中..." : "送信する →"}
+                        </button>
+                        <p style={{ fontSize: 10, color: "#ccc", textAlign: "center" }}>※ 紹介制度の手続き目的のみに使用します</p>
+                      </div>
+                    )}
+                  </div>
+                  <span onClick={() => go("profile")} style={{ fontSize: 11, color: "#2a7d5f", borderBottom: "1px solid #2a7d5f", cursor: "pointer", fontWeight: 300, display: "block", textAlign: "center", marginTop: 12 }}>
+                    プロフィール詳細を見る →
+                  </span>
                 </div>
               </div>
             </section>
@@ -318,63 +348,6 @@ export default function App() {
             </section>
 
             {/* 紹介制度セクション */}
-            <section style={{ padding: "5rem 1.5rem", background: "#faf8f5", borderTop: "1px solid #e2e8f0" }}>
-              <div style={{ maxWidth: 700, margin: "0 auto" }}>
-                <div style={{ textAlign: "center", marginBottom: 40 }}>
-                  <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>REFERRAL</p>
-                  <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 32, fontWeight: 500, color: "#1a1a2e", marginBottom: 16 }}>一条工務店の紹介制度</h2>
-                  <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2 }}>
-                    一条工務店には、紹介した方・された方の両方に<br />
-                    高額の謝礼が受け取れる紹介制度があります。<br />
-                    一条工務店に興味がある方のお名前・連絡先を教えてください。
-                  </p>
-                </div>
-
-                {referralSubmitted ? (
-                  <div style={{ textAlign: "center", padding: "48px 0" }}>
-                    <div style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 56, marginBottom: 20, color: "#2a7d5f" }}>✓</div>
-                    <h3 style={{ fontSize: 18, fontWeight: 500, marginBottom: 12 }}>送信完了しました</h3>
-                    <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2 }}>
-                      情報をお受け取りしました。<br />ありがとうございます！
-                    </p>
-                    <button onClick={() => setReferralSubmitted(false)}
-                      style={{ marginTop: 24, background: "none", border: "1px solid #e2e8f0", padding: "10px 24px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", color: "#5a6478" }}>
-                      別の方を紹介する
-                    </button>
-                  </div>
-                ) : (
-                  <div style={{ background: "#fff", border: "1px solid #e2e8f0", padding: "36px 32px" }}>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                      {[
-                        ["name", "お名前 *", "text", "山田 太郎"],
-                        ["address", "住所", "text", "栃木県那須塩原市..."],
-                        ["phone", "電話番号 *", "tel", "090-0000-0000"],
-                        ["email", "メールアドレス", "email", "example@gmail.com"],
-                      ].map(([key, label, type, ph]) => (
-                        <div key={key}>
-                          <label style={{ fontSize: 11, color: "#94a3b8", display: "block", marginBottom: 8, letterSpacing: 1 }}>{label}</label>
-                          <input
-                            value={referralForm[key]}
-                            onChange={e => setReferralForm({ ...referralForm, [key]: e.target.value })}
-                            type={type} placeholder={ph}
-                            style={{ width: "100%", border: "none", borderBottom: "1px solid #e2e8f0", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "none", fontWeight: 300 }}
-                          />
-                        </div>
-                      ))}
-                      <button
-                        onClick={handleReferralSubmit}
-                        disabled={!referralForm.name || !referralForm.phone || referralSending}
-                        className="btn-primary"
-                        style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#2a7d5f", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "14px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
-                        {referralSending ? "送信中..." : "送信する →"}
-                      </button>
-                      <p style={{ fontSize: 11, color: "#ccc", textAlign: "center", fontWeight: 300 }}>※ いただいた情報は紹介制度の手続き目的のみに使用します</p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </section>
-
             {/* CTA バナー */}
             <section style={{ padding: "5rem 1.5rem", background: "#2a7d5f" }}>
               <div style={{ maxWidth: 700, margin: "0 auto", textAlign: "center" }}>
@@ -487,6 +460,58 @@ export default function App() {
                   ))}
                 </div>
               </div>
+            </div>
+
+            {/* 紹介制度 */}
+            <div style={{ marginTop: 48, background: "#fff", border: "1px solid #e2e8f0", padding: "36px 32px", borderTop: "3px solid #2a7d5f" }}>
+              <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>REFERRAL</p>
+              <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 24, fontWeight: 500, marginBottom: 12, color: "#1a1a2e" }}>一条工務店の紹介制度</h2>
+              <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2, marginBottom: 28 }}>
+                一条工務店と調停で和解を勝ち取った施主からの紹介。<br />
+                忖度なしでリアルを話す私たちからの紹介だから、安心して一条の家づくりを始められます。<br />
+                <br />
+                興味がある知人・友人がいれば、お名前・連絡先を教えてください。<br /><span style="display:inline-block; borderBottom:2px solid #e63946; fontWeight:500; marginTop:8px">紹介制度を使うと豪華オプション設備が貰えます！</span>
+              </p>
+              {referralSubmitted ? (
+                <div style={{ textAlign: "center", padding: "32px 0" }}>
+                  <div style={{ fontSize: 48, color: "#2a7d5f", marginBottom: 12 }}>✓</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 500, marginBottom: 8 }}>送信完了しました</h3>
+                  <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300 }}>情報をお受け取りしました。ありがとうございます！</p>
+                  <button onClick={() => setReferralSubmitted(false)}
+                    style={{ marginTop: 16, background: "none", border: "1px solid #e2e8f0", padding: "8px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", color: "#5a6478" }}>
+                    別の方を紹介する
+                  </button>
+                </div>
+              ) : (
+                <div className="form-row-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+                  {[
+                    ["name", "お名前 *", "text", "山田 太郎"],
+                    ["phone", "電話番号 *", "tel", "090-0000-0000"],
+                    ["address", "住所", "text", "栃木県那須塩原市..."],
+                    ["email", "メールアドレス", "email", "example@gmail.com"],
+                  ].map(([key, label, type, ph]) => (
+                    <div key={key}>
+                      <label style={{ fontSize: 11, color: "#94a3b8", display: "block", marginBottom: 8, letterSpacing: 1 }}>{label}</label>
+                      <input
+                        value={referralForm[key]}
+                        onChange={e => setReferralForm({ ...referralForm, [key]: e.target.value })}
+                        type={type} placeholder={ph}
+                        style={{ width: "100%", border: "none", borderBottom: "1px solid #ccc", padding: "8px 0", fontFamily: "inherit", fontSize: 14, outline: "none", background: "transparent", color: "#1a1a2e", fontWeight: 300 }}
+                      />
+                    </div>
+                  ))}
+                  <div style={{ gridColumn: "1 / -1" }}>
+                    <button
+                      onClick={handleReferralSubmit}
+                      disabled={!referralForm.name || !referralForm.phone || referralSending}
+                      className="btn-primary"
+                      style={{ background: (!referralForm.name || !referralForm.phone) ? "#e0e0e0" : "#2a7d5f", color: (!referralForm.name || !referralForm.phone) ? "#aaa" : "#fff", border: "none", padding: "14px 40px", fontSize: 14, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                      {referralSending ? "送信中..." : "送信する →"}
+                    </button>
+                    <p style={{ fontSize: 11, color: "#ccc", marginTop: 8, fontWeight: 300 }}>※ いただいた情報は紹介制度の手続き目的のみに使用します</p>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}
