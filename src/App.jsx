@@ -384,18 +384,57 @@ export default function App() {
           <div className="fade-in" style={{ maxWidth: 900, margin: "0 auto", padding: "5rem 1.5rem" }}>
 
             {/* ヒーロー説明 */}
-            <div style={{ background: "#f2ede8", border: "1px solid #e2e8f0", padding: "36px 32px", marginBottom: 40, borderLeft: "4px solid #2a7d5f" }}>
-              <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 12 }}>ICHIJO CONSULTING</p>
-              <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 28, fontWeight: 500, marginBottom: 16, color: "#1a1a2e", lineHeight: 1.6 }}>
-                投資家パパ × 子育てママによる<br />一条工務店 施主コンサル
-              </h1>
-              <p style={{ fontSize: 14, color: "#5a6478", fontWeight: 300, lineHeight: 2, marginBottom: 20 }}>
-                良いことも悪いことも、経験者だから言える本音をお伝えします。調停で和解を勝ち取ったパパと、2人の子どもを育てるママが、家づくり・トラブル・お金のことをサポートします。
-              </p>
-              <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                <span style={{ fontSize: 13, color: "#2a7d5f", fontWeight: 400 }}>✓ 全サービス 30分 ¥3,000</span>
-                <span style={{ fontSize: 13, color: "#2a7d5f", fontWeight: 400 }}>✓ PayPay払い</span>
-                <span style={{ fontSize: 13, color: "#2a7d5f", fontWeight: 400 }}>✓ Zoom / Google Meet</span>
+            <div style={{ marginBottom: 40 }}>
+              <div style={{ textAlign: "center", marginBottom: 24 }}>
+                <p style={{ fontSize: 11, color: "#2a7d5f", letterSpacing: 3, fontWeight: 500, marginBottom: 8 }}>ICHIJO CONSULTING</p>
+                <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 26, fontWeight: 500, color: "#1a1a2e" }}>投資家パパ × 子育てママによる一条工務店 施主コンサル</h1>
+                <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 10, fontWeight: 300 }}>全サービス 30分 ¥3,000 ／ PayPay払い ／ Zoom・Google Meet</p>
+              </div>
+
+              <div className="profile-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                {/* パパ */}
+                <div style={{ background: "#f2ede8", border: "1px solid #e2e8f0", padding: "28px 24px", borderTop: "3px solid #2a7d5f" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                    <div style={{ width: 44, height: 44, background: "#e6f4ee", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>👤</div>
+                    <div>
+                      <div style={{ fontSize: 15, fontWeight: 500, color: "#1a1a2e" }}>パパ（五十嵐）</div>
+                      <div style={{ fontSize: 11, color: "#2a7d5f", fontWeight: 400 }}>FP資格 / 個人投資家</div>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {["打ち合わせの進め方", "コスパ・おすすめ設備", "不安なことの相談", "トラブル・調停対応", "住み心地・実体験", "株・資産形成"].map(t => (
+                      <div key={t} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8 }}>
+                        <span style={{ color: "#2a7d5f" }}>✓</span>{t}
+                      </div>
+                    ))}
+                  </div>
+                  <button onClick={() => handleConsultClick("パパ")}
+                    style={{ marginTop: 20, width: "100%", background: "#2a7d5f", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                    📅 パパに相談する
+                  </button>
+                </div>
+
+                {/* ママ */}
+                <div style={{ background: "#f2ede8", border: "1px solid #e2e8f0", padding: "28px 24px", borderTop: "3px solid #3a9e7a" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                    <div style={{ width: 44, height: 44, background: "#e6f4ee", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20 }}>👤</div>
+                    <div>
+                      <div style={{ fontSize: 15, fontWeight: 500, color: "#1a1a2e" }}>ママ</div>
+                      <div style={{ fontSize: 11, color: "#3a9e7a", fontWeight: 400 }}>主婦 / 4歳・6歳子育て中</div>
+                    </div>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    {["キッチンの使い勝手", "子育て中の家づくり", "子育てしながらの家事", "家事動線・収納", "おすすめ設備・オプション", "ママ目線のリアル"].map(t => (
+                      <div key={t} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8 }}>
+                        <span style={{ color: "#3a9e7a" }}>✓</span>{t}
+                      </div>
+                    ))}
+                  </div>
+                  <button onClick={() => handleConsultClick("ママ")}
+                    style={{ marginTop: 20, width: "100%", background: "#3a9e7a", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
+                    📅 ママに相談する
+                  </button>
+                </div>
               </div>
             </div>
 
