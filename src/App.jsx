@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1cWkXiCtMbzt9LG9CFgs2WxZ1JbL5ll7a1iS9bRpWpc3WNFBGGnIUxAb4c_jYrXroMw/exec";
+const INSTAGRAM_URL = "https://www.instagram.com/"; // ← 開設後にURLを変更してください
 const CALENDAR_URL = "https://calendar.app.google/o7mArhfZ9icHBu5b7";
 const MEET_URL = "https://meet.google.com/mfn-xjkn-eqm";
 
-const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株のお話"];
+const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株のお話", "照明計画相談", "壁紙・クロス計画相談"];
 const TOPICS_BY_SERVICE = {
   "家づくり相談": ["間取り", "オプション", "見積もり", "土地・外構", "契約・手続き", "住み心地", "その他"],
   "トラブル相談": ["施工不具合", "アフターサービス", "営業対応", "近隣トラブル", "その他"],
@@ -19,7 +20,7 @@ const SERVICES = [
   {
     id: "homebuilding", num: "01", title: "家づくり相談", sub: "HOME BUILDING", icon: "🏠",
     tagline: "後悔しない家づくりを、経験者と一緒に。",
-    desc: "間取り・オプション・見積もり・契約など、一条工務店での家づくり全般を相談できます。ZoomではスマホのカメラでI-CUBEの実際の室内・設備をリアルタイムでご案内します。",
+    desc: "忖度なし。我が家をまるごと見せながら、本音でお答えします。WEB入居宅訪問はテンプレ質問が多く聞きたいことが聞けなかったり、細かい部分はわからなかったり、営業さんの前では聞けないことも多いですよね。マンツーマンだから、何でも聞いてください。間取り・オプション・見積もり・契約など、一条工務店での家づくり全般を相談できます。",
     points: ["間取り・動線・収納のアドバイス", "本当に必要なオプションの仕分け", "見積もりの見方・交渉ポイント", "スマホカメラで実際の我が家をZoomご案内"],
   },
   {
@@ -45,6 +46,18 @@ const SERVICES = [
     tagline: "FP資格保有の投資家と、投資の基礎や資産形成について気軽に話しませんか。",
     desc: "FP資格を持つ個人投資家として、投資の始め方・NISAの仕組み・株や投資信託の基礎知識などをわかりやすくお伝えします。※投資助言・銘柄推奨は行いません。",
     points: ["投資の始め方・口座開設の手順", "NISA・株・投資信託の基礎知識", "資産形成の考え方", "投資家との気軽な雑談"],
+  },
+  {
+    id: "lighting", num: "06", title: "照明計画相談", sub: "LIGHTING PLAN", icon: "💡",
+    tagline: "後悔しやすい照明計画を、経験者と一緒に考えよう。",
+    desc: "ダウンライトの位置・数・スイッチの配置は、住んでみて初めて後悔することが多いポイントです。実際の我が家の照明を見せながら、失敗しない照明計画のアドバイスをします。",
+    points: ["ダウンライトの配置・数の考え方", "スイッチ・調光の位置決め", "リビング・寝室・キッチンの照明", "実際の我が家の照明を見せながら解説"],
+  },
+  {
+    id: "wallpaper", num: "07", title: "壁紙・クロス計画相談", sub: "WALLPAPER PLAN", icon: "🎨",
+    tagline: "選びすぎて沼にはまる前に、経験者に相談しよう。",
+    desc: "壁紙・アクセントクロス選びは選択肢が多すぎて沼にはまりがちです。実際の我が家のクロスを見せながら、後悔しない選び方・アクセントの入れ方をアドバイスします。",
+    points: ["アクセントクロスの選び方・入れ方", "部屋別のクロスの考え方", "実際の我が家のクロスを見せながら解説", "後悔しないための注意ポイント"],
   },
 ];
 
@@ -162,7 +175,7 @@ export default function App() {
 
   const navItems = [["service", "サービス"], ["referral_page", "紹介制度"], ["profile", "プロフィール"], ["faq", "よくある質問"]];
 
-  const go = (v) => { setView(v === "top" ? "service" : v); setMenuOpen(false); };
+  const go = (v) => { const next = v === "top" ? "service" : v; setView(next); setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
 
   return (
     <div style={{ fontFamily: "'Noto Sans JP', sans-serif", background: "#e8e2d9", color: "#1a1a2e", minHeight: "100vh" }}>
@@ -187,6 +200,14 @@ export default function App() {
                 {label}
               </span>
             ))}
+<a href={INSTAGRAM_URL} target="_blank" rel="noreferrer"
+              style={{ fontSize: 13, fontWeight: 400, color: "#5a6478", textDecoration: "none", display: "flex", alignItems: "center", gap: 4 }}>
+              📷 Instagram
+            </a>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)", color: "#fff", textDecoration: "none", fontSize: 18 }}>
+              📷
+            </a>
             <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="btn-primary"
               style={{ background: "#4a6274", color: "#fff", padding: "8px 20px", fontSize: 13, textDecoration: "none", fontWeight: 500, borderRadius: 2 }}>
               予約する
@@ -387,7 +408,7 @@ export default function App() {
             <div style={{ marginBottom: 40 }}>
               <div style={{ textAlign: "center", marginBottom: 24 }}>
                 <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 8 }}>ICHIJO CONSULTING</p>
-                <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 26, fontWeight: 500, color: "#1a1a2e" }}>投資家パパ × 子育てママによる一条工務店 施主コンサル</h1>
+                <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 26, fontWeight: 500, color: "#1a1a2e" }}>投資家パパ × 子育てママ<br />一条工務店相談サービス</h1>
                 <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 10, fontWeight: 300 }}>全サービス 30分 ¥3,000 ／ PayPay払い ／ Zoom・Google Meet</p>
               </div>
 
@@ -402,7 +423,7 @@ export default function App() {
                     </div>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                    {["打ち合わせの進め方", "コスパ・おすすめ設備", "不安なことの相談", "トラブル・調停対応", "住み心地・実体験", "株・資産形成"].map(t => (
+                    {["打ち合わせの進め方", "コスパ・おすすめ設備", "住み心地・実体験", "月々の電気代・売電額", "株・資産形成"].map(t => (
                       <div key={t} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8 }}>
                         <span style={{ color: "#4a6274" }}>✓</span>{t}
                       </div>
@@ -424,7 +445,7 @@ export default function App() {
                     </div>
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                    {["キッチンの使い勝手", "子育て中の家づくり", "子育てしながらの家事", "家事動線・収納", "おすすめ設備・オプション", "ママ目線のリアル"].map(t => (
+                    {["キッチンの使い勝手", "子育てしながらの家事", "家事動線・収納", "おすすめ設備・オプション", "ママ目線のリアル"].map(t => (
                       <div key={t} style={{ fontSize: 13, color: "#5a6478", fontWeight: 300, display: "flex", gap: 8 }}>
                         <span style={{ color: "#b5694a" }}>✓</span>{t}
                       </div>
@@ -475,9 +496,9 @@ export default function App() {
                       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
                         <button onClick={() => handleConsultClick("パパ")}
                           style={{ background: "#4a6274", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
-                          📅 {s.id === "homebuilding" ? "パパに相談する" : "相談する"}
+                          📅 {s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper" ? "パパに相談する" : "相談する"}
                         </button>
-                        {s.id === "homebuilding" && (
+                        {(s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper") && (
                           <button onClick={() => handleConsultClick("ママ")}
                             style={{ background: "#b5694a", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                             📅 ママに相談する
@@ -727,6 +748,10 @@ export default function App() {
               <div style={{ fontSize: 14, fontWeight: 500, color: "#fff", marginBottom: 4 }}>一条コンサル</div>
               <div style={{ fontSize: 11, color: "#5a6478", fontWeight: 300 }}>ICHIJO CONSULTING</div>
             </div>
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer"
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)", color: "#fff", textDecoration: "none", fontSize: 16 }}>
+              📷
+            </a>
             <p style={{ fontSize: 11, color: "#5a6478", fontWeight: 300 }}><span onClick={() => go('privacy')} style={{ color: "#94a3b8", cursor: "pointer", borderBottom: "1px solid #5a6478", paddingBottom: 1, marginRight: 16 }}>プライバシーポリシー</span>© 2026 五十嵐 / 一条コンサル. All rights reserved.</p>
           </div>
         </footer>
