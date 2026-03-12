@@ -24,40 +24,40 @@ const SERVICES = [
     points: ["間取り・動線・収納のアドバイス", "本当に必要なオプションの仕分け", "見積もりの見方・交渉ポイント", "スマホカメラで実際の我が家をZoomご案内"],
   },
   {
-    id: "trouble", num: "02", title: "トラブル相談", sub: "TROUBLE SUPPORT", icon: "⚖️",
-    tagline: "不具合・対応不備。一人で抱え込まないで。",
-    desc: "施工不具合や一条工務店との対応トラブルに悩む方へ。実際に不具合を発見し、調停で和解を勝ち取った経験をもとに、具体的な対処法をアドバイスします。",
-    points: ["不具合の記録・証拠の残し方", "一条工務店への効果的な交渉術", "調停・法的手段の検討", "実体験をもとにした具体的アドバイス"],
-  },
-  {
-    id: "mediation", num: "03", title: "調停相談", sub: "MEDIATION GUIDE", icon: "📋",
-    tagline: "弁護士なしで調停を戦い、和解を勝ち取った経験者が教える。",
-    desc: "一条工務店との不具合トラブルを、弁護士を使わず自力で調停申立を行い、和解を勝ち取った経験をもとに、調停の始め方から当日の進め方まで丁寧にサポートします。",
-    points: ["調停申立書の書き方", "必要書類・証拠の準備方法", "調停当日の立ち振る舞い", "和解交渉のポイント"],
-  },
-  {
-    id: "exterior", num: "04", title: "外構相談", sub: "EXTERIOR DESIGN", icon: "🌿",
+    id: "exterior", num: "02", title: "外構相談", sub: "EXTERIOR DESIGN", icon: "🌿",
     tagline: "業者選びからDIYまで。100坪の外構を自分で作り上げた経験者が教える。",
     desc: "外構業者の探し方・見積もり比較・DIYでできること・トラブル対応まで、100坪の土地の外構を自分で手がけた経験をもとにアドバイスします。",
     points: ["外構業者の選び方・比較ポイント", "DIYでコストを抑える方法", "一条工務店との外構工事の調整", "外構トラブルの対処法"],
   },
   {
-    id: "stock", num: "05", title: "株のお話", sub: "INVESTMENT TALK", icon: "📈",
-    tagline: "FP資格保有の投資家と、投資の基礎や資産形成について気軽に話しませんか。",
-    desc: "FP資格を持つ個人投資家として、投資の始め方・NISAの仕組み・株や投資信託の基礎知識などをわかりやすくお伝えします。※投資助言・銘柄推奨は行いません。",
-    points: ["投資の始め方・口座開設の手順", "NISA・株・投資信託の基礎知識", "資産形成の考え方", "投資家との気軽な雑談"],
-  },
-  {
-    id: "lighting", num: "06", title: "照明計画相談", sub: "LIGHTING PLAN", icon: "💡",
+    id: "lighting", num: "03", title: "照明計画相談", sub: "LIGHTING PLAN", icon: "💡",
     tagline: "後悔しやすい照明計画を、経験者と一緒に考えよう。",
     desc: "ダウンライトの位置・数・スイッチの配置は、住んでみて初めて後悔することが多いポイントです。実際の我が家の照明を見せながら、失敗しない照明計画のアドバイスをします。",
     points: ["ダウンライトの配置・数の考え方", "スイッチ・調光の位置決め", "リビング・寝室・キッチンの照明", "実際の我が家の照明を見せながら解説"],
   },
   {
-    id: "wallpaper", num: "07", title: "壁紙・クロス計画相談", sub: "WALLPAPER PLAN", icon: "🎨",
+    id: "wallpaper", num: "04", title: "壁紙・クロス計画相談", sub: "WALLPAPER PLAN", icon: "🎨",
     tagline: "選びすぎて沼にはまる前に、経験者に相談しよう。",
     desc: "壁紙・アクセントクロス選びは選択肢が多すぎて沼にはまりがちです。実際の我が家のクロスを見せながら、後悔しない選び方・アクセントの入れ方をアドバイスします。",
     points: ["アクセントクロスの選び方・入れ方", "部屋別のクロスの考え方", "実際の我が家のクロスを見せながら解説", "後悔しないための注意ポイント"],
+  },
+  {
+    id: "trouble", num: "05", title: "トラブル相談", sub: "TROUBLE SUPPORT", icon: "⚖️",
+    tagline: "不具合・対応不備。一人で抱え込まないで。",
+    desc: "施工不具合や一条工務店との対応トラブルに悩む方へ。実際に不具合を発見し、調停で和解を勝ち取った経験をもとに、具体的な対処法をアドバイスします。",
+    points: ["不具合の記録・証拠の残し方", "一条工務店への効果的な交渉術", "調停・法的手段の検討", "実体験をもとにした具体的アドバイス"],
+  },
+  {
+    id: "mediation", num: "06", title: "調停相談", sub: "MEDIATION GUIDE", icon: "📋",
+    tagline: "弁護士なしで調停を戦い、和解を勝ち取った経験者が教える。",
+    desc: "一条工務店との不具合トラブルを、弁護士を使わず自力で調停申立を行い、和解を勝ち取った経験をもとに、調停の始め方から当日の進め方まで丁寧にサポートします。",
+    points: ["調停申立書の書き方", "必要書類・証拠の準備方法", "調停当日の立ち振る舞い", "和解交渉のポイント"],
+  },
+  {
+    id: "stock", num: "07", title: "株のお話", sub: "INVESTMENT TALK", icon: "📈",
+    tagline: "FP資格保有の投資家と、投資の基礎や資産形成について気軽に話しませんか。",
+    desc: "FP資格を持つ個人投資家として、投資の始め方・NISAの仕組み・株や投資信託の基礎知識などをわかりやすくお伝えします。※投資助言・銘柄推奨は行いません。",
+    points: ["投資の始め方・口座開設の手順", "NISA・株・投資信託の基礎知識", "資産形成の考え方", "投資家との気軽な雑談"],
   },
 ];
 
@@ -97,7 +97,7 @@ export default function App() {
     setForm({ name: "", email: "", phone: "", consultant: "", serviceType: "", topic: "", budget: "", timeline: "", message: "" });
   };
 
-  const handleConsultClick = async (consultant) => {
+  const handleConsultClick = async (consultant, serviceName) => {
     try {
       await fetch(SCRIPT_URL, {
         method: "POST", mode: "no-cors",
@@ -105,6 +105,7 @@ export default function App() {
         body: JSON.stringify({
           type: "consult_click",
           consultant,
+          serviceName,
           date: new Date().toISOString().split("T")[0],
           time: new Date().toLocaleTimeString("ja-JP"),
         })
@@ -168,6 +169,7 @@ export default function App() {
       .mobile-btn { display: flex !important; }
       .story-cta { flex-direction: column !important; }
       .story-grid { grid-template-columns: 1fr !important; }
+      .services-grid-2col { grid-template-columns: 1fr !important; }
       .stats-bar { gap: 20px !important; }
       .hero-cards-wrap { flex-direction: row !important; }
     }
@@ -429,7 +431,7 @@ export default function App() {
                       </div>
                     ))}
                   </div>
-                  <button onClick={() => handleConsultClick("パパ")}
+                  <button onClick={() => handleConsultClick("パパ", s.title)}
                     style={{ marginTop: 20, width: "100%", background: "#4a6274", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                     📅 パパに相談する
                   </button>
@@ -451,7 +453,7 @@ export default function App() {
                       </div>
                     ))}
                   </div>
-                  <button onClick={() => handleConsultClick("ママ")}
+                  <button onClick={() => handleConsultClick("ママ", s.title)}
                     style={{ marginTop: 20, width: "100%", background: "#b5694a", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                     📅 ママに相談する
                   </button>
@@ -459,7 +461,7 @@ export default function App() {
               </div>
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 48 }}>
+            <div className="services-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
               {SERVICES.map((s) => (
                 <div key={s.id} style={{ background: "#ede8e0", border: "1px solid #d8d0c5" }}>
                   {/* 常時表示：タイトル行 */}
@@ -494,12 +496,12 @@ export default function App() {
                         ))}
                       </div>
                       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                        <button onClick={() => handleConsultClick("パパ")}
+                        <button onClick={() => handleConsultClick("パパ", s.title)}
                           style={{ background: "#4a6274", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                           📅 {s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper" ? "パパに相談する" : "相談する"}
                         </button>
                         {(s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper") && (
-                          <button onClick={() => handleConsultClick("ママ")}
+                          <button onClick={() => handleConsultClick("ママ", s.title)}
                             style={{ background: "#b5694a", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                             📅 ママに相談する
                           </button>
