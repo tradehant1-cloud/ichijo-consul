@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1cWkXiCtMbzt9LG9CFgs2WxZ1JbL5ll7a1iS9bRpWpc3WNFBGGnIUxAb4c_jYrXroMw/exec";
+const STRIPE_URL = "https://buy.stripe.com/test_4gM9AS7nw5Ii9Ew5HZ33W00"; // 本番時はURLを変更
 const INSTAGRAM_URL = "https://www.instagram.com/"; // ← 開設後にURLを変更してください
 const CALENDAR_URL = "https://calendar.app.google/o7mArhfZ9icHBu5b7";
 const MEET_URL = "https://meet.google.com/mfn-xjkn-eqm";
@@ -112,6 +113,10 @@ export default function App() {
       });
     } catch (e) { console.error(e); }
     window.open(CALENDAR_URL, "_blank");
+  };
+
+  const handlePayment = () => {
+    window.open(STRIPE_URL, "_blank");
   };
 
   const handleReferralSubmit = async () => {
@@ -265,7 +270,7 @@ export default function App() {
                       サービスを見る →
                     </button>
                   </div>
-                  <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 12, fontWeight: 300 }}>全サービス 30分 ¥3,000 / PayPay払い</p>
+                  <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 12, fontWeight: 300 }}>全サービス 30分 ¥3,000 / PayPay・クレカ払い</p>
                 </div>
 
                 {/* 右：紹介制度ミニフォーム */}
@@ -389,7 +394,7 @@ export default function App() {
                 <p style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 3, marginBottom: 16 }}>FIRST STEP</p>
                 <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 32, fontWeight: 500, color: "#fff", marginBottom: 16 }}>まずはお気軽に相談から</h2>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", fontWeight: 300, lineHeight: 2, marginBottom: 36 }}>
-                  カレンダーから直接日程を予約できます。<br />全サービス 30分 ¥3,000 / PayPay払い
+                  カレンダーから直接日程を予約できます。<br />全サービス 30分 ¥3,000 / PayPay・クレカ払い
                 </p>
                 <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
                   style={{ background: "#ede8e0", color: "#4a6274", padding: "16px 48px", fontSize: 15, textDecoration: "none", fontWeight: 600, display: "inline-block" }}>
@@ -409,7 +414,7 @@ export default function App() {
               <div style={{ textAlign: "center", marginBottom: 24 }}>
                 <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 8 }}>ICHIJO CONSULTING</p>
                 <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 26, fontWeight: 500, color: "#1a1a2e" }}>投資家パパ × 子育てママ<br />一条工務店相談サービス</h1>
-                <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 10, fontWeight: 300 }}>全サービス 30分 ¥3,000 ／ PayPay払い ／ Zoom・Google Meet</p>
+                <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 10, fontWeight: 300 }}>全サービス 30分 ¥3,000 ／ PayPay・クレカ払い ／ Zoom・Google Meet</p>
               </div>
 
               <div className="profile-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -493,7 +498,7 @@ export default function App() {
                           </div>
                         ))}
                       </div>
-                      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                      <div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
                         <button onClick={() => handleConsultClick("パパ", s.title)}
                           style={{ background: "#4a6274", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                           📅 {s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper" ? "パパに相談する" : "相談する"}
@@ -504,6 +509,10 @@ export default function App() {
                             📅 ママに相談する
                           </button>
                         )}
+                        <a href={STRIPE_URL} target="_blank" rel="noreferrer"
+                          style={{ background: "#635bff", color: "#fff", padding: "10px 20px", fontSize: 13, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
+                          💳 カードで支払う
+                        </a>
                       </div>
                     </div>
                   )}
@@ -515,7 +524,7 @@ export default function App() {
             <div style={{ background: "#e4ddd3", border: "1px solid #e2e8f0", padding: "32px", marginBottom: 32 }}>
               <h3 style={{ fontSize: 16, fontWeight: 500, marginBottom: 24, color: "#1a1a2e" }}>相談の流れ</h3>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                {["Googleカレンダーで日程を直接予約", "予約確認メールが届きます", "日程確定後、PayPay ID（tradehant1）にお支払い（¥3,000）", "ZoomまたはGoogle Meetで相談（30分）"].map((step, i) => (
+                {["Googleカレンダーで日程を直接予約", "予約確認メールが届きます", "日程確定後、PayPay（tradehant1）またはクレジットカードにてお支払い（¥3,000）", "ZoomまたはGoogle Meetで相談（30分）"].map((step, i) => (
                   <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                     <div style={{ width: 28, height: 28, background: "#4a6274", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 500, flexShrink: 0 }}>
                       {i + 1}
