@@ -471,26 +471,40 @@ export default function App() {
               </div>
             </div>
 
-            <div className="services-grid-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 2, marginBottom: 48 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 48 }}>
               {SERVICES.map((s) => (
                 <div key={s.id} style={{ background: "#ede8e0", border: "1px solid #d8d0c5" }}>
                   {/* 常時表示：タイトル行 */}
-                  <div
-                    onClick={() => setOpenService(openService === s.id ? null : s.id)}
-                    style={{ padding: "24px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer", gap: 16 }}>
-                    <div style={{ display: "flex", gap: 14, alignItems: "center" }}>
+                  <div style={{ padding: "24px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16 }}>
+                    <div
+                      onClick={() => setOpenService(openService === s.id ? null : s.id)}
+                      style={{ display: "flex", gap: 14, alignItems: "center", cursor: "pointer", flex: 1 }}>
                       <span style={{ fontSize: 26 }}>{s.icon}</span>
                       <div>
                         <h3 style={{ fontSize: 16, fontWeight: 500, color: "#1a1a2e", marginBottom: 2 }}>{s.title}</h3>
                         <p style={{ fontSize: 12, color: "#5a6478", fontWeight: 300 }}>{s.tagline}</p>
                       </div>
                     </div>
-                    <div style={{ display: "flex", alignItems: "center", gap: 16, flexShrink: 0 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, flexShrink: 0 }}>
+                      {/* パパ価格 */}
                       <div style={{ textAlign: "right" }}>
+                        <div style={{ fontSize: 13, color: "#94a3b8", fontWeight: 300 }}>パパ</div>
                         <div style={{ fontSize: 18, fontWeight: 500, color: "#4a6274" }}>¥3,000</div>
                         <div style={{ fontSize: 10, color: "#94a3b8" }}>30分</div>
                       </div>
-                      <span style={{ fontSize: 18, color: "#4a6274", transition: "transform 0.2s", transform: openService === s.id ? "rotate(45deg)" : "none", display: "block" }}>+</span>
+                      {/* ママ価格（4サービスのみ） */}
+                      {["homebuilding", "exterior", "lighting", "wallpaper"].includes(s.id) && (
+                        <button
+                          onClick={() => handleConsultClick("ママ", s.title)}
+                          style={{ background: "#b5694a", color: "#fff", border: "none", padding: "8px 14px", fontSize: 12, cursor: "pointer", fontFamily: "inherit", fontWeight: 500, lineHeight: 1.4, textAlign: "center" }}>
+                          <div style={{ fontSize: 10, fontWeight: 300 }}>ママ</div>
+                          <div>¥2,000</div>
+                          <div style={{ fontSize: 10, fontWeight: 300 }}>30分</div>
+                        </button>
+                      )}
+                      <span
+                        onClick={() => setOpenService(openService === s.id ? null : s.id)}
+                        style={{ fontSize: 18, color: "#4a6274", transition: "transform 0.2s", transform: openService === s.id ? "rotate(45deg)" : "none", display: "block", cursor: "pointer" }}>+</span>
                     </div>
                   </div>
 
@@ -510,12 +524,7 @@ export default function App() {
                           style={{ background: "#4a6274", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
                           📅 {s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper" ? "パパに相談する" : "相談する"}
                         </button>
-                        {(s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper") && (
-                          <button onClick={() => handleConsultClick("ママ", s.title)}
-                            style={{ background: "#b5694a", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
-                            📅 ママに相談する ¥2,000
-                          </button>
-                        )}
+
                         <a href={STRIPE_URL} target="_blank" rel="noreferrer"
                           style={{ background: "#635bff", color: "#fff", padding: "10px 20px", fontSize: 13, textDecoration: "none", fontWeight: 500, display: "inline-block" }}>
                           💳 カードで支払う
