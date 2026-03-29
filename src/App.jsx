@@ -211,13 +211,13 @@ export default function App() {
           <nav className="nav-desktop" style={{ display: "flex", gap: 32, alignItems: "center" }}>
             {navItems.map(([id, label]) => (
               <span key={id} className="nav-link" onClick={() => go(id)}
-                style={{ fontSize: 13, fontWeight: 400, color: view === id ? "#4a6274" : "#5a6478", borderBottom: view === id ? "2px solid #2a7d5f" : "2px solid transparent", paddingBottom: 2, transition: "all 0.2s" }}>
+                style={{ fontSize: 15, fontWeight: 400, color: view === id ? "#4a6274" : "#5a6478", borderBottom: view === id ? "2px solid #2a7d5f" : "2px solid transparent", paddingBottom: 2, transition: "all 0.2s" }}>
                 {label}
               </span>
             ))}
 <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, textDecoration: "none" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 42, height: 42, textDecoration: "none" }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24">
                 <defs>
                   <radialGradient id="ig1" cx="30%" cy="107%" r="150%">
                     <stop offset="0%" stopColor="#fdf497"/>
@@ -233,7 +233,7 @@ export default function App() {
               </svg>
             </a>
             <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="btn-primary"
-              style={{ background: "#4a6274", color: "#fff", padding: "8px 20px", fontSize: 13, textDecoration: "none", fontWeight: 500, borderRadius: 2 }}>
+              style={{ background: "#4a6274", color: "#fff", padding: "10px 24px", fontSize: 15, textDecoration: "none", fontWeight: 500, borderRadius: 2 }}>
               予約する
             </a>
           </nav>
