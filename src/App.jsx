@@ -215,9 +215,20 @@ export default function App() {
               </span>
             ))}
 <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, borderRadius: "50%", background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)", color: "#fff", textDecoration: "none" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 36, height: 36, textDecoration: "none" }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                <defs>
+                  <radialGradient id="ig1" cx="30%" cy="107%" r="150%">
+                    <stop offset="0%" stopColor="#fdf497"/>
+                    <stop offset="10%" stopColor="#fdf497"/>
+                    <stop offset="30%" stopColor="#fd5949"/>
+                    <stop offset="60%" stopColor="#d6249f"/>
+                    <stop offset="90%" stopColor="#285AEB"/>
+                  </radialGradient>
+                </defs>
+                <rect x="1" y="1" width="22" height="22" rx="6" ry="6" fill="url(#ig1)"/>
+                <circle cx="12" cy="12" r="5" fill="none" stroke="#fff" strokeWidth="2"/>
+                <circle cx="17.8" cy="6.2" r="1.3" fill="#fff"/>
               </svg>
             </a>
             <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="btn-primary"
@@ -496,10 +507,9 @@ export default function App() {
                       {["homebuilding", "exterior", "lighting", "wallpaper"].includes(s.id) && (
                         <button
                           onClick={() => handleConsultClick("ママ", s.title)}
-                          style={{ background: "#b5694a", color: "#fff", border: "none", padding: "8px 14px", fontSize: 12, cursor: "pointer", fontFamily: "inherit", fontWeight: 500, lineHeight: 1.4, textAlign: "center" }}>
-                          <div style={{ fontSize: 10, fontWeight: 300 }}>ママ</div>
-                          <div>¥2,000</div>
-                          <div style={{ fontSize: 10, fontWeight: 300 }}>30分</div>
+                          style={{ background: "#b5694a", color: "#fff", border: "none", padding: "10px 18px", cursor: "pointer", fontFamily: "inherit", fontWeight: 500, lineHeight: 1.5, textAlign: "center" }}>
+                          <div style={{ fontSize: 11, fontWeight: 300, opacity: 0.85 }}>ママ / 30分</div>
+                          <div style={{ fontSize: 24, fontWeight: 700, letterSpacing: 1 }}>¥2,000</div>
                         </button>
                       )}
                       <span
@@ -774,9 +784,20 @@ export default function App() {
               <div style={{ fontSize: 11, color: "#5a6478", fontWeight: 300 }}>ICHIJO CONSULTING</div>
             </div>
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer"
-              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, borderRadius: "50%", background: "linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888)", color: "#fff", textDecoration: "none" }}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              style={{ display: "flex", alignItems: "center", justifyContent: "center", width: 32, height: 32, textDecoration: "none" }}>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+                <defs>
+                  <radialGradient id="ig2" cx="30%" cy="107%" r="150%">
+                    <stop offset="0%" stopColor="#fdf497"/>
+                    <stop offset="10%" stopColor="#fdf497"/>
+                    <stop offset="30%" stopColor="#fd5949"/>
+                    <stop offset="60%" stopColor="#d6249f"/>
+                    <stop offset="90%" stopColor="#285AEB"/>
+                  </radialGradient>
+                </defs>
+                <rect x="1" y="1" width="22" height="22" rx="6" ry="6" fill="url(#ig2)"/>
+                <circle cx="12" cy="12" r="5" fill="none" stroke="#fff" strokeWidth="2"/>
+                <circle cx="17.8" cy="6.2" r="1.3" fill="#fff"/>
               </svg>
             </a>
             <p style={{ fontSize: 11, color: "#5a6478", fontWeight: 300 }}><span onClick={() => go('privacy')} style={{ color: "#94a3b8", cursor: "pointer", borderBottom: "1px solid #5a6478", paddingBottom: 1, marginRight: 16 }}>プライバシーポリシー</span>© 2026 五十嵐 / 一条コンサル. All rights reserved.</p>
