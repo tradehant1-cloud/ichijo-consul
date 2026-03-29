@@ -6,11 +6,11 @@ const INSTAGRAM_URL = "https://www.instagram.com/"; // ← 開設後にURLを変
 const CALENDAR_URL = "https://calendar.app.google/o7mArhfZ9icHBu5b7";
 const MEET_URL = "https://meet.google.com/mfn-xjkn-eqm";
 
-const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停相談", "外構相談", "株の始め方相談", "NISA・株主優待相談", "照明計画相談", "壁紙・クロス計画相談"];
+const SERVICE_TYPES = ["家づくり相談", "トラブル相談", "調停・訴訟相談", "外構相談", "株の始め方相談", "NISA・株主優待相談", "照明計画相談", "壁紙・クロス計画相談"];
 const TOPICS_BY_SERVICE = {
   "家づくり相談": ["間取り", "オプション", "見積もり", "土地・外構", "契約・手続き", "住み心地", "その他"],
   "トラブル相談": ["施工不具合", "アフターサービス", "営業対応", "近隣トラブル", "その他"],
-  "調停相談": ["調停の始め方", "申立書の書き方", "当日の進め方", "和解交渉", "その他"],
+  "調停・訴訟相談": ["調停の始め方", "申立書の書き方", "当日の進め方", "和解交渉", "その他"],
   "外構相談": ["業者選び", "見積もり比較", "DIY相談", "トラブル対応", "その他"],
   "株の始め方相談": ["口座開設の手順", "証券会社の選び方", "最初の一歩の考え方", "その他"],
   "NISA・株主優待相談": ["NISAの使い方", "つみたて投資枠・成長投資枠", "株主優待の仕組み", "クロス取引の基本", "その他"],
@@ -50,10 +50,10 @@ const SERVICES = [
     points: ["不具合の記録・証拠の残し方", "一条工務店への効果的な交渉術", "調停・法的手段の検討", "実体験をもとにした具体的アドバイス"],
   },
   {
-    id: "mediation", num: "06", title: "調停相談", sub: "MEDIATION GUIDE", icon: "📋",
+    id: "mediation", num: "06", title: "調停・訴訟相談", sub: "MEDIATION & LAWSUIT", icon: "📋",
     tagline: "弁護士なしで調停を戦い、和解を勝ち取った経験者が教える。",
-    desc: "一条工務店との不具合トラブルを、弁護士を使わず自力で調停申立を行い、和解を勝ち取った経験をもとに、調停の始め方から当日の進め方まで丁寧にサポートします。",
-    points: ["調停申立書の書き方", "必要書類・証拠の準備方法", "調停当日の立ち振る舞い", "和解交渉のポイント"],
+    desc: "一条工務店との不具合トラブルを、弁護士を使わず自力で調停申立を行い、和解を勝ち取った経験をもとに、調停の始め方から当日の進め方・訴訟への移行まで丁寧にサポートします。",
+    points: ["調停申立書の書き方", "必要書類・証拠の準備方法", "調停当日の立ち振る舞い", "和解交渉・訴訟移行のポイント"],
   },
   {
     id: "stock_start", num: "07", title: "株の始め方相談", sub: "HOW TO START", icon: "📈",
@@ -277,7 +277,7 @@ export default function App() {
                       サービスを見る →
                     </button>
                   </div>
-                  <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 12, fontWeight: 300 }}>全サービス 30分 ¥3,000 / PayPay・クレカ払い</p>
+                  <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 12, fontWeight: 300 }}>パパ ¥3,000 / ママ ¥2,000 / PayPay・クレカ払い</p>
                 </div>
 
                 {/* 右：紹介制度ミニフォーム */}
@@ -401,7 +401,7 @@ export default function App() {
                 <p style={{ fontSize: 11, color: "rgba(255,255,255,0.6)", letterSpacing: 3, marginBottom: 16 }}>FIRST STEP</p>
                 <h2 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 32, fontWeight: 500, color: "#fff", marginBottom: 16 }}>まずはお気軽に相談から</h2>
                 <p style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", fontWeight: 300, lineHeight: 2, marginBottom: 36 }}>
-                  カレンダーから直接日程を予約できます。<br />全サービス 30分 ¥3,000 / PayPay・クレカ払い
+                  カレンダーから直接日程を予約できます。<br />パパ ¥3,000 / ママ ¥2,000 / PayPay・クレカ払い
                 </p>
                 <a href={CALENDAR_URL} target="_blank" rel="noreferrer"
                   style={{ background: "#ede8e0", color: "#4a6274", padding: "16px 48px", fontSize: 15, textDecoration: "none", fontWeight: 600, display: "inline-block" }}>
@@ -420,8 +420,8 @@ export default function App() {
             <div style={{ marginBottom: 40 }}>
               <div style={{ textAlign: "center", marginBottom: 24 }}>
                 <p style={{ fontSize: 11, color: "#4a6274", letterSpacing: 3, fontWeight: 500, marginBottom: 8 }}>ICHIJO CONSULTING</p>
-                <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 26, fontWeight: 500, color: "#1a1a2e" }}>投資家パパ × 子育てママ<br />一条工務店相談サービス</h1>
-                <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 10, fontWeight: 300 }}>全サービス 30分 ¥3,000 ／ PayPay・クレカ払い ／ Zoom・Google Meet</p>
+                <h1 style={{ fontFamily: "'Shippori Mincho', serif", fontSize: 26, fontWeight: 500, color: "#1a1a2e" }}>こだわりパパ × おおらかママ<br />忖度なしの家づくり相談</h1>
+                <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 10, fontWeight: 300 }}>パパ 30分 ¥3,000 ／ ママ 30分 ¥2,000 ／ PayPay・クレカ払い ／ Zoom・Google Meet</p>
               </div>
 
               <div className="profile-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -465,7 +465,7 @@ export default function App() {
                   </div>
                   <button onClick={() => handleConsultClick("ママ", s.title)}
                     style={{ marginTop: 20, width: "100%", background: "#b5694a", color: "#fff", border: "none", padding: "10px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
-                    📅 ママに相談する
+                    📅 ママに相談する ¥2,000
                   </button>
                 </div>
               </div>
@@ -513,7 +513,7 @@ export default function App() {
                         {(s.id === "homebuilding" || s.id === "lighting" || s.id === "wallpaper") && (
                           <button onClick={() => handleConsultClick("ママ", s.title)}
                             style={{ background: "#b5694a", color: "#fff", border: "none", padding: "10px 20px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", fontWeight: 500 }}>
-                            📅 ママに相談する
+                            📅 ママに相談する ¥2,000
                           </button>
                         )}
                         <a href={STRIPE_URL} target="_blank" rel="noreferrer"
@@ -575,7 +575,7 @@ export default function App() {
               {/* ママ */}
               <div className="profile-card" style={{ border: "1px solid #e2e8f0", padding: "36px 32px", borderTop: "3px solid #3a9e7a" }}>
                 <div style={{ width: 80, height: 80, background: "#f2ece8", borderRadius: "50%", marginBottom: 16, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 32 }}>👤</div>
-                <div style={{ fontSize: 20, fontWeight: 500, marginBottom: 4, color: "#1a1a2e" }}>ママ</div>
+                <div style={{ fontSize: 20, fontWeight: 500, marginBottom: 4, color: "#1a1a2e" }}>おおらかママ</div>
                 <div style={{ fontSize: 12, color: "#b5694a", fontWeight: 400, marginBottom: 20 }}>主婦 / 4歳・6歳子育て中</div>
                 <p style={{ fontSize: 14, lineHeight: 2, fontWeight: 300, color: "#5a6478", marginBottom: 24 }}>
                   パートをしながら2人の子どもを育てる普通のママ。キッチンや家事動線、子育てしやすい間取りにこだわりました。プロではないからこそ、同じ目線でリアルな感想をお伝えします。
