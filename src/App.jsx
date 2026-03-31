@@ -261,10 +261,10 @@ export default function App() {
     .footer-insta { color: rgba(255,255,255,0.4); transition: color 0.2s; display: flex; }
     .footer-insta:hover { color: #fff; }
     .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .how-step { padding: 20px 24px; border-right: 1px solid #f0ede8; }
+    .how-step { padding: 14px 20px; border-right: 1px solid #f0ede8; }
     .how-step:last-child { border-right: none; }
-    .how-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #e8e2d8; font-weight: 600; margin-bottom: 8px; }
-    .how-text { font-size: 13px; color: #444; line-height: 1.8; }
+    .how-num { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #e8e2d8; font-weight: 600; margin-bottom: 4px; }
+    .how-text { font-size: 12px; color: #444; line-height: 1.6; }
     @media (max-width: 768px) {
       .header-inner { padding: 0 20px; }
       .nav-links { display: none; }
@@ -332,7 +332,7 @@ export default function App() {
                 一条という大企業に一人で訴訟まで戦い抜いた物言う施主がアドバイス。
               </p>
               <p className="page-desc">
-                家づくりが好きだからこそ、後悔したことを正直に伝えたい。楽しいはずの家づくりが、ずっと辛かった。そんな経験をした施主だからこそ、少しでもあなたの家づくりの助けになりたい。そんな想いで始めたのがこのサービスです。一条の闇も、聞けちゃうかもしれません。
+                家づくりが好きだからこそ、楽しいはずの家づくりが辛いのが許せなかった。さらに不具合で訴訟まで経験した。家づくりは楽しくもっと簡単にできるべき！不正は許せない！そんな一人で大企業と戦った施主が、相談を通じて家づくりが少しでも楽になったり、不安な気持ちが解消されることを目的としています。是非お気軽にご相談ください。ママのリアル主婦目線相談もやってます。
               </p>
             </div>
           </div>
@@ -431,8 +431,8 @@ export default function App() {
               </div>
 
               {/* 相談の流れ */}
+              <h3 style={{ fontSize: 16, fontWeight: 500, color: "#1a1e2e", letterSpacing: 1, marginBottom: 12 }}>相談の流れ</h3>
               <div style={{ background: "#fff", borderLeft: "4px solid #c9a96e", marginBottom: 0 }}>
-
                 <div className="how-grid">
                   {["Googleカレンダーで日程を予約", "予約確認メールが届く", "PayPay / カードでお支払い（¥3,000）", "Zoom / Google Meetで相談（30分）"].map((step, i) => (
                     <div key={i} className="how-step">
