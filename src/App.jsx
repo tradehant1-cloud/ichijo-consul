@@ -385,7 +385,7 @@ export default function App() {
                         <div className="service-hint-text">{openService === s.id ? "▲ 閉じる" : "▼ 詳細・予約を見る"}</div>
                       </div>
                       <div className="service-prices">
-                        <button className="btn-mama-badge" style={{ background: "#1a1e2e" }} onClick={e => { e.stopPropagation(); handleConsultClick("パパ", s.title); }}>
+                        <button className="btn-mama-badge" style={{ background: "#1a1e2e", color: "#fff" }} onClick={e => { e.stopPropagation(); handleConsultClick("パパ", s.title); }}>
                           <span style={{ fontSize: 10, fontWeight: 400, display: "block", letterSpacing: 1 }}>パパ / 30分</span>
                           <span className="btn-mama-badge-price">¥3,000</span>
                         </button>
