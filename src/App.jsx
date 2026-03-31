@@ -70,6 +70,8 @@ const FAQS = [
   { q: "調停相談は弁護士の代わりになりますか？", a: "法律の専門家ではありませんが、実際に一人で調停を行い和解した経験をもとにアドバイスします。法的判断が必要な場合は弁護士への相談をお勧めします。" },
   { q: "相談料金はいつ支払いますか？", a: "日程確定後にPayPay（ID: tradehant1）またはクレジットカードにてお支払いをお願いします。" },
   { q: "一条工務店以外の相談はできますか？", a: "トラブル・調停相談については一条工務店以外のハウスメーカーでもご相談いただけます。ただし他のハウスメーカーは仕様が異なるためお答えできない場合もありますが、ご了承いただけるようであればお気軽にご相談ください。" },
+  { q: "料金はいつ支払いますか？", a: "予約枠をご確定いただいた後、事前にPayPay（ID: tradehant1）またはクレジットカードにてお支払いください。" },
+  { q: "相談は何回でもできますか？", a: "はい、何度でもご相談いただけます。1回30分の枠を予約していただければ、その都度ご相談いただけます。" },
 ];
 
 const Icon = ({ type, size = 22 }) => {
@@ -173,13 +175,13 @@ export default function App() {
     .mobile-toggle { display: none; background: none; border: none; color: #fff; }
     .mobile-menu { display: none; background: #1a1e2e; border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 40px; flex-direction: column; gap: 20px; }
     .mobile-menu.open { display: flex; }
-    .page-hero { background: #1a1e2e; padding: 72px 40px 56px; position: relative; overflow: hidden; }
+    .page-hero { background: linear-gradient(160deg, #0f1320 0%, #1a1e2e 50%, #0f1320 100%); padding: 72px 40px 56px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,169,110,0.2); }
     .page-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.06) 100%); }
     .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
     .page-label { font-size: 10px; letter-spacing: 4px; color: #c9a96e; margin-bottom: 20px; }
-    .page-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500; color: #fff; line-height: 1.3; margin-bottom: 16px; }
+    .page-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500; color: #fff; line-height: 1.3; margin-bottom: 16px; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
     .page-title span { color: #c9a96e; }
-    .page-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 2; max-width: 560px; }
+    .page-desc { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 2.2; max-width: 600px; background: rgba(0,0,0,0.3); padding: 24px 28px; border-left: 3px solid #c9a96e; backdrop-filter: blur(4px); }
     .content { background: #f4f1ec; min-height: 60vh; }
     .content-inner { max-width: 1200px; margin: 0 auto; padding: 64px 40px; }
     .consultant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 64px; }
@@ -305,8 +307,8 @@ export default function App() {
       <header className="header">
         <div className="header-inner">
           <div onClick={() => go("service")} style={{ cursor: "pointer" }}>
-            <div className="logo-mark">一条コンサル</div>
-            <div className="logo-sub">ICHIJO CONSULTING</div>
+            <div className="logo-mark">家づくりの不都合な真実</div>
+            <div className="logo-sub">一条工務店</div>
           </div>
           <nav className="nav-links">
             {navItems.map(([id, label]) => (
@@ -334,14 +336,17 @@ export default function App() {
         <>
           <div className="page-hero">
             <div className="page-hero-inner">
-              <div className="page-label">ICHIJO CONSULTING</div>
               <h1 className="page-title">
-                こだわりパパ × おおらかママ<br />
                 <span>忖度なしの家づくり相談</span>
               </h1>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#c9a96e", marginBottom: 16, fontStyle: "italic" }}>
+                ～ 入居宅訪問では聞けない本音、全部話します ～
+              </p>
+              <p style={{ fontSize: 15, color: "#c9a96e", fontWeight: 500, marginBottom: 20, letterSpacing: 0.5 }}>
+                一条という大企業に一人で訴訟まで戦い抜いた物言う施主がアドバイス。
+              </p>
               <p className="page-desc">
-                一条工務店施主による、経験者だからこそ話せる本音のコンサルティング。<br />
-                パパ 30分 ¥3,000　／　ママ 30分 ¥2,000　／　PayPay・クレカ払い
+                家づくりが好きだからこそ、後悔したことを正直に伝えたい。楽しいはずの家づくりが、ずっと辛かった。そんな経験をした施主だからこそ、少しでもあなたの家づくりの助けになりたい。そんな想いで始めたのがこのサービスです。一条の闇も、聞けちゃうかもしれません。
               </p>
             </div>
           </div>
@@ -351,7 +356,6 @@ export default function App() {
 
               {/* コンサルタント */}
               <div className="section-header">
-                <div className="section-label">OUR CONSULTANTS</div>
                 <h2 className="section-title">担当コンサルタント</h2>
               </div>
               <div className="consultant-grid">
@@ -379,7 +383,6 @@ export default function App() {
 
               {/* サービス一覧 */}
               <div id="service-list-anchor" className="section-header">
-                <div className="section-label">SERVICES</div>
                 <h2 className="section-title">サービス内容・料金</h2>
               </div>
               <div className="service-list">
@@ -444,9 +447,7 @@ export default function App() {
 
               {/* 相談の流れ */}
               <div style={{ background: "#fff", borderLeft: "4px solid #c9a96e", marginBottom: 0 }}>
-                <div style={{ padding: "32px 40px 24px" }}>
-                  <div className="section-label">HOW IT WORKS</div>
-                </div>
+
                 <div className="how-grid">
                   {["Googleカレンダーで日程を予約", "予約確認メールが届く", "PayPay / カードでお支払い（¥3,000）", "Zoom / Google Meetで相談（30分）"].map((step, i) => (
                     <div key={i} className="how-step">
@@ -467,7 +468,6 @@ export default function App() {
         <>
           <div className="page-hero">
             <div className="page-hero-inner">
-              <div className="page-label">ABOUT US</div>
               <h1 className="page-title">プロフィール</h1>
               <p className="page-desc">経験者だからこそ言える、本音をお届けします。</p>
             </div>
@@ -484,10 +484,10 @@ export default function App() {
                     </div>
                   </div>
                   <p className="profile-bio">
-                    家づくりの打ち合わせから引渡しまで一人で完遂。引渡し後に施工不具合が発覚し、弁護士なしで調停を申し立て和解を勝ち取りました。FP資格保有の投資家で、投資で貯めた資金でI-CUBEを建てました。
+                    家づくりの打ち合わせから引渡しまで一人で完遂。引渡し後に施工不具合が発覚し、弁護士なしで一条工務店を相手に調停を申立て、現在も戦い続けています。FP資格保有の投資家で、投資で貯めた資金でI-CUBEを建てました。
                   </p>
                   <div className="profile-specs">
-                    {[["モデル", "I-CUBE 33坪 2025年入居"], ["調停", "弁護士なし → 和解勝ち取り"], ["外構", "100坪DIY中"], ["資格", "FP資格 / 個人投資家"]].map(([k, v]) => (
+                    {[["モデル", "I-CUBE 33坪 2025年入居"], ["調停", "弁護士なしで調停申立・現在訴訟準備中"], ["外構", "100坪DIY中"], ["資格", "FP資格 / 個人投資家"]].map(([k, v]) => (
                       <div key={k} className="profile-spec">
                         <span className="spec-key">{k}</span>
                         <span className="spec-val">{v}</span>
@@ -526,7 +526,6 @@ export default function App() {
         <>
           <div className="page-hero">
             <div className="page-hero-inner">
-              <div className="page-label">FAQ</div>
               <h1 className="page-title">よくある質問</h1>
             </div>
           </div>
@@ -562,7 +561,6 @@ export default function App() {
         <>
           <div className="page-hero">
             <div className="page-hero-inner">
-              <div className="page-label">REFERRAL</div>
               <h1 className="page-title">一条工務店の<br /><span>紹介制度</span></h1>
               <p className="page-desc">一条工務店と調停で和解を勝ち取った施主からの紹介。忖度なしでリアルを話す私たちからの紹介だから安心です。</p>
             </div>
@@ -614,7 +612,6 @@ export default function App() {
         <>
           <div className="page-hero">
             <div className="page-hero-inner">
-              <div className="page-label">LEGAL</div>
               <h1 className="page-title">プライバシーポリシー</h1>
             </div>
           </div>
@@ -645,8 +642,8 @@ export default function App() {
         <div className="footer-inner">
           <div className="footer-top">
             <div>
-              <div className="footer-logo">一条コンサル</div>
-              <div className="footer-tagline">ICHIJO CONSULTING</div>
+              <div className="footer-logo">家づくりの不都合な真実</div>
+              <div className="footer-tagline">一条工務店</div>
             </div>
             <div className="footer-links">
               {navItems.map(([id, label]) => (
@@ -656,7 +653,7 @@ export default function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <div className="footer-copy">© 2026 一条コンサル / 五十嵐</div>
+            <div className="footer-copy">© 2026 家づくりの不都合な真実 / 五十嵐</div>
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-insta">
               <Icon type="insta" size={20} />
             </a>
