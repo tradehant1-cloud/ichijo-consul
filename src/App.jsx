@@ -293,7 +293,7 @@ export default function App() {
       <header className="header">
         <div className="header-inner">
           <div onClick={() => go("service")} style={{ cursor: "pointer" }}>
-            <div className="logo-mark">家づくりの不都合な真実</div>
+            <div className="logo-mark">一条対策室</div>
             <div className="logo-sub">一条工務店</div>
           </div>
           <nav className="nav-links">
@@ -627,7 +627,7 @@ export default function App() {
         <div className="footer-inner">
           <div className="footer-top">
             <div>
-              <div className="footer-logo">家づくりの不都合な真実</div>
+              <div className="footer-logo">一条対策室</div>
               <div className="footer-tagline">一条工務店</div>
             </div>
             <div className="footer-links">
@@ -638,7 +638,7 @@ export default function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <div className="footer-copy">© 2026 家づくりの不都合な真実 / 五十嵐</div>
+            <div className="footer-copy">© 2026 一条対策室 / 五十嵐</div>
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-insta">
               <Icon type="insta" size={20} />
             </a>
