@@ -87,7 +87,19 @@ const Icon = ({ type, size = 22 }) => {
     chevron: <svg {...s}><polyline points="6 9 12 15 18 9"/></svg>,
     menu: <svg {...s}><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>,
     close: <svg {...s}><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>,
-    insta: <svg {...s}><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>,
+    insta: <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+          <stop offset="0%" stopColor="#fdf497"/>
+          <stop offset="20%" stopColor="#fd5949"/>
+          <stop offset="55%" stopColor="#d6249f"/>
+          <stop offset="90%" stopColor="#285AEB"/>
+        </radialGradient>
+      </defs>
+      <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-grad)"/>
+      <circle cx="12" cy="12" r="5.5" stroke="#fff" strokeWidth="2" fill="none"/>
+      <circle cx="17.8" cy="6.2" r="1.3" fill="#fff"/>
+    </svg>,
   };
   const idMap = { homebuilding: "home", lighting: "bulb", wallpaper: "grid", exterior: "tree", trouble: "alert", mediation: "doc", stock_start: "chart", stock_nisa_yutai: "clock" };
   return icons[idMap[type] || type] || null;
@@ -200,7 +212,7 @@ export default function App() {
     .btn-mama-badge-price { font-size: 20px; font-weight: 700; display: block; }
     .service-chevron-icon { color: #ccc; transition: transform 0.2s, color 0.2s; }
     .service-chevron-icon.open { transform: rotate(180deg); color: #c9a96e; }
-    .service-body { padding: 0 32px 32px 83px; border-top: 1px solid #f0ede8; }
+    .service-body { padding: 0 32px 32px 32px; border-top: 1px solid #f0ede8; }
     .service-desc-text { font-size: 14px; color: #555; line-height: 2; margin: 24px 0 20px; }
     .service-points-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
     .service-point-item { font-size: 13px; color: #444; display: flex; gap: 10px; align-items: flex-start; }
@@ -346,6 +358,7 @@ export default function App() {
                   <button className="btn-papa" onClick={() => handleConsultClick("パパ", "トップ")}>
                     📅 パパに相談する — ¥3,000 / 30分
                   </button>
+                  <div className="price-note">＼ 期間限定の特別価格 ／</div>
                 </div>
                 <div className="consultant-card mama">
                   <div className="consultant-avatar">👤</div>
@@ -375,7 +388,6 @@ export default function App() {
                       className={`service-header${openService === s.id ? " open" : ""}`}
                       onClick={() => setOpenService(openService === s.id ? null : s.id)}
                     >
-                      <span className="service-num">{s.num}</span>
                       <span className="service-icon-wrap"><Icon type={s.id} size={20} /></span>
                       <div className="service-info">
                         <div className="service-title-text">{s.title}</div>
