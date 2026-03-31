@@ -149,7 +149,7 @@ export default function App() {
     button { font-family: inherit; cursor: pointer; }
     .header { position: sticky; top: 0; z-index: 100; background: #1a1e2e; border-bottom: 1px solid rgba(255,255,255,0.08); }
     .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
-    .logo-mark { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: #fff; letter-spacing: 2px; }
+    .logo-mark { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #fff; letter-spacing: 2px; }
     .logo-sub { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 3px; margin-top: 2px; }
     .nav-links { display: flex; align-items: center; gap: 36px; }
     .nav-link { font-size: 13px; color: rgba(255,255,255,0.65); letter-spacing: 1px; transition: color 0.2s; position: relative; padding-bottom: 4px; cursor: pointer; }
