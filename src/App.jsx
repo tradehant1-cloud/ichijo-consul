@@ -261,9 +261,9 @@ export default function App() {
     .footer-insta { color: rgba(255,255,255,0.4); transition: color 0.2s; display: flex; }
     .footer-insta:hover { color: #fff; }
     .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .how-step { padding: 32px 28px; border-right: 1px solid #f0ede8; }
+    .how-step { padding: 20px 24px; border-right: 1px solid #f0ede8; }
     .how-step:last-child { border-right: none; }
-    .how-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #e8e2d8; font-weight: 600; margin-bottom: 12px; }
+    .how-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #e8e2d8; font-weight: 600; margin-bottom: 8px; }
     .how-text { font-size: 13px; color: #444; line-height: 1.8; }
     @media (max-width: 768px) {
       .header-inner { padding: 0 20px; }
