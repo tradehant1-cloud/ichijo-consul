@@ -35,31 +35,17 @@ const SERVICES = [
     mama: false,
   },
   {
-    id: "trouble", num: "05", title: "トラブル相談", sub: "TROUBLE SUPPORT",
-    tagline: "不具合・対応不備。一人で抱え込まないで。",
-    desc: "施工不具合や一条工務店との対応トラブルに悩む方へ。実際に不具合を発見し、調停で和解を勝ち取った経験をもとに、具体的な対処法をアドバイスします。",
-    points: ["不具合の記録・証拠の残し方", "一条工務店への効果的な交渉術", "調停・法的手段の検討", "実体験をもとにした具体的アドバイス"],
+    id: "trouble", num: "05", title: "トラブル対応・調停・訴訟相談", sub: "TROUBLE & LAWSUIT",
+    tagline: "不具合・対応不備から調停・訴訟まで。一人で抱え込まないで。",
+    desc: "施工不具合や一条工務店との対応トラブルに悩む方へ。弁護士を使わず自力で調停申立を行い、現在も戦い続けている経験をもとに、トラブル対応から調停・訴訟への移行まで具体的にアドバイスします。",
+    points: ["不具合の記録・証拠の残し方", "一条工務店への効果的な交渉術", "調停申立書の書き方・必要書類", "調停当日の立ち振る舞い・訴訟移行のポイント"],
     mama: false,
   },
   {
-    id: "mediation", num: "06", title: "調停・訴訟相談", sub: "MEDIATION & LAWSUIT",
-    tagline: "弁護士なしで調停を戦い、和解を勝ち取った経験者が教える。",
-    desc: "弁護士を使わず自力で調停申立を行い、和解を勝ち取った経験をもとに、調停の始め方から当日の進め方・訴訟への移行まで丁寧にサポートします。",
-    points: ["調停申立書の書き方", "必要書類・証拠の準備方法", "調停当日の立ち振る舞い", "和解交渉・訴訟移行のポイント"],
-    mama: false,
-  },
-  {
-    id: "stock_start", num: "07", title: "株の始め方相談", sub: "HOW TO START",
-    tagline: "何から始めればいい？投資家が一緒に考えます。",
-    desc: "証券口座の選び方・開設手順・最初に買うべきものの考え方など、投資の第一歩をサポートします。※銘柄推奨は行いません。",
-    points: ["証券会社・口座の選び方", "口座開設の手順", "最初の一歩の考え方", "初心者のよくある疑問"],
-    mama: false,
-  },
-  {
-    id: "stock_nisa_yutai", num: "08", title: "NISA・株主優待相談", sub: "NISA & BENEFITS",
-    tagline: "NISAの使い方から優待のお得な取り方まで。",
-    desc: "新NISAのつみたて投資枠・成長投資枠の使い分けや、株主優待をお得に取るクロス取引の基本など、投資をうまく活用するための考え方をお伝えします。※銘柄推奨は行いません。",
-    points: ["つみたて投資枠・成長投資枠の違い", "NISAの使い方・優先順位", "株主優待・権利確定日の仕組み", "クロス取引（つなぎ売り）の基本"],
+    id: "stock_start", num: "06", title: "株・NISA・優待相談", sub: "STOCK & NISA",
+    tagline: "株の始め方からNISA・株主優待まで。FP資格保有の投資家が教えます。",
+    desc: "証券口座の選び方・開設手順から、新NISAの使い分け、株主優待をお得に取るクロス取引の基本まで幅広くサポートします。※銘柄推奨は行いません。",
+    points: ["証券会社・口座の選び方・開設手順", "NISA つみたて投資枠・成長投資枠の違い", "株主優待・権利確定日の仕組み", "クロス取引（つなぎ売り）の基本"],
     mama: false,
   },
 ];
@@ -132,7 +118,7 @@ export default function App() {
       await fetch(SCRIPT_URL, {
         method: "POST", mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ type: "consult_click", consultant, serviceName, date: new Date().toISOString().split("T")[0], time: new Date().toLocaleTimeString("ja-JP") })
+        body: JSON.stringify({ type: "consult_click", consultant, serviceName, date: new Date().toLocaleDateString("ja-JP", {timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit"}).replace(/\//g, "-"), time: new Date().toLocaleTimeString("ja-JP") })
       });
     } catch (e) { console.error(e); }
     window.open(CALENDAR_URL, "_blank");
@@ -145,7 +131,7 @@ export default function App() {
       await fetch(SCRIPT_URL, {
         method: "POST", mode: "no-cors",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...referralForm, type: "referral", date: new Date().toISOString().split("T")[0] })
+        body: JSON.stringify({ ...referralForm, type: "referral", date: new Date().toLocaleDateString("ja-JP", {timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit"}).replace(/\//g, "-") })
       });
     } catch (e) { console.error(e); }
     setReferralSending(false);
@@ -399,11 +385,10 @@ export default function App() {
                         <div className="service-hint-text">{openService === s.id ? "▲ 閉じる" : "▼ 詳細・予約を見る"}</div>
                       </div>
                       <div className="service-prices">
-                        <div className="price-papa-block">
-                          <div className="price-papa-lbl">パパ</div>
-                          <div className="price-papa-num">¥3,000</div>
-                          <div className="price-papa-sub">30分</div>
-                        </div>
+                        <button className="btn-mama-badge" style={{ background: "#1a1e2e" }} onClick={e => { e.stopPropagation(); handleConsultClick("パパ", s.title); }}>
+                          <span style={{ fontSize: 10, fontWeight: 400, display: "block", letterSpacing: 1 }}>パパ / 30分</span>
+                          <span className="btn-mama-badge-price">¥3,000</span>
+                        </button>
                         {s.mama && (
                           <button className="btn-mama-badge" onClick={e => { e.stopPropagation(); handleConsultClick("ママ", s.title); }}>
                             <span style={{ fontSize: 10, fontWeight: 400, display: "block", letterSpacing: 1 }}>ママ / 30分</span>
