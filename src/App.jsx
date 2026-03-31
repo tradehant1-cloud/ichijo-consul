@@ -10,11 +10,11 @@ const SERVICES = [
     id: "homebuilding", num: "01", title: "家づくり相談", sub: "HOME BUILDING",
     tagline: "忖度なし。我が家をまるごと見せながら、本音でお答えします。",
     desc: "WEB入居宅訪問はテンプレ質問が多く聞きたいことが聞けなかったり、営業さんの前では聞けないことも多いですよね。マンツーマンだから、何でも聞いてください。間取り・オプション・見積もり・契約など、一条工務店での家づくり全般を相談できます。",
-    points: ["間取り・動線・収納のアドバイス", "本当に必要なオプションの仕分け", "見積もりの見方・交渉ポイント", "スマホカメラで実際の我が家をZoomご案内"],
+    points: ["間取り・動線・収納のアドバイス", "本当に必要なオプションの仕分け", "見積もりの見方・交渉ポイント", "スマホカメラで実際の我が家をZoomご案内", "打ち合わせの進め方", "全館空調と床暖の違い", "月々の電気代・売電額", "キッチンの使い勝手", "子育てしながらの家事", "家事動線・収納", "おすすめ設備・オプション"],
     mama: true,
   },
   {
-    id: "lighting", num: "02", title: "照明計画相談", sub: "LIGHTING PLAN",
+    id: "lighting", num: "02", title: "照明計画・リンクプラス相談", sub: "LIGHTING PLAN",
     tagline: "後悔しやすい照明計画を、経験者と一緒に考えよう。",
     desc: "ダウンライトの位置・数・スイッチの配置は、住んでみて初めて後悔することが多いポイントです。実際の我が家の照明を見せながら、失敗しない照明計画のアドバイスをします。",
     points: ["ダウンライトの配置・数の考え方", "スイッチ・調光の位置決め", "リビング・寝室・キッチンの照明", "実際の我が家の照明を見せながら解説"],
@@ -28,7 +28,7 @@ const SERVICES = [
     mama: true,
   },
   {
-    id: "exterior", num: "04", title: "外構相談", sub: "EXTERIOR DESIGN",
+    id: "exterior", num: "04", title: "外構・DIY相談", sub: "EXTERIOR & DIY",
     tagline: "業者選びからDIYまで。100坪の外構を自分で作り上げた経験者が教える。",
     desc: "外構業者の探し方・見積もり比較・DIYでできること・トラブル対応まで、100坪の土地の外構を自分で手がけた経験をもとにアドバイスします。",
     points: ["外構業者の選び方・比較ポイント", "DIYでコストを抑える方法", "一条工務店との外構工事の調整", "外構トラブルの対処法"],
@@ -69,7 +69,7 @@ const FAQS = [
   { q: "相談はどんな形式ですか？", a: "ZoomまたはGoogle Meetでのオンライン相談です。家づくり相談ではスマホカメラで実際のI-CUBEの室内をリアルタイムでご案内することもできます。" },
   { q: "調停相談は弁護士の代わりになりますか？", a: "法律の専門家ではありませんが、実際に一人で調停を行い和解した経験をもとにアドバイスします。法的判断が必要な場合は弁護士への相談をお勧めします。" },
   { q: "相談料金はいつ支払いますか？", a: "日程確定後にPayPay（ID: tradehant1）またはクレジットカードにてお支払いをお願いします。" },
-  { q: "一条工務店以外の相談はできますか？", a: "現在は一条工務店専門のサービスとなっております。" },
+  { q: "一条工務店以外の相談はできますか？", a: "トラブル・調停相談については一条工務店以外のハウスメーカーでもご相談いただけます。ただし他のハウスメーカーは仕様が異なるためお答えできない場合もありますが、ご了承いただけるようであればお気軽にご相談ください。" },
 ];
 
 const Icon = ({ type, size = 22 }) => {
@@ -114,7 +114,16 @@ export default function App() {
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [referralSending, setReferralSending] = useState(false);
 
-  const go = (v) => { setView(v); setMenuOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const go = (v) => {
+    setMenuOpen(false);
+    if (v === "service" && view === "service") {
+      const el = document.getElementById("service-list-anchor");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    setView(v);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleConsultClick = async (consultant, serviceName) => {
     try {
@@ -350,11 +359,7 @@ export default function App() {
                   <div className="consultant-avatar">👤</div>
                   <div className="consultant-name">こだわりパパ（五十嵐）</div>
                   <div className="consultant-role">FP資格 / 個人投資家</div>
-                  <div className="consultant-tags">
-                    {["打ち合わせの進め方", "全館空調と床暖の違い", "月々の電気代・売電額", "トラブル対応", "株・NISAの話"].map(t => (
-                      <div key={t} className="consultant-tag">{t}</div>
-                    ))}
-                  </div>
+
                   <button className="btn-papa" onClick={() => handleConsultClick("パパ", "トップ")}>
                     📅 パパに相談する — ¥3,000 / 30分
                   </button>
@@ -364,11 +369,7 @@ export default function App() {
                   <div className="consultant-avatar">👤</div>
                   <div className="consultant-name">おおらかママ</div>
                   <div className="consultant-role">主婦 / 4歳・6歳子育て中</div>
-                  <div className="consultant-tags">
-                    {["キッチンの使い勝手", "子育てしながらの家事", "家事動線・収納", "おすすめ設備・オプション"].map(t => (
-                      <div key={t} className="consultant-tag">{t}</div>
-                    ))}
-                  </div>
+
                   <button className="btn-mama" onClick={() => handleConsultClick("ママ", "トップ")}>
                     📅 ママに相談する — ¥2,000 / 30分
                   </button>
@@ -377,7 +378,7 @@ export default function App() {
               </div>
 
               {/* サービス一覧 */}
-              <div className="section-header">
+              <div id="service-list-anchor" className="section-header">
                 <div className="section-label">SERVICES</div>
                 <h2 className="section-title">サービス内容・料金</h2>
               </div>
