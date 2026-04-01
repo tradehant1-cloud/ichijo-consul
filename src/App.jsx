@@ -334,17 +334,17 @@ export default function App() {
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#c9a96e", marginBottom: 16, fontStyle: "italic" }}>
                 ～ 入居宅訪問では聞けない本音、全部話します ～
               </p>
-              <div style={{ display: "flex", gap: 16, marginBottom: 24, justifyContent: "center", flexWrap: "wrap" }}>
-                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", maxWidth: 280, textAlign: "left" }}>
+              <div style={{ display: "flex", gap: 16, alignItems: "flex-start", justifyContent: "center", flexWrap: "wrap" }}>
+                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", width: 220, flexShrink: 0 }}>
                   <p style={{ fontSize: 13, color: "#c9a96e", lineHeight: 1.8 }}>一条という大企業に一人で訴訟まで戦い抜いた物言う施主がアドバイス。</p>
                 </div>
-                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", maxWidth: 280, textAlign: "left" }}>
+                <p className="page-desc" style={{ flex: 1, margin: 0 }}>
+                  楽しいはずの家づくり、辛いことばかり。建った後も納得いかない対応。絶対間違ってる！そんな思いをして欲しくないから相談サービスを始めました。是非お気軽にご相談ください。ママのリアル主婦目線相談も。
+                </p>
+                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", width: 220, flexShrink: 0 }}>
                   <p style={{ fontSize: 13, color: "#c9a96e", lineHeight: 1.8 }}>実際に見たい場所はリクエストで見ながら質問できます。</p>
                 </div>
               </div>
-              <p className="page-desc">
-                楽しいはずの家づくり、辛いことばかり。建った後も納得いかない対応。絶対間違ってる！そんな思いをして欲しくないから相談サービスを始めました。是非お気軽にご相談ください。ママのリアル主婦目線相談も。
-              </p>
             </div>
           </div>
 
