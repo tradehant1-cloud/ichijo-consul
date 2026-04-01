@@ -147,27 +147,29 @@ export default function App() {
     body { -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
     button { font-family: inherit; cursor: pointer; }
-    .header { position: sticky; top: 0; z-index: 100; background: #1a1e2e; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 68px; display: flex; align-items: center; justify-content: space-between; }
-    .logo-mark { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: #fff; letter-spacing: 2px; }
-    .logo-sub { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 3px; margin-top: 2px; }
-    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .header { position: sticky; top: 0; z-index: 100; background: #1a1e2e; }
+    .header-top { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .header-right { position: absolute; right: 40px; display: flex; align-items: center; gap: 16px; }
+    .logo-mark { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: #fff; letter-spacing: 3px; text-align: center; }
+    .logo-sub { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 3px; text-align: center; margin-top: 2px; }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 40px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav-links { display: flex; align-items: center; gap: 40px; }
     .nav-link { font-size: 13px; color: rgba(255,255,255,0.65); letter-spacing: 1px; transition: color 0.2s; position: relative; padding-bottom: 4px; cursor: pointer; }
     .nav-link:hover { color: #fff; }
     .nav-link.active { color: #fff; }
     .nav-link.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: #c9a96e; }
-    .nav-cta { background: #c9a96e; color: #1a1e2e; padding: 9px 22px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; border: none; transition: background 0.2s; display: inline-block; }
+    .nav-cta { background: #c9a96e; color: #1a1e2e; padding: 7px 18px; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; border: none; transition: background 0.2s; display: inline-block; }
     .nav-cta:hover { background: #b8944a; }
-    .mobile-toggle { display: none; background: none; border: none; color: #fff; }
+    .mobile-toggle { display: none; background: none; border: none; color: #fff; position: absolute; right: 20px; }
     .mobile-menu { display: none; background: #1a1e2e; border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 40px; flex-direction: column; gap: 20px; }
     .mobile-menu.open { display: flex; }
-    .page-hero { background: linear-gradient(160deg, #0f1320 0%, #1a1e2e 50%, #0f1320 100%); padding: 72px 40px 56px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,169,110,0.2); }
+    .page-hero { background: linear-gradient(160deg, #0f1320 0%, #1a1e2e 50%, #0f1320 100%); padding: 80px 40px 64px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,169,110,0.2); text-align: center; }
     .page-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.06) 100%); }
     .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
     .page-label { font-size: 10px; letter-spacing: 4px; color: #c9a96e; margin-bottom: 20px; }
-    .page-title { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500; color: #fff; line-height: 1.3; margin-bottom: 16px; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
+    .page-title { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 500; color: #fff; line-height: 1.3; margin-bottom: 16px; text-shadow: 0 2px 20px rgba(0,0,0,0.5); }
     .page-title span { color: #c9a96e; }
-    .page-desc { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 2.2; max-width: 600px; background: rgba(0,0,0,0.3); padding: 24px 28px; border-left: 3px solid #c9a96e; backdrop-filter: blur(4px); }
+    .page-desc { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 2.2; max-width: 640px; background: rgba(0,0,0,0.3); padding: 24px 28px; border-left: 3px solid #c9a96e; backdrop-filter: blur(4px); margin: 0 auto; text-align: left; }
     .content { background: #f4f1ec; min-height: 60vh; }
     .content-inner { max-width: 1200px; margin: 0 auto; padding: 64px 40px; }
     .consultant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 64px; }
@@ -261,10 +263,10 @@ export default function App() {
     .footer-insta { color: rgba(255,255,255,0.4); transition: color 0.2s; display: flex; }
     .footer-insta:hover { color: #fff; }
     .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-    .how-step { padding: 14px 20px; border-right: 1px solid #f0ede8; }
+    .how-step { padding: 10px 16px; border-right: 1px solid #f0ede8; }
     .how-step:last-child { border-right: none; }
-    .how-num { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #e8e2d8; font-weight: 600; margin-bottom: 4px; }
-    .how-text { font-size: 12px; color: #444; line-height: 1.6; }
+    .how-num { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #c9a96e; font-weight: 600; margin-bottom: 4px; }
+    .how-text { font-size: 14px; color: #1a1e2e; line-height: 1.6; font-weight: 400; }
     @media (max-width: 768px) {
       .header-inner { padding: 0 20px; }
       .nav-links { display: none; }
@@ -291,23 +293,29 @@ export default function App() {
 
       {/* ヘッダー */}
       <header className="header">
-        <div className="header-inner">
-          <div onClick={() => go("service")} style={{ cursor: "pointer" }}>
+        {/* ロゴ中央 */}
+        <div className="header-top">
+          <div onClick={() => go("service")} style={{ cursor: "pointer", textAlign: "center" }}>
             <div className="logo-mark">一条対策室</div>
             <div className="logo-sub">一条工務店</div>
           </div>
-          <nav className="nav-links">
-            {navItems.map(([id, label]) => (
-              <span key={id} onClick={() => go(id)} className={`nav-link${view === id ? " active" : ""}`}>{label}</span>
-            ))}
+          <div className="header-right">
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-insta">
               <Icon type="insta" size={20} />
             </a>
             <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="nav-cta">予約する</a>
-          </nav>
+          </div>
           <button className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)}>
             <Icon type={menuOpen ? "close" : "menu"} size={22} />
           </button>
+        </div>
+        {/* ナビ横帯 */}
+        <div className="header-inner">
+          <nav className="nav-links">
+            {navItems.map(([id, label]) => (
+              <span key={id} onClick={() => go(id)} className={`nav-link${view === id ? " active" : ""}`}>{label}</span>
+            ))}
+          </nav>
         </div>
         <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
           {navItems.map(([id, label]) => (
