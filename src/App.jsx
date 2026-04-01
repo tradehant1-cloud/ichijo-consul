@@ -334,15 +334,43 @@ export default function App() {
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#c9a96e", marginBottom: 16, fontStyle: "italic" }}>
                 ～ 入居宅訪問では聞けない本音、全部話します ～
               </p>
-              <div style={{ display: "flex", gap: 16, alignItems: "flex-start", justifyContent: "center", flexWrap: "wrap" }}>
-                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", width: 220, flexShrink: 0 }}>
-                  <p style={{ fontSize: 13, color: "#c9a96e", lineHeight: 1.8 }}>一条という大企業に一人で訴訟まで戦い抜いた物言う施主がアドバイス。</p>
+              <div style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
+                {/* パパの吹き出し */}
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 200, flexShrink: 0 }}>
+                  {/* 吹き出し */}
+                  <div style={{ background: "rgba(26,30,46,0.8)", border: "1px solid rgba(201,169,110,0.5)", borderRadius: 8, padding: "12px 16px", marginBottom: 8, position: "relative" }}>
+                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8 }}>一条という大企業に一人で訴訟まで戦い抜いた！本音で全部話すよ。</p>
+                    <div style={{ position: "absolute", bottom: -8, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid rgba(201,169,110,0.5)" }}/>
+                  </div>
+                  {/* パパアイコン */}
+                  <svg width="56" height="56" viewBox="0 0 56 56">
+                    <circle cx="28" cy="28" r="28" fill="#1a1e2e"/>
+                    <circle cx="28" cy="22" r="10" fill="#c9a96e"/>
+                    <path d="M8 50 Q8 36 28 36 Q48 36 48 50" fill="#c9a96e"/>
+                    <rect x="18" y="12" width="20" height="6" rx="3" fill="#4a3a1a"/>
+                  </svg>
+                  <p style={{ fontSize: 11, color: "#c9a96e", marginTop: 6, letterSpacing: 1 }}>こだわりパパ</p>
                 </div>
-                <p className="page-desc" style={{ flex: 1, margin: 0 }}>
-                  楽しいはずの家づくり、辛いことばかり。建った後も納得いかない対応。絶対間違ってる！そんな思いをして欲しくないから相談サービスを始めました。是非お気軽にご相談ください。ママのリアル主婦目線相談も。
+
+                {/* 中央テキスト */}
+                <p className="page-desc" style={{ flex: 1, margin: 0, minWidth: 200 }}>
+                  楽しいはずの家づくり、辛いことばかり。建った後も納得いかない対応。絶対間違ってる！そんな思いをして欲しくないから相談サービスを始めました。是非お気軽にご相談ください。
                 </p>
-                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", width: 220, flexShrink: 0 }}>
-                  <p style={{ fontSize: 13, color: "#c9a96e", lineHeight: 1.8 }}>実際に見たい場所はリクエストで見ながら質問できます。</p>
+
+                {/* ママの吹き出し */}
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 200, flexShrink: 0 }}>
+                  <div style={{ background: "rgba(26,30,46,0.8)", border: "1px solid rgba(201,169,110,0.5)", borderRadius: 8, padding: "12px 16px", marginBottom: 8, position: "relative" }}>
+                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8 }}>見たい場所はリクエストして！主婦目線でリアルに答えるよ。</p>
+                    <div style={{ position: "absolute", bottom: -8, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid rgba(201,169,110,0.5)" }}/>
+                  </div>
+                  {/* ママアイコン */}
+                  <svg width="56" height="56" viewBox="0 0 56 56">
+                    <circle cx="28" cy="28" r="28" fill="#1a1e2e"/>
+                    <circle cx="28" cy="22" r="10" fill="#e8b89a"/>
+                    <path d="M8 50 Q8 36 28 36 Q48 36 48 50" fill="#e8b89a"/>
+                    <path d="M18 14 Q28 6 38 14" stroke="#b5694a" strokeWidth="3" fill="none"/>
+                  </svg>
+                  <p style={{ fontSize: 11, color: "#c9a96e", marginTop: 6, letterSpacing: 1 }}>おおらかママ</p>
                 </div>
               </div>
             </div>
