@@ -299,12 +299,6 @@ export default function App() {
             <div className="logo-mark">一条対策室</div>
             <div className="logo-sub">一条工務店</div>
           </div>
-          <div className="header-right">
-            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-insta">
-              <Icon type="insta" size={20} />
-            </a>
-            <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="nav-cta">予約する</a>
-          </div>
           <button className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)}>
             <Icon type={menuOpen ? "close" : "menu"} size={22} />
           </button>
@@ -315,6 +309,10 @@ export default function App() {
             {navItems.map(([id, label]) => (
               <span key={id} onClick={() => go(id)} className={`nav-link${view === id ? " active" : ""}`}>{label}</span>
             ))}
+            <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-insta">
+              <Icon type="insta" size={20} />
+            </a>
+            <a href={CALENDAR_URL} target="_blank" rel="noreferrer" className="nav-cta">予約する</a>
           </nav>
         </div>
         <div className={`mobile-menu${menuOpen ? " open" : ""}`}>
