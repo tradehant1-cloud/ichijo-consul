@@ -334,11 +334,16 @@ export default function App() {
               <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#c9a96e", marginBottom: 16, fontStyle: "italic" }}>
                 ～ 入居宅訪問では聞けない本音、全部話します ～
               </p>
-              <p style={{ fontSize: 15, color: "#c9a96e", fontWeight: 500, marginBottom: 20, letterSpacing: 0.5 }}>
-                一条という大企業に一人で訴訟まで戦い抜いた物言う施主がアドバイス。
-              </p>
+              <div style={{ display: "flex", gap: 16, marginBottom: 24, justifyContent: "center", flexWrap: "wrap" }}>
+                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", maxWidth: 280, textAlign: "left" }}>
+                  <p style={{ fontSize: 13, color: "#c9a96e", lineHeight: 1.8 }}>一条という大企業に一人で訴訟まで戦い抜いた物言う施主がアドバイス。</p>
+                </div>
+                <div style={{ background: "rgba(201,169,110,0.15)", border: "1px solid rgba(201,169,110,0.4)", borderRadius: 4, padding: "14px 20px", maxWidth: 280, textAlign: "left" }}>
+                  <p style={{ fontSize: 13, color: "#c9a96e", lineHeight: 1.8 }}>実際に見たい場所はリクエストで見ながら質問できます。</p>
+                </div>
+              </div>
               <p className="page-desc">
-                家づくりが好きだからこそ、楽しいはずの家づくりが辛いのが許せなかった。さらに不具合で訴訟まで経験した。家づくりは楽しくもっと簡単にできるべき！不正は許せない！そんな一人で大企業と戦った施主が、相談を通じて家づくりが少しでも楽になったり、不安な気持ちが解消されることを目的としています。是非お気軽にご相談ください。ママのリアル主婦目線相談もやってます。
+                楽しいはずの家づくり、辛いことばかり。建った後も納得いかない対応。絶対間違ってる！そんな思いをして欲しくないから相談サービスを始めました。是非お気軽にご相談ください。ママのリアル主婦目線相談も。
               </p>
             </div>
           </div>
