@@ -262,7 +262,7 @@ export default function App() {
     .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 1px; }
     .footer-insta { color: rgba(255,255,255,0.4); transition: color 0.2s; display: flex; }
     .footer-insta:hover { color: #fff; }
-    .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .how-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
     .how-step { padding: 10px 16px; border-right: 1px solid #f0ede8; }
     .how-step:last-child { border-right: none; }
     .how-num { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #c9a96e; font-weight: 600; margin-bottom: 4px; }
@@ -281,6 +281,7 @@ export default function App() {
       .referral-form-grid { grid-template-columns: 1fr; }
       .how-grid { grid-template-columns: 1fr 1fr; }
       .how-step { border-right: none; border-bottom: 1px solid #f0ede8; }
+      .how-grid { grid-template-columns: 1fr 1fr !important; }
       .footer-top { flex-direction: column; gap: 32px; }
       .footer { padding: 48px 20px 24px; }
       .mobile-menu { padding: 24px 20px; }
@@ -296,7 +297,7 @@ export default function App() {
         {/* ロゴ中央 */}
         <div className="header-top">
           <div onClick={() => go("service")} style={{ cursor: "pointer", textAlign: "center" }}>
-            <div className="logo-mark">一条対策室</div>
+            <div className="logo-mark">家づくり対策室</div>
             <div className="logo-sub">一条工務店</div>
           </div>
           <button className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)}>
@@ -339,7 +340,7 @@ export default function App() {
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 200, flexShrink: 0 }}>
                   {/* 丸い吹き出し */}
                   <div style={{ background: "rgba(26,30,46,0.85)", border: "2px solid #c9a96e", borderRadius: "50%", width: 180, height: 110, display: "flex", alignItems: "center", justifyContent: "center", padding: "16px 20px", marginBottom: 12, position: "relative", boxShadow: "0 0 20px rgba(201,169,110,0.2)" }}>
-                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8, textAlign: "center" }}>一条という大企業に一人で訴訟まで戦い抜いた！本音で全部話すよ。</p>
+                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8, textAlign: "center" }}>一条で建てるなら絶対やって欲しいこと教えます。</p>
                     <div style={{ position: "absolute", bottom: -10, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "10px solid #c9a96e" }}/>
                   </div>
                   {/* パパアイコン */}
@@ -360,7 +361,7 @@ export default function App() {
                 {/* ママの吹き出し */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 200, flexShrink: 0 }}>
                   <div style={{ background: "rgba(26,30,46,0.85)", border: "2px solid #b5694a", borderRadius: "50%", width: 180, height: 110, display: "flex", alignItems: "center", justifyContent: "center", padding: "16px 20px", marginBottom: 12, position: "relative", boxShadow: "0 0 20px rgba(181,105,74,0.2)" }}>
-                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8, textAlign: "center" }}>見たい場所はリクエストして！主婦目線でリアルに答えるよ。</p>
+                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8, textAlign: "center" }}>見たい場所リクエストで実際に見せながら質問に答えます。</p>
                     <div style={{ position: "absolute", bottom: -10, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "10px solid #b5694a" }}/>
                   </div>
                   {/* ママアイコン */}
@@ -473,7 +474,7 @@ export default function App() {
               <h3 style={{ fontSize: 16, fontWeight: 500, color: "#1a1e2e", letterSpacing: 1, marginBottom: 12 }}>相談の流れ</h3>
               <div style={{ background: "#fff", borderLeft: "4px solid #c9a96e", marginBottom: 0 }}>
                 <div className="how-grid">
-                  {["Googleカレンダーで日程を予約", "予約確認メールが届く", "PayPay / カードでお支払い（¥3,000）", "Zoom / Google Meetで相談（30分）"].map((step, i) => (
+                  {["Googleカレンダーで日程を予約", "予約確認メールが届く", "PayPay / カードでお支払い（¥3,000）", "支払い確認後、相談用URLをメールでお送りします", "当日 Zoom / Google Meetで相談（30分）"].map((step, i) => (
                     <div key={i} className="how-step">
                       <div className="how-num">0{i + 1}</div>
                       <div className="how-text">{step}</div>
@@ -666,7 +667,7 @@ export default function App() {
         <div className="footer-inner">
           <div className="footer-top">
             <div>
-              <div className="footer-logo">一条対策室</div>
+              <div className="footer-logo">家づくり対策室</div>
               <div className="footer-tagline">一条工務店</div>
             </div>
             <div className="footer-links">
@@ -677,7 +678,7 @@ export default function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <div className="footer-copy">© 2026 一条対策室 / 五十嵐</div>
+            <div className="footer-copy">© 2026 家づくり対策室 / 五十嵐</div>
             <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="footer-insta">
               <Icon type="insta" size={20} />
             </a>
