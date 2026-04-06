@@ -163,7 +163,7 @@ export default function App() {
     .mobile-toggle { display: none; background: none; border: none; color: #fff; position: absolute; right: 20px; }
     .mobile-menu { display: none; background: #1a1e2e; border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 40px; flex-direction: column; gap: 20px; }
     .mobile-menu.open { display: flex; }
-    .page-hero { background: linear-gradient(160deg, #0f1320 0%, #1a1e2e 50%, #0f1320 100%); padding: 80px 40px 64px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,169,110,0.2); text-align: center; }
+    .page-hero { background: linear-gradient(rgba(10,14,28,0.75), rgba(10,14,28,0.85)), url('https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1600&q=80') center/cover no-repeat; padding: 80px 40px 64px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,169,110,0.2); text-align: center; }
     .page-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.06) 100%); }
     .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
     .page-label { font-size: 10px; letter-spacing: 4px; color: #c9a96e; margin-bottom: 20px; }
@@ -337,13 +337,13 @@ export default function App() {
               <div style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
                 {/* パパの吹き出し */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 200, flexShrink: 0 }}>
-                  {/* 吹き出し */}
-                  <div style={{ background: "rgba(26,30,46,0.8)", border: "1px solid rgba(201,169,110,0.5)", borderRadius: 8, padding: "12px 16px", marginBottom: 8, position: "relative" }}>
-                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8 }}>一条という大企業に一人で訴訟まで戦い抜いた！本音で全部話すよ。</p>
-                    <div style={{ position: "absolute", bottom: -8, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid rgba(201,169,110,0.5)" }}/>
+                  {/* 丸い吹き出し */}
+                  <div style={{ background: "rgba(26,30,46,0.85)", border: "2px solid #c9a96e", borderRadius: "50%", width: 180, height: 110, display: "flex", alignItems: "center", justifyContent: "center", padding: "16px 20px", marginBottom: 12, position: "relative", boxShadow: "0 0 20px rgba(201,169,110,0.2)" }}>
+                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8, textAlign: "center" }}>一条という大企業に一人で訴訟まで戦い抜いた！本音で全部話すよ。</p>
+                    <div style={{ position: "absolute", bottom: -10, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "10px solid #c9a96e" }}/>
                   </div>
                   {/* パパアイコン */}
-                  <svg width="56" height="56" viewBox="0 0 56 56">
+                  <svg width="52" height="52" viewBox="0 0 56 56">
                     <circle cx="28" cy="28" r="28" fill="#1a1e2e"/>
                     <circle cx="28" cy="22" r="10" fill="#c9a96e"/>
                     <path d="M8 50 Q8 36 28 36 Q48 36 48 50" fill="#c9a96e"/>
@@ -359,9 +359,9 @@ export default function App() {
 
                 {/* ママの吹き出し */}
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: 200, flexShrink: 0 }}>
-                  <div style={{ background: "rgba(26,30,46,0.8)", border: "1px solid rgba(201,169,110,0.5)", borderRadius: 8, padding: "12px 16px", marginBottom: 8, position: "relative" }}>
-                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8 }}>見たい場所はリクエストして！主婦目線でリアルに答えるよ。</p>
-                    <div style={{ position: "absolute", bottom: -8, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "8px solid transparent", borderRight: "8px solid transparent", borderTop: "8px solid rgba(201,169,110,0.5)" }}/>
+                  <div style={{ background: "rgba(26,30,46,0.85)", border: "2px solid #b5694a", borderRadius: "50%", width: 180, height: 110, display: "flex", alignItems: "center", justifyContent: "center", padding: "16px 20px", marginBottom: 12, position: "relative", boxShadow: "0 0 20px rgba(181,105,74,0.2)" }}>
+                    <p style={{ fontSize: 12, color: "#fff", lineHeight: 1.8, textAlign: "center" }}>見たい場所はリクエストして！主婦目線でリアルに答えるよ。</p>
+                    <div style={{ position: "absolute", bottom: -10, left: "50%", transform: "translateX(-50%)", width: 0, height: 0, borderLeft: "10px solid transparent", borderRight: "10px solid transparent", borderTop: "10px solid #b5694a" }}/>
                   </div>
                   {/* ママアイコン */}
                   <svg width="56" height="56" viewBox="0 0 56 56">
