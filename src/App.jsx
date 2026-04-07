@@ -55,9 +55,9 @@ const FAQS = [
   { q: "相談はどんな形式ですか？", a: "ZoomまたはGoogle Meetでのオンライン相談です。家づくり相談ではスマホカメラで実際のI-CUBEの室内をリアルタイムでご案内することもできます。" },
   { q: "調停相談は弁護士の代わりになりますか？", a: "法律の専門家ではありませんが、実際に一人で調停を行い和解した経験をもとにアドバイスします。法的判断が必要な場合は弁護士への相談をお勧めします。" },
   { q: "相談料金はいつ支払いますか？", a: "日程確定後にPayPay（ID: tradehant1）またはクレジットカードにてお支払いをお願いします。" },
-  { q: "一条工務店以外の相談はできますか？", a: "トラブル・調停相談については一条工務店以外のハウスメーカーでもご相談いただけます。ただし他のハウスメーカーは仕様が異なるためお答えできない場合もありますが、ご了承いただけるようであればお気軽にご相談ください。" },
-  { q: "料金はいつ支払いますか？", a: "予約枠をご確定いただいた後、事前にPayPay（ID: tradehant1）またはクレジットカードにてお支払いください。" },
+  { q: "一条工務店以外の相談はできますか？", a: "できます。ただし家づくり相談サービスは一条工務店がメインとなります。照明、外構、トラブルなど他のサービスはどのハウスメーカーでも可能です。" },
   { q: "相談は何回でもできますか？", a: "はい、何度でもご相談いただけます。1回30分の枠を予約していただければ、その都度ご相談いただけます。" },
+  { q: "キャンセルは可能ですか？", a: "前日までであればキャンセル可能です。予約確認メールに記載されているキャンセルリンクからお手続きください。当日のキャンセルはご遠慮ください。" },
 ];
 
 const Icon = ({ type, size = 22 }) => {
@@ -332,7 +332,7 @@ export default function App() {
               <h1 className="page-title">
                 <span>忖度なしの家づくり相談</span>
               </h1>
-              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#c9a96e", marginBottom: 16, fontStyle: "italic" }}>
+              <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 22, color: "#c9a96e", marginBottom: 16, fontStyle: "italic", textShadow: "0 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.6)" }}>
                 ～ 入居宅訪問では聞けない本音、全部話します ～
               </p>
               <div style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: "center", flexWrap: "wrap" }}>
@@ -494,7 +494,7 @@ export default function App() {
           <div className="page-hero">
             <div className="page-hero-inner">
               <h1 className="page-title">プロフィール</h1>
-              <p className="page-desc">経験者だからこそ言える、本音をお届けします。</p>
+              
             </div>
           </div>
           <div className="content">
@@ -597,7 +597,7 @@ export default function App() {
                   紹介制度を使うと豪華オプション設備が貰えます！
                 </p>
                 <p style={{ fontSize: 14, color: "#555", lineHeight: 2, marginBottom: 40 }}>
-                  一条工務店に興味がある知人・友人がいればぜひご紹介ください。お名前・連絡先をお送りいただくだけでOKです。
+                  紹介制度は使わないと損です！私たちは使えなくて後悔してます。私たちを信頼して頂けた方を紹介したいです。またご友人、知人などもご紹介OKです。紹介希望の方はご記入ください。後日私たちからもご連絡致します。
                 </p>
                 {referralSubmitted ? (
                   <div style={{ background: "#fff", padding: "64px 48px", textAlign: "center" }}>
