@@ -163,7 +163,7 @@ export default function App() {
     .mobile-toggle { display: none; background: none; border: none; color: #fff; position: absolute; right: 20px; }
     .mobile-menu { display: none; background: #1a1e2e; border-top: 1px solid rgba(255,255,255,0.08); padding: 24px 40px; flex-direction: column; gap: 20px; }
     .mobile-menu.open { display: flex; }
-    .page-hero { background: linear-gradient(rgba(10,14,28,0.75), rgba(10,14,28,0.85)), url('https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1600&q=80') center/cover no-repeat; padding: 80px 40px 64px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,169,110,0.2); text-align: center; }
+    .page-hero { background: linear-gradient(rgba(10,14,28,0.45), rgba(10,14,28,0.55)), url('https://images.unsplash.com/photo-1554995207-c18c203602cb?w=1600&q=80') center/cover no-repeat; padding: 80px 40px 64px; position: relative; overflow: hidden; border-bottom: 1px solid rgba(201,169,110,0.2); text-align: center; }
     .page-hero::before { content: ''; position: absolute; top: 0; right: 0; width: 50%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(201,169,110,0.06) 100%); }
     .page-hero-inner { max-width: 1200px; margin: 0 auto; position: relative; }
     .page-label { font-size: 10px; letter-spacing: 4px; color: #c9a96e; margin-bottom: 20px; }
