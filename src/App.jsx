@@ -57,7 +57,7 @@ const FAQS = [
   { q: "相談料金はいつ支払いますか？", a: "日程確定後にPayPay（ID: tradehant1）またはクレジットカードにてお支払いをお願いします。" },
   { q: "一条工務店以外の相談はできますか？", a: "できます。ただし家づくり相談サービスは一条工務店がメインとなります。照明、外構、トラブルなど他のサービスはどのハウスメーカーでも可能です。" },
   { q: "相談は何回でもできますか？", a: "はい、何度でもご相談いただけます。1回30分の枠を予約していただければ、その都度ご相談いただけます。" },
-  { q: "キャンセルは可能ですか？", a: "前日までであればキャンセル可能です。予約確認メールに記載されているキャンセルリンクからお手続きください。当日のキャンセルはご遠慮ください。" },
+  { q: "キャンセル・返金はできますか？", a: "前日までのキャンセルは全額返金いたします。当日のキャンセルは返金できませんが、別日への振り替えが可能です。キャンセルは予約確認メールのキャンセルリンクからお手続きください。" },
 ];
 
 const Icon = ({ type, size = 22 }) => {
@@ -98,6 +98,9 @@ export default function App() {
   const [openService, setOpenService] = useState(null);
   const [openFaq, setOpenFaq] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [contactSubmitted, setContactSubmitted] = useState(false);
+  const [contactSending, setContactSending] = useState(false);
   const [referralForm, setReferralForm] = useState({ name: "", address: "", phone: "", email: "" });
   const [referralSubmitted, setReferralSubmitted] = useState(false);
   const [referralSending, setReferralSending] = useState(false);
@@ -124,6 +127,21 @@ export default function App() {
     window.open(CALENDAR_URL, "_blank");
   };
 
+  const handleContactSubmit = async () => {
+    if (!contactForm.name || !contactForm.email || !contactForm.message) return;
+    setContactSending(true);
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST", mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...contactForm, type: "contact", date: new Date().toLocaleDateString("ja-JP", {timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit"}).replace(/\//g, "-") })
+      });
+    } catch (e) { console.error(e); }
+    setContactSending(false);
+    setContactSubmitted(true);
+    setContactForm({ name: "", email: "", phone: "", message: "" });
+  };
+
   const handleReferralSubmit = async () => {
     if (!referralForm.name || !referralForm.phone) return;
     setReferralSending(true);
@@ -139,7 +157,7 @@ export default function App() {
     setReferralForm({ name: "", address: "", phone: "", email: "" });
   };
 
-  const navItems = [["service", "サービス"], ["referral_page", "紹介制度"], ["profile", "プロフィール"], ["faq", "よくある質問"]];
+  const navItems = [["service", "サービス"], ["referral_page", "紹介制度"], ["profile", "プロフィール"], ["faq", "よくある質問"], ["contact", "お問い合わせ"]];
 
   const css = `
     @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@400;500;600&display=swap');
@@ -632,7 +650,58 @@ export default function App() {
         </>
       )}
 
-      {/* ===== プライバシーポリシー ===== */}
+      {/* ===== お問い合わせページ ===== */}
+      {view === "contact" && (
+        <>
+          <div className="page-hero">
+            <div className="page-hero-inner">
+              <h1 className="page-title">お問い合わせ</h1>
+            </div>
+          </div>
+          <div className="content">
+            <div className="content-inner">
+              <div style={{ maxWidth: 640 }}>
+                <p style={{ fontSize: 14, color: "#555", lineHeight: 2, marginBottom: 32 }}>
+                  サービスに関するご質問・ご不明な点はお気軽にお問い合わせください。2〜3営業日以内にご返信いたします。
+                </p>
+                {contactSubmitted ? (
+                  <div style={{ background: "#fff", padding: "48px", textAlign: "center" }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 48, color: "#c9a96e", marginBottom: 16 }}>✓</div>
+                    <h3 style={{ fontSize: 20, fontWeight: 500, marginBottom: 8 }}>送信完了しました</h3>
+                    <p style={{ fontSize: 14, color: "#888", lineHeight: 2 }}>お問い合わせありがとうございます。2〜3営業日以内にご返信いたします。</p>
+                    <button onClick={() => setContactSubmitted(false)} style={{ marginTop: 24, background: "none", border: "1px solid #ccc", padding: "10px 24px", fontSize: 13, cursor: "pointer", fontFamily: "inherit", color: "#888" }}>
+                      別のお問い合わせをする
+                    </button>
+                  </div>
+                ) : (
+                  <div className="referral-box">
+                    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                      {[["name", "お名前 *", "text", "山田 太郎"], ["email", "メールアドレス *", "email", "example@gmail.com"], ["phone", "電話番号", "tel", "090-0000-0000"]].map(([key, label, type, ph]) => (
+                        <div key={key} className="form-field">
+                          <label className="form-label">{label}</label>
+                          <input value={contactForm[key]} onChange={e => setContactForm({ ...contactForm, [key]: e.target.value })} type={type} placeholder={ph} className="form-input" />
+                        </div>
+                      ))}
+                      <div className="form-field">
+                        <label className="form-label">お問い合わせ内容 *</label>
+                        <textarea value={contactForm.message} onChange={e => setContactForm({ ...contactForm, message: e.target.value })} placeholder="ご質問・ご相談内容をご記入ください" rows={5} className="form-input" style={{ resize: "vertical", lineHeight: 1.8 }} />
+                      </div>
+                      <div>
+                        <button onClick={handleContactSubmit} disabled={!contactForm.name || !contactForm.email || !contactForm.message || contactSending} className="btn-submit" style={{ width: "fit-content" }}>
+                          {contactSending ? "送信中..." : "送信する →"}
+                        </button>
+                        <p style={{ fontSize: 11, color: "#bbb", marginTop: 8, letterSpacing: 1 }}>※ いただいた情報はお問い合わせ対応目的のみに使用します</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* ===== プライバシーポリシー ===== */}}
       {view === "privacy" && (
         <>
           <div className="page-hero">
